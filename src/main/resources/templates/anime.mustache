@@ -1,0 +1,36 @@
+<htm>
+<head>
+    <title>Spring Boot Mustache</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid #999;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h2>Employees</h2>
+<table>
+    <tr>
+        <th>Anime Id</th>
+        <th>Anime name</th>
+        <th>Status</th>
+        <th>Score</th>
+    </tr>
+
+    {{#animeList}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{count}}</td>
+            <td>{{status}}</td>
+        </tr>
+    {{/animeList}}
+
+</table>
+</body>
+</htm>
