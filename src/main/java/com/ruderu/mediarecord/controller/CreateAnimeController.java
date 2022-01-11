@@ -3,12 +3,16 @@ package com.ruderu.mediarecord.controller;
 import com.ruderu.mediarecord.entity.Anime;
 import com.ruderu.mediarecord.repository.AnimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
+import java.beans.PropertyEditorSupport;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -24,16 +28,9 @@ public class CreateAnimeController {
 
     @PostMapping("/title/anime/add")
     public String post(
-            @RequestParam String name,
-            @RequestParam Integer count,
-            @RequestParam String status,
-            @RequestParam Integer score,
-            @RequestParam String author,
-            @RequestParam String studio,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate
+            @ModelAttribute("anime") Anime anime
     ) {
-
-        Anime anime = new Anime(name, count, status, score, author, studio, endDate);
+        System.out.println(anime.getEndDate());
         animeRepository.save(anime);
         return "redirect:/anime";
 

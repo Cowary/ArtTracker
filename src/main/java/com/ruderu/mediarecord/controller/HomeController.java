@@ -16,7 +16,7 @@ public class HomeController {
     private AnimeRepository animeRepository;
 
     @GetMapping("/anime")
-    public String getHone(Model model) {
+    public String getHome(Model model) {
         List<Anime> animeList = animeRepository.findAll();
         for (Anime anime : animeList
              ) {
