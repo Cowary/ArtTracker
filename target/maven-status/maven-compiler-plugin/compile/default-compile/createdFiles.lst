@@ -1,6 +1,0 @@
-com\ruderu\mediarecord\entity\Anime.class
-com\ruderu\mediarecord\entity\Media.class
-com\ruderu\mediarecord\Application.class
-com\ruderu\mediarecord\controller\HomeController.class
-com\ruderu\mediarecord\controller\CreateAnimeController.class
-com\ruderu\mediarecord\repository\AnimeRepository.class
