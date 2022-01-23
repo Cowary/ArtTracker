@@ -1,0 +1,24 @@
+<html>
+
+<body>
+<h2>Employees</h2>
+{{#animeModel}}
+    <p>
+        Название: {{name}} / {{russian}} <br>
+        Оценка: {{score}} <br>
+        Дата выхода: {{aired_on}} <br>
+    </p>
+    <p>
+        <label>
+            {{#animeModel}}
+
+            {{/animeModel}}
+            Название:
+                <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} required>
+        </label>
+    </p>
+
+{{/animeModel}}
+
+</body>
+</html>

@@ -23,8 +23,6 @@ public class HomeController {
             System.out.println(anime);
         }
         model.addAttribute("animeList", animeList);
-
-
         return "anime";
     }
 }
