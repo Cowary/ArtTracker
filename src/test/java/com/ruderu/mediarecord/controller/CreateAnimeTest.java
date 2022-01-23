@@ -22,7 +22,7 @@ public class CreateAnimeTest {
 
     @Test
     public void correctTest() throws Exception {
-        this.mockMvc.perform(get("/title/anime/add"))
+        this.mockMvc.perform(get("/title/anime/create"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Добавление аниме")))

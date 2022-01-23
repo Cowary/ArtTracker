@@ -5,41 +5,40 @@
 </head>
 
 <body>
-    <h2>Добавление аниме</h2>
+<h2>Поиск аниме</h2>
 
-    <form method="post">
-        <table>
-            <tr>
-                <td>Название</td>
-                <td><input name="name" {{#anime}} value="{{anime.name}}" {{/anime}} required></td>
-            </tr>
-            <tr>
-                <td>Количество серий</td>
-                <td><input name="count" {{#anime}} value="{{anime.count}}" {{/anime}} required></td>
-            </tr>
-            <tr>
-                <td>Статус</td>
-                <td><input name="status" {{#anime}} value="{{anime.status}}" {{/anime}} required></td>
-            </tr>
-            <tr>
-                <td>Оценка</td>
-                <td><input name="score" {{#anime}} value="{{anime.score}}" {{/anime}} required></td>
-            </tr>
-            <tr>
-                <td>Автор</td>
-                <td><input name="author" {{#anime}} value="{{anime.author}}" {{/anime}} required></td>
-            </tr>
-            <tr>
-                <td>Студия</td>
-                <td><input name="studio" {{#anime}} value="{{anime.studio}}" {{/anime}} required></td>
-            </tr>
-            <tr>
-                <td>Дата просмотра</td>
-                <td><input name="endDate" type="date" {{#anime}} value="{{anime.endDate}}" {{/anime}} required></td>
-            </tr>
-        </table>
-        <input value="Добавить" type="submit">
-    </form>
+
+<form method="post">
+    <input name="nameEn" {{#anime}} value="{{anime.nameEn}}" {{/anime}} required><p>
+    <input value="Поиск" type="submit"><p>
+</form>
+<label>Название</label>
+<table>
+    <tr>
+        <id>ID</id>
+        <th>NameEn</th>
+        <th>NameRu</th>
+        <th>Score</th>
+        <th>Episodes</th>
+    </tr>
+
+    {{#list}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{russian}}</td>
+            <td>{{score}}</td>
+            <td>{{episodes}}</td>
+            <td>
+                <form method="post" action="./saveAnime">
+                    <input name="animeId" value="{{id}}">
+                    <input value="Добавить" type="submit">
+                </form>
+            </td>
+        </tr>
+    {{/list}}
+</table>
+
 </body>
 
 </html>
