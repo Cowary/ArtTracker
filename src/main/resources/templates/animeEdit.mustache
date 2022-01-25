@@ -2,23 +2,33 @@
 
 <body>
 <h2>Employees</h2>
-{{#animeModel}}
+{{#anime}}
     <p>
-        Название: {{name}} / {{russian}} <br>
-        Оценка: {{score}} <br>
-        Дата выхода: {{aired_on}} <br>
+        Название: {{nameEn}} / {{nameRu}} <br>
+        Эпизоды: {{episodes}} <br>
+        Дата выхода: {{airedOn}} <br>
     </p>
     <p>
         <label>
-            {{#animeModel}}
+            Статус: <input name="status" value="{{status}}">
+            Оценка: <input name="score" value="{{score}}">
 
-            {{/animeModel}}
-            Название:
-                <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} required>
         </label>
     </p>
-
-{{/animeModel}}
-
+{{/anime}}
+<form method="post" >
+    <label> Кек
+        <input name="nameEn" {{#anime}} value="{{anime.nameEn}}" {{/anime}} >
+        <input name="nameRu" {{#anime}} value="{{anime.nameRu}}" {{/anime}} >
+        <input name="status" {{#anime}} value="{{anime.status}}" {{/anime}} >
+        <input name="score" {{#anime}} value="{{anime.score}}" {{/anime}} >
+        <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} >
+        <input name="airedOn" type="date" {{#anime}} value="{{anime.airedOn}}" {{/anime}} >
+    </label>
+    <label>Мех
+        <input name="endDateFormat" type="date" {{#endDateFormat}} value="{{endDateFormat}}"  {{/endDateFormat}}>
+    </label>
+    <input value="Сохранить" type="submit">
+</form>
 </body>
 </html>
