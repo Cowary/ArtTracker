@@ -14,6 +14,7 @@ public enum DateFormat {
     CRON("mm HH dd MM '*");
 
     public static final String HTML_PATTERN = "yyyy-MM-dd'T'HH:mm";
+    public static final String HTMLshort_PATTER = "yyyy-MM-dd";
 
     private final String pattern;
     private final ThreadLocal<SimpleDateFormat> format;

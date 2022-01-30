@@ -1,6 +1,5 @@
 package com.ruderu.mediarecord.entity;
 
-import com.ruderu.mediarecord.util.DateUtil;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -26,13 +25,16 @@ public class Anime implements Media {
     private Double score;
     private String author;
     private String studio;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @Temporal(TemporalType.DATE)// This is for bind Date with @ModelAttribute attern = "yyyy-MM-dd"  iso = DateTimeFormat.ISO.DATE
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date endDate;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date airedOn;
+    private Long shikiId;
 
     public Anime(String nameEn, String nameRu, Integer episodes, String status, Double score, String author, String studio, Date endDate, Date airedOn) {
         this.nameEn = nameEn;
@@ -46,14 +48,14 @@ public class Anime implements Media {
         this.airedOn = airedOn;
     }
 
-    public Anime(String nameEn, String nameRu, Integer episodes, Date airedOn) {
+    public Anime(String nameEn, String nameRu, Integer episodes, Date airedOn, Long shikiId) {
         this.nameEn = nameEn;
         this.nameRu = nameRu;
         this.episodes = episodes;
         this.status = "Ready to Start";
         this.score = 0.0;
         this.airedOn = airedOn;
-        this.endDate = DateUtil.now();
+        this.shikiId = shikiId;
     }
 
     public Anime(String nameEn, String nameRu, Integer episodes, String status, Double score, Date airedOn) {
