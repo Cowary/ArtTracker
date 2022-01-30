@@ -1,4 +1,4 @@
-package com.ruderu.mediarecord.utils;
+package com.ruderu.mediarecord.util;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

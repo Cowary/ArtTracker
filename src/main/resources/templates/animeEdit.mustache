@@ -24,9 +24,10 @@
         <input name="score" {{#anime}} value="{{anime.score}}" {{/anime}} >
         <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} >
         <input name="airedOn" type="date" {{#anime}} value="{{anime.airedOn}}" {{/anime}} >
+        <input name="endDate" type="date" {{#anime}} value="{{anime.endDate}}" {{/anime}}>
     </label>
-    <label>Мех
-        <input name="endDateFormat" type="date" {{#endDateFormat}} value="{{endDateFormat}}"  {{/endDateFormat}}>
+    <label>Дата просмотра:
+
     </label>
     <input value="Сохранить" type="submit">
 </form>
