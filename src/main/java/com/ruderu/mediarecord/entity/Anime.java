@@ -22,7 +22,7 @@ public class Anime implements Media {
     private String nameRu;
     private Integer episodes;
     private String status;
-    private Double score;
+    private Integer score;
     private String author;
     private String studio;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -36,7 +36,7 @@ public class Anime implements Media {
     private Date airedOn;
     private Long shikiId;
 
-    public Anime(String nameEn, String nameRu, Integer episodes, String status, Double score, String author, String studio, Date endDate, Date airedOn) {
+    public Anime(String nameEn, String nameRu, Integer episodes, String status, Integer score, String author, String studio, Date endDate, Date airedOn) {
         this.nameEn = nameEn;
         this.nameRu = nameRu;
         this.episodes = episodes;
@@ -53,12 +53,12 @@ public class Anime implements Media {
         this.nameRu = nameRu;
         this.episodes = episodes;
         this.status = "Ready to Start";
-        this.score = 0.0;
+        this.score = 0;
         this.airedOn = airedOn;
         this.shikiId = shikiId;
     }
 
-    public Anime(String nameEn, String nameRu, Integer episodes, String status, Double score, Date airedOn) {
+    public Anime(String nameEn, String nameRu, Integer episodes, String status, Integer score, Date airedOn) {
         this.nameEn = nameEn;
         this.nameRu = nameRu;
         this.episodes = episodes;

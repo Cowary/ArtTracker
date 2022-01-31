@@ -8,29 +8,22 @@
         <option>Finished</option>
     </datalist>
 
-<h2>Employees</h2>
+<h2>Создание/Настройка аниме</h2>
 {{#anime}}
     <p>
         Название: {{nameEn}} / {{nameRu}} <br>
         Эпизоды: {{episodes}} <br>
         Дата выхода: {{airedOn}} <br>
     </p>
-    <p>
-        <label>
-            Статус: <input name="status" value="{{status}}">
-            Оценка: <input name="score" value="{{score}}">
-
-        </label>
-    </p>
 {{/anime}}
 <form method="post" >
-    <label> Кек
-        <input name="nameEn" {{#anime}} value="{{anime.nameEn}}" {{/anime}} >
-        <input name="nameRu" {{#anime}} value="{{anime.nameRu}}" {{/anime}} >
-        <input name="status" list="statusList" {{#anime}} value="{{anime.status}}" {{/anime}} >
-        <input name="score" {{#anime}} value="{{anime.score}}" {{/anime}} >
-        <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} >
-        <input name="airedOn" type="date" {{#anime}} value="{{anime.airedOn}}" {{/anime}} >
+    <label>
+        <input name="nameEn" {{#anime}} value="{{anime.nameEn}}" {{/anime}} hidden>
+        <input name="nameRu" {{#anime}} value="{{anime.nameRu}}" {{/anime}} hidden>
+        Статус: <input name="status" list="statusList" {{#anime}} value="{{anime.status}}" {{/anime}} ><br>
+        Оценка: <input name="score" type="number" min="1" max="5"  {{#anime}} value="{{anime.score}}" {{/anime}} ><br>
+        <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} hidden>
+        Дата выхода: <input name="airedOn" type="date" {{#anime}} value="{{anime.airedOn}}" {{/anime}} >
         <input name="shikiId" {{#anime}} value="{{anime.shikiId}}" {{/anime}} hidden>
 
     </label>
@@ -38,7 +31,7 @@
     <label>
         Дата начала просмотра: <input name="startDate" type="date" {{#startDate}} value="{{startDate}}" {{/startDate}}>
         Дата окончания просмотра: <input name="endDate" type="date" {{#endDate}} value="{{endDate}}" {{/endDate}}>
-    </label>
+    </label><br>
     <input value="Сохранить" type="submit">
 </form>
 </body>
