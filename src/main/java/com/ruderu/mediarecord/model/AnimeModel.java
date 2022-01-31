@@ -13,6 +13,7 @@ public class AnimeModel {
     private String name;
     private String russian;
     private ImageModel image;
+    private Studio[] studios;
     private String url;
     private String kind;
     private String score;

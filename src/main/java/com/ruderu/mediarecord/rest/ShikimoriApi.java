@@ -24,6 +24,7 @@ public class ShikimoriApi {
     public static AnimeModel findById(int animeId) {
         System.out.println(URL + URL_ANIME + animeId);
         AnimeModel model = restTemplate.getForObject(URL + URL_ANIME + animeId, AnimeModel.class);
+        System.out.println(model);
         // TODO: 23.01.2022 Обработать если null
         return model;
     }

@@ -1,8 +1,11 @@
 package com.ruderu.mediarecord.controller;
 
 import com.ruderu.mediarecord.entity.Anime;
+import com.ruderu.mediarecord.entity.AnimeStudio;
 import com.ruderu.mediarecord.model.AnimeModel;
+import com.ruderu.mediarecord.model.Studio;
 import com.ruderu.mediarecord.repository.AnimeRepository;
+import com.ruderu.mediarecord.repository.AnimeStudioRep;
 import com.ruderu.mediarecord.rest.ShikimoriApi;
 import com.ruderu.mediarecord.util.DateFormat;
 import com.ruderu.mediarecord.util.DateUtil;
@@ -16,12 +19,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class AnimeEditController {
 
     @Autowired
     AnimeRepository animeRepository;
+    @Autowired
+    AnimeStudioRep animeStudioRep;
 
     @GetMapping("title/anime/editAnime")
     public String get(
@@ -31,11 +37,14 @@ public class AnimeEditController {
         AnimeModel animeModel = ShikimoriApi.findById(animeId);
 
         Anime anime = new Anime(animeModel.getName(), animeModel.getRussian(), animeModel.getEpisodes(), DateFormat.HTMLshort.parse(animeModel.getAired_on()), (long) animeModel.getId());
+        List<Studio> studioList = List.of(animeModel.getStudios());
         System.out.println(anime);
         System.out.println(anime.getAiredOn());
+        System.out.println(studioList);
         model.addAttribute("anime", anime);
         model.addAttribute("startDate", DateFormat.ddMMyyyy.format(DateUtil.now()));
         model.addAttribute("endDate", anime.getEndDate());
+        model.addAttribute("studioList", studioList);
         System.out.println(DateFormat.HTML.format(anime.getAiredOn()));
 
         return "animeEdit";
@@ -47,6 +56,8 @@ public class AnimeEditController {
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate
     ) {
+        AnimeModel animeModel = ShikimoriApi.findById(Math.toIntExact(anime.getShikiId()));
+        List<Studio> studioList = List.of(animeModel.getStudios());
         System.out.println(anime);
         System.out.println(startDate);
         System.out.println(endDate);
@@ -55,6 +66,16 @@ public class AnimeEditController {
         System.out.println("!!!!");
         System.out.println(anime);
         animeRepository.save(anime);
+        System.out.println(studioList);
+        System.out.println("AFTE SAVE + " + anime);
+        studioList.forEach( studio -> {
+            AnimeStudio animeStudio = new AnimeStudio(studio.getName(), studio.getFiltered_name(), studio.getImage(), anime.getId());
+            System.out.println(animeStudio);
+            animeStudioRep.save(animeStudio);
+                }
+        );
+
+
 
 
         return "animeEdit";
