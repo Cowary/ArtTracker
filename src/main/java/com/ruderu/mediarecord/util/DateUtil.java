@@ -16,4 +16,8 @@ public class DateUtil {
     public static long difference(Date from, Date to, TimeUnit unit) {
         return unit.convert(to.getTime() - from.getTime(), TimeUnit.MILLISECONDS);
     }
+
+    public static Date def() {
+        return new Date(-5364673200000L);
+    }
 }

@@ -8,4 +8,5 @@ import java.util.List;
 public interface AnimeStudioRep extends CrudRepository<AnimeStudio, Long> {
 
     List<AnimeStudio> findAll();
+    List<AnimeStudio> findByAnimeId(Long animeId);
 }

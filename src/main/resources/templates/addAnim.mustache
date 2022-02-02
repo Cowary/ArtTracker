@@ -1,44 +1,53 @@
 <html>
 
-<head>
-
-</head>
-
 <body>
-<h2>Поиск аниме</h2>
+    <datalist id="statusList">
+        <option>Ready to start</option>
+        <option>Watching</option>
+        <option>Dropped</option>
+        <option>Finished</option>
+    </datalist>
 
+<h2>Создание/Настройка аниме</h2>
+{{#anime}}
+    <p>
+        Название: {{nameEn}} / {{nameRu}} <br>
+        Эпизоды: {{episodes}} <br>
+        Дата выхода: {{airedOn}} <br>
+    </p>
+{{/anime}}
+<form method="post" >
+    <label>
+        <input name="nameEn" {{#anime}} value="{{anime.nameEn}}" {{/anime}} hidden>
+        <input name="nameRu" {{#anime}} value="{{anime.nameRu}}" {{/anime}} hidden>
+        Статус: <input name="status" list="statusList" {{#anime}} value="{{anime.status}}" {{/anime}} ><br>
+        Оценка: <input name="score" type="number" min="1" max="5"  {{#anime}} value="{{anime.score}}" {{/anime}} ><br>
+        <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} hidden>
+        Дата выхода: <input name="airedOn" type="date" {{#anime}} value="{{anime.airedOn}}" {{/anime}} hidden>
+        <input name="shikiId" {{#anime}} value="{{anime.shikiId}}" {{/anime}} hidden>
 
-<form method="post">
-    <input name="nameEn" {{#anime}} value="{{anime.nameEn}}" {{/anime}} required><p>
-    <input value="Поиск" type="submit"><p>
-</form>
-<label>Название</label>
-<table>
-    <tr>
-        <id>ID</id>
-        <th>NameEn</th>
-        <th>NameRu</th>
-        <th>Score</th>
-        <th>Episodes</th>
-    </tr>
-
-    {{#list}}
+    </label>
+    <br>
+    <label>
+        Дата начала просмотра: <input name="startDate" type="date" {{#startDate}} value="{{startDate}}" {{/startDate}}>
+        Дата окончания просмотра: <input name="endDate" type="date" {{#endDate}} value="{{endDate}}" {{/endDate}}>
+    </label><br>
+    <table>
         <tr>
-            <td>{{id}}</td>
-            <td>{{name}}</td>
-            <td>{{russian}}</td>
-            <td>{{score}}</td>
-            <td>{{episodes}}</td>
-            <td>
-                <form method="post" action="./saveAnime">
-                    <input name="animeId" value="{{id}}">
-                    <input value="Добавить" type="submit">
-                </form>
-            </td>
+            Студии:
         </tr>
-    {{/list}}
-</table>
+        {{#studioList}}
+            <tr>
+                {{name}}
+            </tr>
+        {{/studioList}}
 
+    </table>
+    <input value="Сохранить" type="submit">
+    <br>
+    <p>
+        <img alt="haruhi" {{#image}}src="{{image}}"{{/image}} width="200" height="300">
+    </p>
+</form>
 </body>
-
 </html>

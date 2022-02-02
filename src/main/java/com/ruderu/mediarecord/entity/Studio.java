@@ -13,22 +13,27 @@ import javax.persistence.Id;
 @Setter
 @ToString
 
-@Entity(name = "anime_studio")
-public class AnimeStudio {
+@Entity(name = "studio")
+public class Studio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long animeId;
-    private Long studioId;
+    private String name;
+    private String filteredName;
+    private String image;
 
-
-    public AnimeStudio(Long animeId, Long studioId) {
-        this.animeId = animeId;
-        this.studioId = studioId;
+    public Studio(String name, String filteredName, String image) {
+        this.name = name;
+        this.filteredName = filteredName;
+        this.image = image;
     }
 
-    public AnimeStudio() {
+    public Studio(String name) {
+        this.name = name;
+    }
+
+    public Studio() {
     }
 
 }

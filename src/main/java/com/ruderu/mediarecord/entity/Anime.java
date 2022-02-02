@@ -35,6 +35,7 @@ public class Anime implements Media {
     @Temporal(TemporalType.DATE)
     private Date airedOn;
     private Long shikiId;
+    private Integer duration;
 
     public Anime(String nameEn, String nameRu, Integer episodes, String status, Integer score, String author, String studio, Date endDate, Date airedOn) {
         this.nameEn = nameEn;

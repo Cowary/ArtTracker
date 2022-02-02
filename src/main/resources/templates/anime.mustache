@@ -18,16 +18,22 @@
     <tr>
         <th>Anime Id</th>
         <th>Anime name</th>
+        <th>Episodes</th>
         <th>Status</th>
         <th>Score</th>
+        <th>Дата выхода</th>
+        <th>Даты просмотра</th>
     </tr>
 
     {{#animeList}}
         <tr>
             <td>{{id}}</td>
-            <td>{{nameEn}}</td>
+            <td>{{nameEn}} / {{nameRu}}</td>
             <td>{{episodes}}</td>
             <td>{{status}}</td>
+            <td>{{score}}</td>
+            <td>{{airedOn}}</td>
+            <td>{{startDate}} - {{endDate}}</td>
         </tr>
     {{/animeList}}
 

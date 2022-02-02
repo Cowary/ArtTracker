@@ -33,6 +33,7 @@ public class Application extends SpringBootServletInitializer {
             return new Formatter() {
                 public String format(Object value) {
                     if (value instanceof Date) {
+                        if(((Date) value).getTime() == -5364673200000L) return "";
                         return dateFormat.format((Date) value);
                     }
                     return String.valueOf(value);

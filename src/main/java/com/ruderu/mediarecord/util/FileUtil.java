@@ -8,13 +8,15 @@ import java.net.URL;
 
 public class FileUtil {
 
+    public static final String path = "C:/Users/Alexander/Projects/ArtTracker/src/main/webapp/resources/images/";
+
     public static void downloadFile(String webString, String fileName) {
         System.out.println("Downloading File From: " + webString);
 
         try {
             URL url = new URL(webString);
             InputStream inputStream = url.openStream();
-            OutputStream outputStream = new FileOutputStream(fileName + ".jpeg");
+            OutputStream outputStream = new FileOutputStream(path + fileName + ".jpeg");
             byte[] buffer = new byte[2048];
 
             int length = 0;
@@ -22,7 +24,6 @@ public class FileUtil {
                 System.out.println("Buffer Read of length: " + length);
                 outputStream.write(buffer, 0, length);
             }
-
             inputStream.close();
             outputStream.close();
         } catch (IOException e) {
