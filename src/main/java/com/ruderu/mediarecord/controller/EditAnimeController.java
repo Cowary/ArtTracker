@@ -40,7 +40,8 @@ public class EditAnimeController {
             @RequestParam() String status,
             @RequestParam() int score,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
-            @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate
+            @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
+            @RequestParam() String ongoingStart
     ) {
         Anime anime = animeRepository.findById(animeId).orElseThrow();
         anime.setStatus(status);
@@ -51,8 +52,19 @@ public class EditAnimeController {
         if(endDate != null) {
             anime.setEndDate(endDate);
         }
+        if(ongoingStart != null) anime.setOngoingStart(ongoingStart);
         System.out.println(anime);
         animeRepository.save(anime);
         return "editAnime";
+    }
+
+    @PostMapping("title/anime/delete")
+    public String post(
+            @RequestParam() long id
+    ) {
+        Anime anime = animeRepository.findById(id).orElseThrow();
+        animeRepository.delete(anime);
+
+        return "redirect:../anime";
     }
 }

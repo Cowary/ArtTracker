@@ -1,12 +1,16 @@
 <html>
 
 <body>
-<datalist id="statusList">
-    <option>Ready to start</option>
-    <option>Watching</option>
-    <option>Dropped</option>
-    <option>Finished</option>
-</datalist>
+    <datalist id="statusList">
+        <option>Ready to start</option>
+        <option>Watching</option>
+        <option>Dropped</option>
+        <option>Finished</option>
+    </datalist>
+    <datalist id="ongoingList">
+        <option>yes</option>
+        <option>no</option>
+    </datalist>
 
 <h2>Настройка аниме</h2>
 {{#anime}}
@@ -29,11 +33,16 @@
     </label>
     <br>
     <label>
+        Просмотр начат в онгоинге? <input name="ongoingStart" list="ongoingList" {{#anime}} value="{{anime.ongoingStart}}" {{/anime}}>
         Дата начала просмотра: <input name="startDate" type="date" {{#anime}} value="{{anime.startDate}}" {{/anime}}>
         Дата окончания просмотра: <input name="endDate" type="date" {{#anime}} value="{{anime.endDate}}" {{/anime}}>
     </label><br>
     <input value="Сохранить" type="submit">
     <br>
+</form>
+<form method="post" action="./delete">
+    <input name="id" {{#anime}} value="{{anime.id}}" {{/anime}} hidden>
+    <input value="Удалить" type="submit">
 </form>
 </body>
 </html>

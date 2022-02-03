@@ -52,6 +52,7 @@ public class AddAnimeController {
         model.addAttribute("startDate", anime.getStartDate());
         model.addAttribute("endDate", anime.getEndDate());
         model.addAttribute("studioList", studioModelList);
+        model.addAttribute("ongoingStart", "no");
         String url = "/resources/images/image.jpeg";
         model.addAttribute("image",url);
         System.out.println(DateFormat.HTML.format(anime.getAiredOn()));
@@ -63,7 +64,8 @@ public class AddAnimeController {
     public String post(
             @ModelAttribute("anime") Anime anime,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
-            @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate
+            @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
+            @RequestParam() String ongoingStart
     ) {
         AnimeModel animeModel = ShikimoriApi.findById(Math.toIntExact(anime.getShikiId()));
         anime.setDuration(animeModel.getDuration());
@@ -79,6 +81,8 @@ public class AddAnimeController {
         } else {
             anime.setEndDate(DateUtil.def());
         }
+        if(ongoingStart != null) anime.setOngoingStart(ongoingStart);
+
         animeRepository.save(anime);
         studioModelList.forEach(studioModel -> {
             animeStudioCrud.create(studioModel.getName(), anime.getId());

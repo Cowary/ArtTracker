@@ -36,6 +36,7 @@ public class Anime implements Media {
     private Date airedOn;
     private Long shikiId;
     private Integer duration;
+    private String ongoingStart;
 
     public Anime(String nameEn, String nameRu, Integer episodes, String status, Integer score, String author, String studio, Date endDate, Date airedOn) {
         this.nameEn = nameEn;
