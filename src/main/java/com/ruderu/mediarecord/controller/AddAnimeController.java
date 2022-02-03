@@ -48,9 +48,6 @@ public class AddAnimeController {
 
         Anime anime = new Anime(animeModel.getName(), animeModel.getRussian(), animeModel.getEpisodes(), DateFormat.HTMLshort.parse(animeModel.getAired_on()), (long) animeModel.getId());
         List<StudioModel> studioModelList = List.of(animeModel.getStudios());
-        System.out.println(anime);
-        System.out.println(anime.getAiredOn());
-        System.out.println(studioModelList);
         model.addAttribute("anime", anime);
         model.addAttribute("startDate", anime.getStartDate());
         model.addAttribute("endDate", anime.getEndDate());
@@ -72,9 +69,6 @@ public class AddAnimeController {
         anime.setDuration(animeModel.getDuration());
 
         List<StudioModel> studioModelList = List.of(animeModel.getStudios());
-        System.out.println(anime);
-        System.out.println(startDate);
-        System.out.println(endDate);
         if(startDate != null) {
             anime.setStartDate(startDate);
         } else {
@@ -85,19 +79,13 @@ public class AddAnimeController {
         } else {
             anime.setEndDate(DateUtil.def());
         }
-
-        System.out.println("!!!!");
-        System.out.println(anime);
         animeRepository.save(anime);
-        System.out.println(studioModelList);
-        System.out.println("AFTE SAVE + " + anime);
         studioModelList.forEach(studioModel -> {
             animeStudioCrud.create(studioModel.getName(), anime.getId());
                 }
         );
         File file = new File(FileUtil.path + "image" + ".jpeg");
         Assert.isTrue(file.delete(), "Rename file");
-
         return "addAnim";
     }
 }

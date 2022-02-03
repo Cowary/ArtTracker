@@ -6,6 +6,8 @@ import com.ruderu.mediarecord.repository.AnimeStudioRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class AnimeStudioCrud {
 
@@ -18,5 +20,9 @@ public class AnimeStudioCrud {
         Studio studio = studioCrud.findOrCreateByName(studioName);
         AnimeStudio animeStudio = new AnimeStudio(animeId, studio.getId());
         animeStudioRep.save(animeStudio);
+    }
+
+    public List<AnimeStudio> findByAnimeId(Long animeId) {
+        return animeStudioRep.findByAnimeId(animeId);
     }
 }

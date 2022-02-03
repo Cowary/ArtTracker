@@ -22,9 +22,20 @@ public class HomeTest {
     @Test
     public void correctTest() throws Exception {
         this.mockMvc.perform(get("/title/anime"))
-                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Employees")))
         ;
+    }
+
+    @Test
+    public void findAnimeTest() throws Exception {
+        this.mockMvc.perform(get("/title/anime/find"))
+                .andExpect(status().isOk());
+    }
+
+    public void addAnimeTest() throws Exception {
+        this.mockMvc.perform(get("/title/anime/addAnime"))
+                .andDo(print())
+                .andExpect(status().isOk());
     }
 }

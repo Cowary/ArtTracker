@@ -26,12 +26,8 @@ public class FindAnimeController {
             @ModelAttribute("anime") Anime anime,
             Model model
     ) {
-        System.out.println(anime.getNameEn());
         List<AnimeModel> list = ShikimoriApi.searchByName(anime.getNameEn());
         model.addAttribute("list", list);
-        for (AnimeModel animeModel : list) {
-            System.out.println(animeModel);
-        }
 
         return "findAnime";
 
@@ -43,7 +39,6 @@ public class FindAnimeController {
             RedirectAttributes redirectAttributes
     ) {
         AnimeModel animeModel = ShikimoriApi.findById(animeId);
-        System.out.println(animeModel);
         redirectAttributes.addAttribute("animeId", animeId);
 
         return "redirect:./addAnime";
