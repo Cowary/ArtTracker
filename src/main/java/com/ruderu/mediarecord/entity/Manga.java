@@ -38,4 +38,17 @@ public class Manga implements Media {
     private String ongoingStart;
     private Long shikiId;
 
+    public Manga(String nameEn, String nameRu, Integer chapters, Date airedOn, Long shikiId) {
+        this.nameEn = nameEn;
+        this.nameRu = nameRu;
+        this.chapters = chapters;
+        this.airedOn = airedOn;
+        this.shikiId = shikiId;
+        this.status = "Ready to Start";
+        this.score = 0;
+    }
+
+    public Manga() {
+
+    }
 }
