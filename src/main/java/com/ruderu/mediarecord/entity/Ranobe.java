@@ -38,4 +38,20 @@ public class Ranobe implements Media{
     private Date endDate;
     private String ongoingStart;
     private Long shikiId;
+    @Transient
+    private static final String type = "Ranobe";
+
+    public Ranobe(String nameEn, String nameRu, Integer chapters, Date airedOn, Long shikiId) {
+        this.nameEn = nameEn;
+        this.nameRu = nameRu;
+        this.chapters = chapters;
+        this.airedOn = airedOn;
+        this.shikiId = shikiId;
+        this.status = "Ready to Start";
+        this.score = 0;
+    }
+
+    public Ranobe() {
+
+    }
 }

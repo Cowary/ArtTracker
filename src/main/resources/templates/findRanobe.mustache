@@ -1,0 +1,44 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+<h2>Поиск ранобе</h2>
+
+
+<form method="post">
+    <input name="nameEn" {{#ranobe}} value="{{ranobe.nameEn}}" {{/ranobe}} required><p>
+    <input value="Поиск" type="submit"><p>
+</form>
+<label>Название</label>
+<table>
+    <tr>
+        <id>ID</id>
+        <th>NameEn</th>
+        <th>NameRu</th>
+        <th>Score</th>
+        <th>chapters</th>
+    </tr>
+
+    {{#list}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{russian}}</td>
+            <td>{{score}}</td>
+            <td>{{chapters}}</td>
+            <td>
+                <form method="post" action="./save">
+                    <input name="ranobeId" value="{{id}}">
+                    <input value="Добавить" type="submit">
+                </form>
+            </td>
+        </tr>
+    {{/list}}
+</table>
+
+</body>
+
+</html>

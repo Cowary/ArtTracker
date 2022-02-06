@@ -1,0 +1,44 @@
+<htm>
+    <head>
+        <title>Spring Boot Mustache</title>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+
+            table, td, th {
+                border: 1px solid #999;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+    <h2>Employees</h2>
+    <table>
+        <tr>
+            <th>Media Id</th>
+            <th>Type</th>
+            <th>Anime name</th>
+            <th>Status</th>
+            <th>Score</th>
+            <th>Дата выхода</th>
+            <th>Даты просмотра</th>
+            <th>ShikiId</th>
+        </tr>
+
+        {{#mediaList}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{type}}</td>
+                <td>{{nameEn}} / {{nameRu}}</td>
+                <td>{{status}}</td>
+                <td>{{score}}</td>
+                <td>{{airedOn}}</td>
+                <td>{{startDate}} - {{endDate}}</td>
+                <td>{{shikiId}}</td>
+            </tr>
+        {{/mediaList}}
+
+    </table>
+    </body>
+</htm>

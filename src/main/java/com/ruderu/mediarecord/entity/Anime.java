@@ -37,6 +37,8 @@ public class Anime implements Media {
     private Long shikiId;
     private Integer duration;
     private String ongoingStart;
+    @Transient
+    private String type = "Anime";
 
     public Anime(String nameEn, String nameRu, Integer episodes, String status, Integer score, String author, String studio, Date endDate, Date airedOn) {
         this.nameEn = nameEn;

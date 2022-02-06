@@ -37,6 +37,8 @@ public class Manga implements Media {
     private Date endDate;
     private String ongoingStart;
     private Long shikiId;
+    @Transient
+    private String type = "Manga";
 
     public Manga(String nameEn, String nameRu, Integer chapters, Date airedOn, Long shikiId) {
         this.nameEn = nameEn;
