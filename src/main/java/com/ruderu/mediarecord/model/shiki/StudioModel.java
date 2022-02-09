@@ -1,4 +1,4 @@
-package com.ruderu.mediarecord.model;
+package com.ruderu.mediarecord.model.shiki;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,8 +1,8 @@
-package com.ruderu.mediarecord.controller;
+package com.ruderu.mediarecord.controller.media.ranobe;
 
-import com.ruderu.mediarecord.entity.Manga;
-import com.ruderu.mediarecord.model.MangaModel;
-import com.ruderu.mediarecord.repository.MangaRep;
+import com.ruderu.mediarecord.entity.Ranobe;
+import com.ruderu.mediarecord.model.shiki.RanobeModel;
+import com.ruderu.mediarecord.repo.RanobeRep;
 import com.ruderu.mediarecord.rest.ShikimoriApi;
 import com.ruderu.mediarecord.util.DateFormat;
 import com.ruderu.mediarecord.util.DateUtil;
@@ -21,67 +21,67 @@ import java.io.File;
 import java.util.Date;
 
 @Controller
-public class AddMangaController {
+public class AddRanobeController {
 
     @Autowired
-    MangaRep mangaRep;
+    RanobeRep ranobeRep;
 
-    @GetMapping("title/manga/addManga")
+    @GetMapping("title/ranobe/addRanobe")
     public String get(
             @RequestParam int ranobeId,
             Model model
     ) {
         File file = new File(FileUtil.path + "image" + ".jpeg");
         if(file.exists()) file.delete();
-        MangaModel mangaModel = ShikimoriApi.findMangaById(ranobeId);
-        FileUtil.downloadFile("https://dere.shikimori.one" + mangaModel.getImage().getOriginal(), "image");
+        RanobeModel ranobeModel = ShikimoriApi.findRanobeById(ranobeId);
+        FileUtil.downloadFile("https://dere.shikimori.one" + ranobeModel.getImage().getOriginal(), "image");
         file = new File(FileUtil.path + "image" + ".jpeg");
         Assert.isTrue(file.exists(), "File");
 
-        Manga manga = new Manga(mangaModel.getName(), mangaModel.getRussian(), mangaModel.getChapters(), DateFormat.HTMLshort.parse(mangaModel.getAired_on()), (long) mangaModel.getId());
-        //List<StudioModel> studioModelList = List.of(mangaModel.getStudios());
-        model.addAttribute("manga", manga);
-        model.addAttribute("startDate", manga.getStartDate());
-        model.addAttribute("endDate", manga.getEndDate());
+        Ranobe ranobe = new Ranobe(ranobeModel.getName(), ranobeModel.getRussian(), ranobeModel.getChapters(), DateFormat.HTMLshort.parse(ranobeModel.getAired_on()), (long) ranobeModel.getId());
+        //List<StudioModel> studioModelList = List.of(ranobeModel.getStudios());
+        model.addAttribute("ranobe", ranobe);
+        model.addAttribute("startDate", ranobe.getStartDate());
+        model.addAttribute("endDate", ranobe.getEndDate());
         //model.addAttribute("studioList", studioModelList);
         model.addAttribute("ongoingStart", "no");
         String url = "/resources/images/image.jpeg";
         model.addAttribute("image",url);
-        System.out.println(DateFormat.HTML.format(manga.getAiredOn()));
+        System.out.println(DateFormat.HTML.format(ranobe.getAiredOn()));
 
-        return "addManga";
+        return "media/ranobe/addRanobe";
     }
 
-    @PostMapping("title/manga/addManga")
+    @PostMapping("title/ranobe/addRanobe")
     public String post(
-            @ModelAttribute("manga") Manga manga,
+            @ModelAttribute("ranobe") Ranobe ranobe,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
             @RequestParam() String ongoingStart
     ) {
-        MangaModel mangaModel = ShikimoriApi.findMangaById(Math.toIntExact(manga.getShikiId()));
-        //manga.setDuration(animeModel.getDuration());
+        RanobeModel ranobeModel = ShikimoriApi.findRanobeById(Math.toIntExact(ranobe.getShikiId()));
+        //ranobe.setDuration(animeModel.getDuration());
 
         //List<StudioModel> studioModelList = List.of(animeModel.getStudios());
         if(startDate != null) {
-            manga.setStartDate(startDate);
+            ranobe.setStartDate(startDate);
         } else {
-            manga.setStartDate(DateUtil.def());
+            ranobe.setStartDate(DateUtil.def());
         }
         if(endDate != null) {
-            manga.setEndDate(endDate);
+            ranobe.setEndDate(endDate);
         } else {
-            manga.setEndDate(DateUtil.def());
+            ranobe.setEndDate(DateUtil.def());
         }
-        if(ongoingStart != null) manga.setOngoingStart(ongoingStart);
+        if(ongoingStart != null) ranobe.setOngoingStart(ongoingStart);
 
-        mangaRep.save(manga);
+        ranobeRep.save(ranobe);
 //        studioModelList.forEach(studioModel -> {
-//                    animeStudioCrud.create(studioModel.getName(), manga.getId());
+//                    animeStudioCrud.create(studioModel.getName(), ranobe.getId());
 //                }
 //        );
         File file = new File(FileUtil.path + "image" + ".jpeg");
         Assert.isTrue(file.delete(), "Rename file");
-        return "addManga";
+        return "media/ranobe/addRanobe";
     }
 }

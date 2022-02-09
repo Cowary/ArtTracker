@@ -1,7 +1,7 @@
 package com.ruderu.mediarecord.controller;
 
 import com.ruderu.mediarecord.entity.Anime;
-import com.ruderu.mediarecord.repository.AnimeRepository;
+import com.ruderu.mediarecord.repo.AnimeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +16,11 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    private AnimeRepository animeRepository;
+    private AnimeRepo animeRepo;
 
     @GetMapping("/title/anime")
     public String getHome(Model model) {
-        List<Anime> animeList = animeRepository.findAll();
+        List<Anime> animeList = animeRepo.findAll();
         for (Anime anime : animeList
              ) {
             System.out.println(anime);

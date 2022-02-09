@@ -1,7 +1,7 @@
-package com.ruderu.mediarecord.controller;
+package com.ruderu.mediarecord.controller.media.ranobe;
 
 import com.ruderu.mediarecord.entity.Ranobe;
-import com.ruderu.mediarecord.repository.RanobeRep;
+import com.ruderu.mediarecord.repo.RanobeRep;
 import com.ruderu.mediarecord.util.DateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,7 +29,7 @@ public class EditRanobeController {
 
         model.addAttribute("ranobe", ranobe);
 
-        return "editRanobe";
+        return "media/ranobe/editRanobe";
     }
 
     @PostMapping("title/ranobe/edit")
@@ -53,7 +53,7 @@ public class EditRanobeController {
         if(ongoingStart != null) ranobe.setOngoingStart(ongoingStart);
         System.out.println(ranobe);
         ranobeRep.save(ranobe);
-        return "editRanobe";
+        return "media/ranobe/editRanobe";
     }
 
     @PostMapping("title/ranobe/delete")

@@ -1,8 +1,9 @@
 package com.ruderu.mediarecord.rest;
 
-import com.ruderu.mediarecord.model.AnimeModel;
-import com.ruderu.mediarecord.model.MangaModel;
-import com.ruderu.mediarecord.model.RanobeModel;
+import com.ruderu.mediarecord.model.shiki.AnimeModel;
+import com.ruderu.mediarecord.model.shiki.MangaModel;
+import com.ruderu.mediarecord.model.shiki.RanobeModel;
+import com.ruderu.mediarecord.model.shiki.RoleModel;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class ShikimoriApi {
     static final String URL_MANGA = "/mangas/";
     static final String URL_SEARCH_RANOBE = "/ranobe?limit=50&search=";
     static final String URL_RANOBE = "/ranobe/";
+    static final String URL_ROLES =  "/roles";
 
 
     static RestTemplate restTemplate = new RestTemplate();
@@ -32,6 +34,12 @@ public class ShikimoriApi {
         System.out.println(URL + URL_ANIME + animeId);
         AnimeModel model = restTemplate.getForObject(URL + URL_ANIME + animeId, AnimeModel.class);
         System.out.println(model);
+        System.out.println(URL + URL_ANIME + animeId + URL_ROLES);
+        RoleModel[] roleModels = restTemplate.getForObject(URL + URL_ANIME + animeId + URL_ROLES, RoleModel[].class);
+        for (RoleModel roleModel : roleModels) {
+            System.out.println(roleModel);
+        }
+
         // TODO: 23.01.2022 Обработать если null
         return model;
     }

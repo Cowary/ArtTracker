@@ -1,4 +1,4 @@
-package com.ruderu.mediarecord.model;
+package com.ruderu.mediarecord.model.shiki;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,25 +7,21 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class AnimeModel {
+public class RanobeModel {
 
     private int id;
     private String name;
     private String russian;
     private ImageModel image;
-    private StudioModel[] studios;
     private String url;
     private String kind;
     private String score;
     private String status;
-    private int episodes;
-    private int episodes_aired;
+    private int volumes;
+    private int chapters;
     private String aired_on;
     private String released_on;
     private String rating;
     private String franchise;
     private Integer duration;
-
-    public AnimeModel() {
-    }
 }

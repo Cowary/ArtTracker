@@ -1,7 +1,7 @@
-package com.ruderu.mediarecord.controller;
+package com.ruderu.mediarecord.controller.media.anime;
 
-import com.ruderu.mediarecord.entity.Manga;
-import com.ruderu.mediarecord.model.MangaModel;
+import com.ruderu.mediarecord.entity.Anime;
+import com.ruderu.mediarecord.model.shiki.AnimeModel;
 import com.ruderu.mediarecord.rest.ShikimoriApi;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,33 +14,33 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-public class FindMangaController {
+public class FindAnimeController {
 
-    @GetMapping("/title/manga/find")
+    @GetMapping("/title/anime/find")
     public String get() {
-        return "findManga";
+        return "media/anime/findAnime";
     }
 
-    @PostMapping("/title/manga/find")
+    @PostMapping("/title/anime/find")
     public String post(
-            @ModelAttribute("manga") Manga manga,
+            @ModelAttribute("anime") Anime anime,
             Model model
     ) {
-        List<MangaModel> list = ShikimoriApi.searchMangaByName(manga.getNameEn());
+        List<AnimeModel> list = ShikimoriApi.searchByName(anime.getNameEn());
         model.addAttribute("list", list);
 
-        return "findManga";
+        return "media/anime/findAnime";
 
     }
 
-    @PostMapping("/title/manga/saveManga")
+    @PostMapping("/title/anime/saveAnime")
     public String post(
-            @RequestParam int mangaId,
+            @RequestParam int animeId,
             RedirectAttributes redirectAttributes
     ) {
-        MangaModel mangaModel = ShikimoriApi.findMangaById(mangaId);
-        redirectAttributes.addAttribute("mangaId", mangaId);
+        AnimeModel animeModel = ShikimoriApi.findById(animeId);
+        redirectAttributes.addAttribute("animeId", animeId);
 
-        return "redirect:./addManga";
+        return "redirect:./addAnime";
     }
 }

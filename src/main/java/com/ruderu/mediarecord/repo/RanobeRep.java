@@ -1,4 +1,4 @@
-package com.ruderu.mediarecord.repository;
+package com.ruderu.mediarecord.repo;
 
 import com.ruderu.mediarecord.entity.Ranobe;
 import org.springframework.data.repository.CrudRepository;

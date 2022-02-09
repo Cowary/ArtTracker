@@ -1,11 +1,11 @@
-package com.ruderu.mediarecord.controller;
+package com.ruderu.mediarecord.controller.media.anime;
 
 import com.ruderu.mediarecord.dbCase.AnimeStudioCrud;
 import com.ruderu.mediarecord.entity.Anime;
-import com.ruderu.mediarecord.model.AnimeModel;
-import com.ruderu.mediarecord.model.StudioModel;
-import com.ruderu.mediarecord.repository.AnimeRepository;
-import com.ruderu.mediarecord.repository.AnimeStudioRep;
+import com.ruderu.mediarecord.model.shiki.AnimeModel;
+import com.ruderu.mediarecord.model.shiki.StudioModel;
+import com.ruderu.mediarecord.repo.AnimeRepo;
+import com.ruderu.mediarecord.repo.AnimeStudioRep;
 import com.ruderu.mediarecord.rest.ShikimoriApi;
 import com.ruderu.mediarecord.util.DateFormat;
 import com.ruderu.mediarecord.util.DateUtil;
@@ -28,7 +28,7 @@ import java.util.List;
 public class AddAnimeController {
 
     @Autowired
-    AnimeRepository animeRepository;
+    AnimeRepo animeRepo;
     @Autowired
     AnimeStudioRep animeStudioRep;
     @Autowired
@@ -57,7 +57,7 @@ public class AddAnimeController {
         model.addAttribute("image",url);
         System.out.println(DateFormat.HTML.format(anime.getAiredOn()));
 
-        return "addAnim";
+        return "media/anime/addAnim";
     }
 
     @PostMapping("title/anime/addAnime")
@@ -83,13 +83,13 @@ public class AddAnimeController {
         }
         if(ongoingStart != null) anime.setOngoingStart(ongoingStart);
 
-        animeRepository.save(anime);
+        animeRepo.save(anime);
         studioModelList.forEach(studioModel -> {
             animeStudioCrud.create(studioModel.getName(), anime.getId());
                 }
         );
         File file = new File(FileUtil.path + "image" + ".jpeg");
         Assert.isTrue(file.delete(), "Rename file");
-        return "addAnim";
+        return "media/anime/addAnim";
     }
 }

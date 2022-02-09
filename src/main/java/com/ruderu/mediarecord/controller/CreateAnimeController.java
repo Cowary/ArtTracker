@@ -1,8 +1,8 @@
 package com.ruderu.mediarecord.controller;
 
 import com.ruderu.mediarecord.entity.Anime;
-import com.ruderu.mediarecord.model.AnimeModel;
-import com.ruderu.mediarecord.repository.AnimeRepository;
+import com.ruderu.mediarecord.model.shiki.AnimeModel;
+import com.ruderu.mediarecord.repo.AnimeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 public class CreateAnimeController {
 
     @Autowired
-    AnimeRepository animeRepository;
+    AnimeRepo animeRepo;
 
     static final String URL_EXAMPLE = "https://shikimori.one/api/animes?season=2016,2015&limit=2";
 

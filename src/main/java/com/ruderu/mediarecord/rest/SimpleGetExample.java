@@ -1,6 +1,6 @@
 package com.ruderu.mediarecord.rest;
 
-import com.ruderu.mediarecord.model.AnimeModel;
+import com.ruderu.mediarecord.model.shiki.AnimeModel;
 import org.springframework.web.client.RestTemplate;
 
 public class SimpleGetExample {

@@ -1,7 +1,8 @@
-package com.ruderu.mediarecord.controller;
+package com.ruderu.mediarecord.controller.media.anime;
 
-import com.ruderu.mediarecord.entity.Manga;
-import com.ruderu.mediarecord.repository.MangaRep;
+import com.ruderu.mediarecord.dbCase.AnimeStudioCrud;
+import com.ruderu.mediarecord.entity.Anime;
+import com.ruderu.mediarecord.repo.AnimeRepo;
 import com.ruderu.mediarecord.util.DateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,25 +15,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Date;
 
 @Controller
-public class EditMangaController {
+public class EditAnimeController {
 
     @Autowired
-    MangaRep mangaRep;
+    AnimeRepo animeRepo;
+    @Autowired
+    AnimeStudioCrud animeStudioCrud;
 
-    @GetMapping("title/manga/edit")
+    @GetMapping("title/anime/edit")
     public String get(
-            @RequestParam long mangaId,
+            @RequestParam long animeId,
             Model model
     ) {
+        Anime anime = animeRepo.findById(animeId).orElseThrow();
 
-        Manga manga = mangaRep.findById(mangaId).orElseThrow();
+        model.addAttribute("anime", anime);
 
-        model.addAttribute("manga", manga);
-
-        return "editManga";
+        return "media/anime/editAnime";
     }
 
-    @PostMapping("title/manga/edit")
+    @PostMapping("title/anime/edit")
     public String post(
             @RequestParam() long animeId,
             @RequestParam() String status,
@@ -41,27 +43,27 @@ public class EditMangaController {
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
             @RequestParam() String ongoingStart
     ) {
-        Manga manga = mangaRep.findById(animeId).orElseThrow();
-        manga.setStatus(status);
-        manga.setScore(score);
+        Anime anime = animeRepo.findById(animeId).orElseThrow();
+        anime.setStatus(status);
+        anime.setScore(score);
         if(startDate != null) {
-            manga.setStartDate(startDate);
+            anime.setStartDate(startDate);
         }
         if(endDate != null) {
-            manga.setEndDate(endDate);
+            anime.setEndDate(endDate);
         }
-        if(ongoingStart != null) manga.setOngoingStart(ongoingStart);
-        System.out.println(manga);
-        mangaRep.save(manga);
-        return "editAnime";
+        if(ongoingStart != null) anime.setOngoingStart(ongoingStart);
+        System.out.println(anime);
+        animeRepo.save(anime);
+        return "media/anime/editAnime";
     }
 
-    @PostMapping("title/manga/delete")
+    @PostMapping("title/anime/delete")
     public String post(
             @RequestParam() long id
     ) {
-        Manga manga = mangaRep.findById(id).orElseThrow();
-        mangaRep.delete(manga);
+        Anime anime = animeRepo.findById(id).orElseThrow();
+        animeRepo.delete(anime);
 
         return "redirect:../anime";
     }
