@@ -13,22 +13,14 @@ import javax.persistence.Id;
 @Setter
 @ToString
 
-@Entity(name = "person")
-public class Person {
+@Entity(name = "manga_role")
+public class MangaRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nameEn;
     private String nameRu;
-    private int shikiId;
-
-    public Person(String nameEn, String nameRu, int shikiId) {
-        this.nameEn = nameEn;
-        this.nameRu = nameRu;
-        this.shikiId = shikiId;
-    }
-
-    public Person() {
-    }
+    private Long mangaId;
+    private Long personId;
 }

@@ -24,4 +24,13 @@ public class AnimeRole {
     private Long animeId;
     private Long personId;
 
+    public AnimeRole(String nameEn, String nameRu, Long animeId, Long personId) {
+        this.nameEn = nameEn;
+        this.nameRu = nameRu;
+        this.animeId = animeId;
+        this.personId = personId;
+    }
+
+    public AnimeRole() {
+    }
 }

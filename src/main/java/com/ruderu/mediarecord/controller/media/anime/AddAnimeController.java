@@ -1,5 +1,6 @@
 package com.ruderu.mediarecord.controller.media.anime;
 
+import com.ruderu.mediarecord.dbCase.AnimeRoleCrud;
 import com.ruderu.mediarecord.dbCase.AnimeStudioCrud;
 import com.ruderu.mediarecord.entity.Anime;
 import com.ruderu.mediarecord.model.shiki.AnimeModel;
@@ -33,6 +34,8 @@ public class AddAnimeController {
     AnimeStudioRep animeStudioRep;
     @Autowired
     AnimeStudioCrud animeStudioCrud;
+    @Autowired
+    AnimeRoleCrud animeRoleCrud;
 
     @GetMapping("title/anime/addAnime")
     public String get(
@@ -88,6 +91,7 @@ public class AddAnimeController {
             animeStudioCrud.create(studioModel.getName(), anime.getId());
                 }
         );
+        animeRoleCrud.create(anime.getId(), animeModel.getRoleModels());
         File file = new File(FileUtil.path + "image" + ".jpeg");
         Assert.isTrue(file.delete(), "Rename file");
         return "media/anime/addAnim";

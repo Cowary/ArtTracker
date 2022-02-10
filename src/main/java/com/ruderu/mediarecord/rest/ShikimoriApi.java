@@ -39,6 +39,9 @@ public class ShikimoriApi {
         for (RoleModel roleModel : roleModels) {
             System.out.println(roleModel);
         }
+        if (model != null) {
+            model.setRoleModels(roleModels);
+        }
 
         // TODO: 23.01.2022 Обработать если null
         return model;
