@@ -23,4 +23,14 @@ public class MangaRole {
     private String nameRu;
     private Long mangaId;
     private Long personId;
+
+    public MangaRole(String nameEn, String nameRu, Long mangaId, Long personId) {
+        this.nameEn = nameEn;
+        this.nameRu = nameRu;
+        this.mangaId = mangaId;
+        this.personId = personId;
+    }
+
+    public MangaRole() {
+    }
 }

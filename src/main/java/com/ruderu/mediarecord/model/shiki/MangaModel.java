@@ -24,7 +24,7 @@ public class MangaModel {
     private String rating;
     private String franchise;
     private Integer duration;
-    private String[] publishers;
+    private PublisherModel[] publishers;
 
     private RoleModel[] roleModels;
 }

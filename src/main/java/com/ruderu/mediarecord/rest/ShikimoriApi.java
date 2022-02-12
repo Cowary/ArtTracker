@@ -56,6 +56,13 @@ public class ShikimoriApi {
     public static MangaModel findMangaById(int id) {
         System.out.println(URL + URL_MANGA + id);
         MangaModel model = restTemplate.getForObject(URL + URL_MANGA + id, MangaModel.class);
+        RoleModel[] roleModels = restTemplate.getForObject(URL + URL_MANGA + id + URL_ROLES, RoleModel[].class);
+        for (RoleModel roleModel : roleModels) {
+            System.out.println(roleModel);
+        }
+        if (model != null) {
+            model.setRoleModels(roleModels);
+        }
         System.out.println(model);
         // TODO: 23.01.2022 Обработать если null
         return model;
@@ -70,6 +77,13 @@ public class ShikimoriApi {
     public static RanobeModel findRanobeById(int id) {
         System.out.println(URL + URL_RANOBE + id);
         RanobeModel model = restTemplate.getForObject(URL + URL_RANOBE + id, RanobeModel.class);
+        RoleModel[] roleModels = restTemplate.getForObject(URL + URL_RANOBE + id + URL_ROLES, RoleModel[].class);
+        for (RoleModel roleModel : roleModels) {
+            System.out.println(roleModel);
+        }
+        if (model != null) {
+            model.setRoleModels(roleModels);
+        }
         System.out.println(model);
         // TODO: 23.01.2022 Обработать если null
         return model;

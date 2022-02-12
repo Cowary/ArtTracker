@@ -26,7 +26,6 @@ public class AnimeModel {
     private String franchise;
     private Integer duration;
 
-
     private RoleModel[] roleModels;
 
     public AnimeModel() {

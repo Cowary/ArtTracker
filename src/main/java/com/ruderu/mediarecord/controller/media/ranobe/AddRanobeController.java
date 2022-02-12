@@ -1,5 +1,7 @@
 package com.ruderu.mediarecord.controller.media.ranobe;
 
+import com.ruderu.mediarecord.dbCase.RanobePublisherCrud;
+import com.ruderu.mediarecord.dbCase.RanobeRoleCrud;
 import com.ruderu.mediarecord.entity.Ranobe;
 import com.ruderu.mediarecord.model.shiki.RanobeModel;
 import com.ruderu.mediarecord.repo.RanobeRep;
@@ -19,12 +21,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class AddRanobeController {
 
     @Autowired
     RanobeRep ranobeRep;
+    @Autowired
+    RanobePublisherCrud ranobePublisherCrud;
+    @Autowired
+    RanobeRoleCrud ranobeRoleCrud;
 
     @GetMapping("title/ranobe/addRanobe")
     public String get(
@@ -62,6 +69,8 @@ public class AddRanobeController {
         RanobeModel ranobeModel = ShikimoriApi.findRanobeById(Math.toIntExact(ranobe.getShikiId()));
         //ranobe.setDuration(animeModel.getDuration());
 
+
+
         //List<StudioModel> studioModelList = List.of(animeModel.getStudios());
         if(startDate != null) {
             ranobe.setStartDate(startDate);
@@ -76,6 +85,8 @@ public class AddRanobeController {
         if(ongoingStart != null) ranobe.setOngoingStart(ongoingStart);
 
         ranobeRep.save(ranobe);
+        ranobePublisherCrud.create(ranobe.getId(), List.of(ranobeModel.getPublishers()));
+        ranobeRoleCrud.createRanobeRole(ranobe.getId(), List.of(ranobeModel.getRoleModels()));
 //        studioModelList.forEach(studioModel -> {
 //                    animeStudioCrud.create(studioModel.getName(), ranobe.getId());
 //                }

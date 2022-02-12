@@ -1,5 +1,7 @@
 package com.ruderu.mediarecord.controller.media.manga;
 
+import com.ruderu.mediarecord.dbCase.MangaPublisherCrud;
+import com.ruderu.mediarecord.dbCase.MangaRoleCrud;
 import com.ruderu.mediarecord.entity.Manga;
 import com.ruderu.mediarecord.model.shiki.MangaModel;
 import com.ruderu.mediarecord.repo.MangaRep;
@@ -19,21 +21,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class AddMangaController {
 
     @Autowired
     MangaRep mangaRep;
+    @Autowired
+    MangaPublisherCrud mangaPublisherCrud;
+    @Autowired
+    MangaRoleCrud mangaRoleCrud;
 
     @GetMapping("title/manga/addManga")
     public String get(
-            @RequestParam int ranobeId,
+            @RequestParam int mangaId,
             Model model
     ) {
         File file = new File(FileUtil.path + "image" + ".jpeg");
         if(file.exists()) file.delete();
-        MangaModel mangaModel = ShikimoriApi.findMangaById(ranobeId);
+        MangaModel mangaModel = ShikimoriApi.findMangaById(mangaId);
         FileUtil.downloadFile("https://dere.shikimori.one" + mangaModel.getImage().getOriginal(), "image");
         file = new File(FileUtil.path + "image" + ".jpeg");
         Assert.isTrue(file.exists(), "File");
@@ -63,6 +70,7 @@ public class AddMangaController {
         //manga.setDuration(animeModel.getDuration());
 
         //List<StudioModel> studioModelList = List.of(animeModel.getStudios());
+
         if(startDate != null) {
             manga.setStartDate(startDate);
         } else {
@@ -76,6 +84,10 @@ public class AddMangaController {
         if(ongoingStart != null) manga.setOngoingStart(ongoingStart);
 
         mangaRep.save(manga);
+
+        mangaPublisherCrud.create(manga.getId(), List.of(mangaModel.getPublishers()));
+        mangaRoleCrud.create(manga.getId(), List.of(mangaModel.getRoleModels()));
+
 //        studioModelList.forEach(studioModel -> {
 //                    animeStudioCrud.create(studioModel.getName(), manga.getId());
 //                }
