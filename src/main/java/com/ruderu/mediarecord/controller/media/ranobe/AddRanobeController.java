@@ -45,12 +45,10 @@ public class AddRanobeController {
         file = new File(FileUtil.path + "image" + ".jpeg");
         Assert.isTrue(file.exists(), "File");
 
-        Ranobe ranobe = new Ranobe(ranobeModel.getName(), ranobeModel.getRussian(), ranobeModel.getChapters(), DateFormat.HTMLshort.parse(ranobeModel.getAired_on()), (long) ranobeModel.getId());
-        //List<StudioModel> studioModelList = List.of(ranobeModel.getStudios());
+        Ranobe ranobe = new Ranobe(ranobeModel.getName(), ranobeModel.getRussian(), ranobeModel.getVolumes(), ranobeModel.getChapters(), DateFormat.HTMLshort.parse(ranobeModel.getAired_on()), (long) ranobeModel.getId());
         model.addAttribute("ranobe", ranobe);
         model.addAttribute("startDate", ranobe.getStartDate());
         model.addAttribute("endDate", ranobe.getEndDate());
-        //model.addAttribute("studioList", studioModelList);
         model.addAttribute("ongoingStart", "no");
         String url = "/resources/images/image.jpeg";
         model.addAttribute("image",url);
@@ -67,11 +65,7 @@ public class AddRanobeController {
             @RequestParam() String ongoingStart
     ) {
         RanobeModel ranobeModel = ShikimoriApi.findRanobeById(Math.toIntExact(ranobe.getShikiId()));
-        //ranobe.setDuration(animeModel.getDuration());
 
-
-
-        //List<StudioModel> studioModelList = List.of(animeModel.getStudios());
         if(startDate != null) {
             ranobe.setStartDate(startDate);
         } else {
@@ -87,10 +81,7 @@ public class AddRanobeController {
         ranobeRep.save(ranobe);
         ranobePublisherCrud.create(ranobe.getId(), List.of(ranobeModel.getPublishers()));
         ranobeRoleCrud.createRanobeRole(ranobe.getId(), List.of(ranobeModel.getRoleModels()));
-//        studioModelList.forEach(studioModel -> {
-//                    animeStudioCrud.create(studioModel.getName(), ranobe.getId());
-//                }
-//        );
+
         File file = new File(FileUtil.path + "image" + ".jpeg");
         Assert.isTrue(file.delete(), "Rename file");
         return "media/ranobe/addRanobe";

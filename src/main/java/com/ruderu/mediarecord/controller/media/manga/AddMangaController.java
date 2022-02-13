@@ -45,7 +45,7 @@ public class AddMangaController {
         file = new File(FileUtil.path + "image" + ".jpeg");
         Assert.isTrue(file.exists(), "File");
 
-        Manga manga = new Manga(mangaModel.getName(), mangaModel.getRussian(), mangaModel.getChapters(), DateFormat.HTMLshort.parse(mangaModel.getAired_on()), (long) mangaModel.getId());
+        Manga manga = new Manga(mangaModel.getName(), mangaModel.getRussian(), mangaModel.getVolumes(), mangaModel.getChapters(), DateFormat.HTMLshort.parse(mangaModel.getAired_on()), (long) mangaModel.getId());
         //List<StudioModel> studioModelList = List.of(mangaModel.getStudios());
         model.addAttribute("manga", manga);
         model.addAttribute("startDate", manga.getStartDate());
@@ -67,9 +67,6 @@ public class AddMangaController {
             @RequestParam() String ongoingStart
     ) {
         MangaModel mangaModel = ShikimoriApi.findMangaById(Math.toIntExact(manga.getShikiId()));
-        //manga.setDuration(animeModel.getDuration());
-
-        //List<StudioModel> studioModelList = List.of(animeModel.getStudios());
 
         if(startDate != null) {
             manga.setStartDate(startDate);
@@ -88,10 +85,6 @@ public class AddMangaController {
         mangaPublisherCrud.create(manga.getId(), List.of(mangaModel.getPublishers()));
         mangaRoleCrud.create(manga.getId(), List.of(mangaModel.getRoleModels()));
 
-//        studioModelList.forEach(studioModel -> {
-//                    animeStudioCrud.create(studioModel.getName(), manga.getId());
-//                }
-//        );
         File file = new File(FileUtil.path + "image" + ".jpeg");
         Assert.isTrue(file.delete(), "Rename file");
         return "media/manga/addManga";

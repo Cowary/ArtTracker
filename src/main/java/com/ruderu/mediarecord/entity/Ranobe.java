@@ -41,9 +41,10 @@ public class Ranobe implements Media{
     @Transient
     private static final String type = "Ranobe";
 
-    public Ranobe(String nameEn, String nameRu, Integer chapters, Date airedOn, Long shikiId) {
+    public Ranobe(String nameEn, String nameRu, Integer volumes, Integer chapters, Date airedOn, Long shikiId) {
         this.nameEn = nameEn;
         this.nameRu = nameRu;
+        this.volumes = volumes;
         this.chapters = chapters;
         this.airedOn = airedOn;
         this.shikiId = shikiId;
