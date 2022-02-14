@@ -38,6 +38,7 @@ public class Ranobe implements Media{
     private Date endDate;
     private String ongoingStart;
     private Long shikiId;
+    private String comment;
     @Transient
     private static final String type = "Ranobe";
 

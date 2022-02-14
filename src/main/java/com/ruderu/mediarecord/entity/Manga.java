@@ -37,6 +37,9 @@ public class Manga implements Media {
     private Date endDate;
     private String ongoingStart;
     private Long shikiId;
+    private String comment;
+    private Integer volumesEnd;
+    private Integer chaptersEnd;
     @Transient
     private String type = "Manga";
 

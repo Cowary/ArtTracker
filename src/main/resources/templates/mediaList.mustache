@@ -1,4 +1,11 @@
 <htm>
+    <datalist id="statusList">
+        <option>Ready to start</option>
+        <option>Watching</option>
+        <option>Dropped</option>
+        <option>Finished</option>
+    </datalist>
+
     <head>
         <title>Spring Boot Mustache</title>
         <style>
@@ -14,6 +21,11 @@
     </head>
     <body>
     <h2>Employees</h2>
+    <form method="get">
+        <input name="status" list="statusList" {{#status}} value="{{status}}" {{/status}} ><br>
+        <input type="submit" value="Приметь">
+    </form>
+
     <table>
         <tr>
             <th>Media Id</th>
@@ -24,6 +36,8 @@
             <th>Дата выхода</th>
             <th>Даты просмотра</th>
             <th>ShikiId</th>
+            <th>Ongoing Start</th>
+            <th>Comment</th>
         </tr>
 
         {{#mediaList}}
@@ -36,6 +50,8 @@
                 <td>{{airedOn}}</td>
                 <td>{{startDate}} - {{endDate}}</td>
                 <td>{{shikiId}}</td>
+                <td>{{ongoingStart}}</td>
+                <td>{{comment}}</td>
             </tr>
         {{/mediaList}}
 

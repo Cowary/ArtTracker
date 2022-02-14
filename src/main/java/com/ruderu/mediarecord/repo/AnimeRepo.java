@@ -10,4 +10,5 @@ public interface AnimeRepo extends CrudRepository<Anime, Long> {
 
     List<Anime> findAll();
     Optional<Anime> findById(Long id);
+    List<Anime> findByStatus(String status);
 }

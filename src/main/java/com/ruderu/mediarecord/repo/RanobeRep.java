@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface RanobeRep extends CrudRepository<Ranobe, Long> {
     List<Ranobe> findAll();
+    List<Ranobe> findAllByStatus(String status);
 }

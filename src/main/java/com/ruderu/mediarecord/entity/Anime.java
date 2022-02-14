@@ -23,8 +23,6 @@ public class Anime implements Media {
     private Integer episodes;
     private String status;
     private Integer score;
-    private String author;
-    private String studio;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date startDate;
@@ -34,20 +32,23 @@ public class Anime implements Media {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date airedOn;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date releasedOn;
     private Long shikiId;
     private Integer duration;
     private String ongoingStart;
+    private String comment;
+    private Integer episodesEnd;
     @Transient
     private String type = "Anime";
 
-    public Anime(String nameEn, String nameRu, Integer episodes, String status, Integer score, String author, String studio, Date endDate, Date airedOn) {
+    public Anime(String nameEn, String nameRu, Integer episodes, String status, Integer score, Date endDate, Date airedOn) {
         this.nameEn = nameEn;
         this.nameRu = nameRu;
         this.episodes = episodes;
         this.status = status;
         this.score = score;
-        this.author = author;
-        this.studio = studio;
         this.endDate = endDate;
         this.airedOn = airedOn;
     }

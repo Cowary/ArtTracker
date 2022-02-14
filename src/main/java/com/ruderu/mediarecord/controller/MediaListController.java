@@ -1,13 +1,14 @@
 package com.ruderu.mediarecord.controller;
 
+import com.ruderu.mediarecord.dbCase.AnimeCrud;
+import com.ruderu.mediarecord.dbCase.MangaCrud;
+import com.ruderu.mediarecord.dbCase.RanobeCrud;
 import com.ruderu.mediarecord.entity.Media;
-import com.ruderu.mediarecord.repo.AnimeRepo;
-import com.ruderu.mediarecord.repo.MangaRep;
-import com.ruderu.mediarecord.repo.RanobeRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,18 +17,19 @@ import java.util.List;
 public class MediaListController {
 
     @Autowired
-    private AnimeRepo animeRepo;
+    AnimeCrud animeCrud;
     @Autowired
-    private MangaRep mangaRep;
+    MangaCrud mangaCrud;
     @Autowired
-    private RanobeRep ranobeRep;
+    RanobeCrud ranobeCrud;
 
     @GetMapping("/title/media")
-    public String get(Model model) {
+    public String get(@RequestParam(required = false, defaultValue = "") String status,
+            Model model) {
         List<Media> mediaList = new ArrayList<>();
-        mediaList.addAll(animeRepo.findAll());
-        mediaList.addAll(mangaRep.findAll());
-        mediaList.addAll(ranobeRep.findAll());
+        mediaList.addAll(animeCrud.getAll(status));
+        mediaList.addAll(mangaCrud.getAll(status));
+        mediaList.addAll(ranobeCrud.getAll(status));
         model.addAttribute("mediaList", mediaList);
         return "mediaList";
     }

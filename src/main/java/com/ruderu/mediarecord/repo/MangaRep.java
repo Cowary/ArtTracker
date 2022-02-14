@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface MangaRep extends CrudRepository<Manga, Long> {
     List<Manga> findAll();
+    List<Manga> findAllByStatus(String status);
 }
