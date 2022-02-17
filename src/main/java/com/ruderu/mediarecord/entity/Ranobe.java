@@ -29,9 +29,6 @@ public class Ranobe implements Media{
     private Date airedOn;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    private Date releasedOn;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
     private Date startDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
@@ -39,6 +36,8 @@ public class Ranobe implements Media{
     private String ongoingStart;
     private Long shikiId;
     private String comment;
+    private Integer volumesEnd;
+    private Integer chaptersEnd;
     @Transient
     private static final String type = "Ranobe";
 
@@ -51,6 +50,9 @@ public class Ranobe implements Media{
         this.shikiId = shikiId;
         this.status = "Ready to Start";
         this.score = 0;
+        this.comment = "";
+        this.volumesEnd = 0;
+        this.chaptersEnd = 0;
     }
 
     public Ranobe() {

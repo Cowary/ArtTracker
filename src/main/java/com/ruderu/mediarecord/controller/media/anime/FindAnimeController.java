@@ -41,6 +41,6 @@ public class FindAnimeController {
         AnimeModel animeModel = ShikimoriApi.findById(animeId);
         redirectAttributes.addAttribute("animeId", animeId);
 
-        return "redirect:./addAnime";
+        return "redirect:./add";
     }
 }

@@ -28,9 +28,6 @@ public class Manga implements Media {
     private Date airedOn;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    private Date releasedOn;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
     private Date startDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
@@ -52,6 +49,9 @@ public class Manga implements Media {
         this.shikiId = shikiId;
         this.status = "Ready to Start";
         this.score = 0;
+        this.comment = "";
+        this.volumesEnd = 0;
+        this.chaptersEnd = 0;
     }
 
     public Manga() {

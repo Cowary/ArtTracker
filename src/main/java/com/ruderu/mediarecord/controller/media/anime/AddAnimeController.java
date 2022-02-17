@@ -37,7 +37,7 @@ public class AddAnimeController {
     @Autowired
     AnimeRoleCrud animeRoleCrud;
 
-    @GetMapping("title/anime/addAnime")
+    @GetMapping("title/anime/add")
     public String get(
             @RequestParam int animeId,
             Model model
@@ -63,12 +63,14 @@ public class AddAnimeController {
         return "media/anime/addAnim";
     }
 
-    @PostMapping("title/anime/addAnime")
+    @PostMapping("title/anime/add")
     public String post(
             @ModelAttribute("anime") Anime anime,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
-            @RequestParam() String ongoingStart
+            @RequestParam() String ongoingStart,
+            @RequestParam(required = false) Integer episodesEnd,
+            @RequestParam(required = false) String comment
     ) {
         AnimeModel animeModel = ShikimoriApi.findById(Math.toIntExact(anime.getShikiId()));
         anime.setDuration(animeModel.getDuration());
@@ -85,6 +87,8 @@ public class AddAnimeController {
             anime.setEndDate(DateUtil.def());
         }
         if(ongoingStart != null) anime.setOngoingStart(ongoingStart);
+        if(episodesEnd != null) anime.setEpisodesEnd(episodesEnd);
+        if(comment != null) anime.setComment(comment);
 
         animeRepo.save(anime);
         studioModelList.forEach(studioModel -> {
