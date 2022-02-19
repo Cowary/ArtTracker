@@ -1,0 +1,64 @@
+<htm>
+    <datalist id="statusList">
+        <option>Ready to start</option>
+        <option>Watching</option>
+        <option>Dropped</option>
+        <option>Finished</option>
+    </datalist>
+
+    <head>
+        <title>Spring Boot Mustache</title>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+
+            table, td, th {
+                border: 1px solid #999;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+    <form method="get">
+        <input name="status" list="statusList" {{#status}} value="{{status}}" {{/status}} ><br>
+        <input type="submit" value="Приметь">
+    </form>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Anime name</th>
+            <th>Volumes</th>
+            <th>VolumesEnd</th>
+            <th>Chapters</th>
+            <th>ChaptersEnd</th>
+            <th>Status</th>
+            <th>Score</th>
+            <th>Дата выхода</th>
+            <th>Даты просмотра</th>
+            <th>Ongoing Start</th>
+            <th>Comment</th>
+        </tr>
+
+        {{#ranobeList}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{nameEn}} / {{nameRu}}</td>
+                <td>{{volumes}}</td>
+                <td>{{volumesEnd}}</td>
+                <td>{{episodesEnd}}</td>
+                <td>{{chapters}}</td>
+                <td>{{chaptersEnd}}</td>
+                <td>{{status}}</td>
+                <td>{{score}}</td>
+                <td>{{airedOn}}</td>
+                <td>{{startDate}} - {{endDate}}</td>
+                <td>{{ongoingStart}}</td>
+                <td>{{comment}}</td>
+            </tr>
+        {{/ranobeList}}
+
+    </table>
+    </body>
+</htm>
