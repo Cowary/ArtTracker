@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class FileUtil {
 
-    public static final String path = "C:/Users/Alexander/Projects/ArtTracker/src/main/webapp/resources/images/";
+    public static final String path = "C:/Users/alexa/IdeaProjects/ArtTracker/src/main/webapp/resources/images/";
 
     public static void downloadFile(String webString, String fileName) {
         System.out.println("Downloading File From: " + webString);

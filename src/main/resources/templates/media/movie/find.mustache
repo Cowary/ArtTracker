@@ -1,0 +1,42 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+<h2>Поиск фильмов</h2>
+
+
+<form method="post">
+    <input name="movieName" {{#movieName}} value="{{movieName}}" {{/movieName}} required><p>
+    <input value="Поиск" type="submit"><p>
+</form>
+<label>Название</label>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NameOriginal</th>
+        <th>NameRu</th>
+        <th>Score</th>
+    </tr>
+
+    {{#list}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{originalTitle}}</td>
+            <td>{{title}}</td>
+            <td>{{voteAverage}}</td>
+            <td>
+                <form method="post" action="./save">
+                    <input name="id" value="{{id}}">
+                    <input value="Добавить" type="submit">
+                </form>
+            </td>
+        </tr>
+    {{/list}}
+</table>
+
+</body>
+
+</html>

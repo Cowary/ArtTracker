@@ -7,7 +7,6 @@ import com.ruderu.mediarecord.model.shiki.MangaModel;
 import com.ruderu.mediarecord.repo.MangaRep;
 import com.ruderu.mediarecord.rest.ShikimoriApi;
 import com.ruderu.mediarecord.util.DateFormat;
-import com.ruderu.mediarecord.util.DateUtil;
 import com.ruderu.mediarecord.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -64,21 +63,19 @@ public class AddMangaController {
             @ModelAttribute("manga") Manga manga,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
+            @RequestParam(required = false) String comment,
             @RequestParam() String ongoingStart
     ) {
         MangaModel mangaModel = ShikimoriApi.findMangaById(Math.toIntExact(manga.getShikiId()));
 
         if(startDate != null) {
             manga.setStartDate(startDate);
-        } else {
-            manga.setStartDate(DateUtil.def());
         }
         if(endDate != null) {
             manga.setEndDate(endDate);
-        } else {
-            manga.setEndDate(DateUtil.def());
         }
         if(ongoingStart != null) manga.setOngoingStart(ongoingStart);
+        if(comment != null) manga.setComment(comment);
 
         mangaRep.save(manga);
 

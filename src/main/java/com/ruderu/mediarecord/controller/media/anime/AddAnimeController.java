@@ -47,7 +47,7 @@ public class AddAnimeController {
         AnimeModel animeModel = ShikimoriApi.findById(animeId);
         FileUtil.downloadFile("https://dere.shikimori.one" + animeModel.getImage().getOriginal(), "image");
         file = new File(FileUtil.path + "image" + ".jpeg");
-        Assert.isTrue(file.exists(), "File");
+        Assert.isTrue(file.exists(), "File not exist");
 
         Anime anime = new Anime(animeModel.getName(), animeModel.getRussian(), animeModel.getEpisodes(), DateFormat.HTMLshort.parse(animeModel.getAired_on()), (long) animeModel.getId());
         List<StudioModel> studioModelList = List.of(animeModel.getStudios());

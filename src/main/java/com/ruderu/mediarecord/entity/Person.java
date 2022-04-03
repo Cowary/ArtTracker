@@ -21,12 +21,12 @@ public class Person {
     private Long id;
     private String nameEn;
     private String nameRu;
-    private int shikiId;
+    private int integrationId;
 
-    public Person(String nameEn, String nameRu, int shikiId) {
+    public Person(String nameEn, String nameRu, int integrationId) {
         this.nameEn = nameEn;
         this.nameRu = nameRu;
-        this.shikiId = shikiId;
+        this.integrationId = integrationId;
     }
 
     public Person() {

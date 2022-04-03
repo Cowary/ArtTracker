@@ -7,7 +7,6 @@ import com.ruderu.mediarecord.model.shiki.RanobeModel;
 import com.ruderu.mediarecord.repo.RanobeRep;
 import com.ruderu.mediarecord.rest.ShikimoriApi;
 import com.ruderu.mediarecord.util.DateFormat;
-import com.ruderu.mediarecord.util.DateUtil;
 import com.ruderu.mediarecord.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -62,21 +61,19 @@ public class AddRanobeController {
             @ModelAttribute("ranobe") Ranobe ranobe,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
+            @RequestParam(required = false) String comment,
             @RequestParam() String ongoingStart
     ) {
         RanobeModel ranobeModel = ShikimoriApi.findRanobeById(Math.toIntExact(ranobe.getShikiId()));
 
         if(startDate != null) {
             ranobe.setStartDate(startDate);
-        } else {
-            ranobe.setStartDate(DateUtil.def());
         }
         if(endDate != null) {
             ranobe.setEndDate(endDate);
-        } else {
-            ranobe.setEndDate(DateUtil.def());
         }
         if(ongoingStart != null) ranobe.setOngoingStart(ongoingStart);
+        if(comment != null) ranobe.setComment(comment);
 
         ranobeRep.save(ranobe);
         ranobePublisherCrud.create(ranobe.getId(), List.of(ranobeModel.getPublishers()));
