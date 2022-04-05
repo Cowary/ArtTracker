@@ -1,5 +1,6 @@
 package com.ruderu.mediarecord.rest;
 
+import com.ruderu.mediarecord.model.tmdb.MovieModel;
 import com.ruderu.mediarecord.model.tmdb.ResultModel;
 import com.ruderu.mediarecord.model.tmdb.SearchModel;
 import org.springframework.util.Assert;
@@ -28,5 +29,12 @@ public class TmdbApi {
             System.out.println(s);
         }
         return list;
+    }
+
+    public static MovieModel searchMovieById(int id) {
+        MovieModel movieModel = restTemplate.getForObject(URL + "/movie/" + id + "?" + KEY + "&language=ru-RU", MovieModel.class);
+        Assert.isTrue(movieModel != null, "Error TmdbApi");
+        System.out.println(movieModel);
+        return movieModel;
     }
 }

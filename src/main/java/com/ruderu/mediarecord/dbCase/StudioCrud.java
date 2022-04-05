@@ -12,10 +12,11 @@ public class StudioCrud {
     StudioRep studioRep;
 
     public Studio createOrGetByName(String name) {
-        return studioRep.findByName(name).orElseGet(() -> {
-            Studio studio = new Studio(name);
-            studioRep.save(studio);
-            return studio;
+        return studioRep.findByName(name)
+                .orElseGet(() -> {
+                    Studio studio = new Studio(name);
+                    studioRep.save(studio);
+                    return studio;
         });
     }
 

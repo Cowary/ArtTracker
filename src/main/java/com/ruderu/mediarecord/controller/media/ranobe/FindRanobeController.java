@@ -38,7 +38,6 @@ public class FindRanobeController {
             @RequestParam int ranobeId,
             RedirectAttributes redirectAttributes
     ) {
-        RanobeModel ranobeModel = ShikimoriApi.findRanobeById(ranobeId);
         redirectAttributes.addAttribute("ranobeId", ranobeId);
 
         return "redirect:./addRanobe";

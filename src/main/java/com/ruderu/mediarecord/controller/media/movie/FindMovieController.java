@@ -1,8 +1,6 @@
 package com.ruderu.mediarecord.controller.media.movie;
 
-import com.ruderu.mediarecord.model.shiki.AnimeModel;
 import com.ruderu.mediarecord.model.tmdb.ResultModel;
-import com.ruderu.mediarecord.rest.ShikimoriApi;
 import com.ruderu.mediarecord.rest.TmdbApi;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,16 +29,14 @@ public class FindMovieController {
         model.addAttribute("list", list);
 
         return "media/movie/find";
-
     }
 
     @PostMapping("/title/movie/save")
     public String post(
-            @RequestParam int animeId,
+            @RequestParam int id,
             RedirectAttributes redirectAttributes
     ) {
-        AnimeModel animeModel = ShikimoriApi.findById(animeId);
-        redirectAttributes.addAttribute("animeId", animeId);
+        redirectAttributes.addAttribute("id", id);
 
         return "redirect:./add";
     }

@@ -38,7 +38,6 @@ public class FindMangaController {
             @RequestParam int mangaId,
             RedirectAttributes redirectAttributes
     ) {
-        MangaModel mangaModel = ShikimoriApi.findMangaById(mangaId);
         redirectAttributes.addAttribute("mangaId", mangaId);
 
         return "redirect:./addManga";
