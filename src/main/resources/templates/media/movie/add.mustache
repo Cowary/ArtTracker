@@ -1,0 +1,40 @@
+<html>
+
+<body>
+<datalist id="statusList">
+    <option>Ready to start</option>
+    <option>Watching</option>
+    <option>Dropped</option>
+    <option>Finished</option>
+</datalist>
+<datalist id="ongoingList">
+    <option>yes</option>
+    <option>no</option>
+</datalist>
+
+<h2>Добавление фильма</h2>
+<form method="post" >
+    <label>
+        Название на английском: <input name="originalTitle" {{#movie}} value="{{movie.originalTitle}}" {{/movie}}>
+        Название на русском: <input name="title" {{#movie}} value="{{movie.title}}" {{/movie}}>
+        Статус: <input name="status" list="statusList" {{#movie}} value="{{movie.status}}" {{/movie}} ><br>
+        Оценка: <input name="score" type="number" min="0" max="5"  {{#movie.score}} value="{{movie.score}}" {{/movie.score}} ><br>
+        Дата выхода: <input name="releaseDate" type="date" {{#movie}} value="{{movie.releaseDate}}" {{/movie}}>
+        Длительность: <input name="duration" {{#movie}} value="{{movie.duration}}" {{/movie}}>
+    </label>
+    <br>
+    <label>
+        Дата просмотра: <input name="endDate" type="date" {{#endDate}} value="{{endDate}}" {{/endDate}}>
+        Комментарий: <input name="comment" {{#comment}} value="{{comment}}" {{/comment}}>
+    </label><br>
+    <table>
+        <tr>
+            Студии: <input name="studio" {{#studio}} value="{{studio}}" {{/studio}}>
+        </tr>
+
+    </table>
+    <input value="Сохранить" type="submit">
+    <br>
+</form>
+</body>
+</html>

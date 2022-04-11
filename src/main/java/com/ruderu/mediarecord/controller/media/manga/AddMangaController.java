@@ -37,12 +37,8 @@ public class AddMangaController {
             @RequestParam int mangaId,
             Model model
     ) {
-        File file = new File(FileUtil.path + "image" + ".jpeg");
-        if(file.exists()) file.delete();
         MangaModel mangaModel = ShikimoriApi.findMangaById(mangaId);
         FileUtil.downloadFile("https://dere.shikimori.one" + mangaModel.getImage().getOriginal(), "image");
-        file = new File(FileUtil.path + "image" + ".jpeg");
-        Assert.isTrue(file.exists(), "File");
 
         Manga manga = new Manga(mangaModel.getName(), mangaModel.getRussian(), mangaModel.getVolumes(), mangaModel.getChapters(), DateFormat.HTMLshort.parse(mangaModel.getAired_on()), (long) mangaModel.getId());
         //List<StudioModel> studioModelList = List.of(mangaModel.getStudios());

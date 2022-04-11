@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface MovieProductionRepo extends CrudRepository<MovieProduction, Long> {
 
-    List<MovieProduction> findByMovieId(long mangaId);
+    List<MovieProduction> findById(long id);
 }

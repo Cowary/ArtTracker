@@ -1,17 +1,18 @@
 package com.ruderu.mediarecord.util;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import org.springframework.util.Assert;
+
+import java.io.*;
 import java.net.URL;
 
 public class FileUtil {
 
     public static final String path = "C:/Users/alexa/IdeaProjects/ArtTracker/src/main/webapp/resources/images/";
 
-    public static void downloadFile(String webString, String fileName) {
+    public static File downloadFile(String webString, String fileName) {
         System.out.println("Downloading File From: " + webString);
+        File file = new File(FileUtil.path + "image" + ".jpeg");
+        if(file.exists()) file.delete();
 
         try {
             URL url = new URL(webString);
@@ -29,6 +30,8 @@ public class FileUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        file = new File(FileUtil.path + "image" + ".jpeg");
+        Assert.isTrue(file.exists(), "File not exist");
+        return file;
     }
 }

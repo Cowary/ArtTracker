@@ -37,12 +37,8 @@ public class AddRanobeController {
             @RequestParam int ranobeId,
             Model model
     ) {
-        File file = new File(FileUtil.path + "image" + ".jpeg");
-        if(file.exists()) file.delete();
         RanobeModel ranobeModel = ShikimoriApi.findRanobeById(ranobeId);
         FileUtil.downloadFile("https://dere.shikimori.one" + ranobeModel.getImage().getOriginal(), "image");
-        file = new File(FileUtil.path + "image" + ".jpeg");
-        Assert.isTrue(file.exists(), "File");
 
         Ranobe ranobe = new Ranobe(ranobeModel.getName(), ranobeModel.getRussian(), ranobeModel.getVolumes(), ranobeModel.getChapters(), DateFormat.HTMLshort.parse(ranobeModel.getAired_on()), (long) ranobeModel.getId());
         model.addAttribute("ranobe", ranobe);

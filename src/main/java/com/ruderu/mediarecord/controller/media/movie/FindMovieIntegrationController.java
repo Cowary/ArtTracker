@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-public class FindMovieController {
+public class FindMovieIntegrationController {
 
     @GetMapping("/title/movie/find")
     public String get() {
@@ -38,6 +38,6 @@ public class FindMovieController {
     ) {
         redirectAttributes.addAttribute("id", id);
 
-        return "redirect:./add";
+        return "redirect:./addIntegration";
     }
 }

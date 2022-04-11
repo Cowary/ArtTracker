@@ -19,8 +19,8 @@ public class Movie implements Media {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
     private String originalTitle;
+    private String title;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
@@ -29,13 +29,31 @@ public class Movie implements Media {
     private Integer score;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    private Date startDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
     private Date endDate;
-    private Long tmdbId;
     private String comment;
     @Transient
     private String type = "Movie";
 
+    public Movie(String originalTitle, String title, Date releaseDate, Integer duration) {
+        this.title = title;
+        this.originalTitle = originalTitle;
+        this.releaseDate = releaseDate;
+        this.duration = duration;
+        this.status = "Ready to Start";
+    }
+
+    public Movie(String originalTitle, String title, Date releaseDate, Integer duration, String status, Integer score, Date endDate, String comment) {
+        this.originalTitle = originalTitle;
+        this.title = title;
+        this.releaseDate = releaseDate;
+        this.duration = duration;
+        this.status = status;
+        this.score = score;
+        this.endDate = endDate;
+        this.comment = comment;
+    }
+
+    public Movie() {
+
+    }
 }
