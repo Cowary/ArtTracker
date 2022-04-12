@@ -1,0 +1,36 @@
+<html>
+
+<body>
+<datalist id="statusList">
+    <option>Ready to start</option>
+    <option>Watching</option>
+    <option>Dropped</option>
+    <option>Finished</option>
+</datalist>
+<datalist id="ongoingList">
+    <option>yes</option>
+    <option>no</option>
+</datalist>
+
+<h2>Добавление сериалов</h2>
+<form method="post" >
+    <label>
+        Название на английском: <input name="originalTitle" {{#tv}} value="{{tv.originalTitle}}" {{/tv}}><br>
+        Название на русском: <input name="title" {{#tv}} value="{{tv.title}}" {{/tv}}><br>
+        Количество сезонов: <input name="seasons" {{#tv}} value="{{tv.seasons}}" {{/tv}}> <br>
+        Просмотренно сезонов: <input name="seasons_end" {{#tv}} value="{{tv.seasons_end}}" {{/tv}}> <br>
+        Статус: <input name="status" list="statusList" {{#tv}} value="{{tv.status}}" {{/tv}}><br>
+        Оценка: <input name="score" type="number" min="0" max="5"  {{#tv.score}} value="{{tv.score}}" {{/tv.score}} ><br>
+        Дата выхода: <input name="releaseDate" type="date" {{#tv}} value="{{tv.releaseDate}}" {{/tv}}><br>
+    </label>
+    <br>
+    <label>
+        Дата начало просмотра: <input name="startDate" type="date" {{#startDate}} value="{{startDate}}" {{/startDate}}>
+        Дата просмотра: <input name="endDate" type="date" {{#endDate}} value="{{endDate}}" {{/endDate}}><br>
+        Комментарий: <input name="comment" {{#comment}} value="{{comment}}" {{/comment}}>
+    </label><br>
+    <input value="Сохранить" type="submit">
+    <br>
+</form>
+</body>
+</html>

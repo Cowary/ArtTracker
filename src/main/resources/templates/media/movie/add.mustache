@@ -15,17 +15,17 @@
 <h2>Добавление фильма</h2>
 <form method="post" >
     <label>
-        Название на английском: <input name="originalTitle" {{#movie}} value="{{movie.originalTitle}}" {{/movie}}>
-        Название на русском: <input name="title" {{#movie}} value="{{movie.title}}" {{/movie}}>
+        Название на английском: <input name="originalTitle" {{#movie}} value="{{movie.originalTitle}}" {{/movie}}><br>
+        Название на русском: <input name="title" {{#movie}} value="{{movie.title}}" {{/movie}}><br>
         Статус: <input name="status" list="statusList" {{#movie}} value="{{movie.status}}" {{/movie}} ><br>
         Оценка: <input name="score" type="number" min="0" max="5"  {{#movie.score}} value="{{movie.score}}" {{/movie.score}} ><br>
-        Дата выхода: <input name="releaseDate" type="date" {{#movie}} value="{{movie.releaseDate}}" {{/movie}}>
-        Длительность: <input name="duration" {{#movie}} value="{{movie.duration}}" {{/movie}}>
+        Дата выхода: <input name="releaseDate" type="date" {{#movie}} value="{{movie.releaseDate}}" {{/movie}}><br>
+        Длительность: <input name="duration" {{#movie}} value="{{movie.duration}}" {{/movie}}><br>
     </label>
     <br>
     <label>
-        Дата просмотра: <input name="endDate" type="date" {{#endDate}} value="{{endDate}}" {{/endDate}}>
-        Комментарий: <input name="comment" {{#comment}} value="{{comment}}" {{/comment}}>
+        Дата просмотра: <input name="endDate" type="date" {{#endDate}} value="{{endDate}}" {{/endDate}}><br>
+        Комментарий: <input name="comment" {{#comment}} value="{{comment}}" {{/comment}}><br>
     </label><br>
     <table>
         <tr>
