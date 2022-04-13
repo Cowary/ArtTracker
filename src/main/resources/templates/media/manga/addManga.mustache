@@ -15,21 +15,21 @@
 <h2>Добавление манги</h2>
 {{#manga}}
     <p>
-        Название: {{nameEn}} / {{nameRu}} <br>
+        Название: {{originalTitle}} / {{title}} <br>
         Томов: {{volumes}}
         Глав: {{chapters}} <br>
-        Дата выхода: {{airedOn}} <br>
+        Дата выхода: {{releaseDate}} <br>
     </p>
 {{/manga}}
 <form method="post" >
     <label>
-        <input name="nameEn" {{#manga}} value="{{manga.nameEn}}" {{/manga}} hidden>
-        <input name="nameRu" {{#manga}} value="{{manga.nameRu}}" {{/manga}} hidden>
+        <input name="originalTitle" {{#manga}} value="{{manga.originalTitle}}" {{/manga}} hidden>
+        <input name="title" {{#manga}} value="{{manga.title}}" {{/manga}} hidden>
         Статус: <input name="status" list="statusList" {{#manga}} value="{{manga.status}}" {{/manga}} ><br>
         Оценка: <input name="score" type="number" min="1" max="5"  {{#manga}} value="{{manga.score}}" {{/manga}} ><br>
         <input name="chapters" {{#manga}} value="{{manga.chapters}}" {{/manga}} hidden>
         <input name="volumes" {{#manga}} value="{{manga.volumes}}" {{/manga}} hidden>
-        Дата выхода: <input name="airedOn" type="date" {{#manga}} value="{{manga.airedOn}}" {{/manga}} hidden>
+        Дата выхода: <input name="releaseDate" type="date" {{#manga}} value="{{manga.releaseDate}}" {{/manga}} hidden>
         <input name="shikiId" {{#manga}} value="{{manga.shikiId}}" {{/manga}} hidden>
     </label>
     <br>

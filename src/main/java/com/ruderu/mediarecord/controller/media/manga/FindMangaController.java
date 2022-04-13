@@ -26,7 +26,7 @@ public class FindMangaController {
             @ModelAttribute("manga") Manga manga,
             Model model
     ) {
-        List<MangaModel> list = ShikimoriApi.searchMangaByName(manga.getNameEn());
+        List<MangaModel> list = ShikimoriApi.searchMangaByName(manga.getOriginalTitle());
         model.addAttribute("list", list);
 
         return "media/manga/findManga";

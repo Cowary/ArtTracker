@@ -26,7 +26,7 @@ public class FindRanobeController {
             @ModelAttribute("ranobe") Ranobe ranobe,
             Model model
     ) {
-        List<RanobeModel> list = ShikimoriApi.searchRanobeByName(ranobe.getNameEn());
+        List<RanobeModel> list = ShikimoriApi.searchRanobeByName(ranobe.getOriginalTitle());
         model.addAttribute("list", list);
 
         return "media/ranobe/findRanobe";

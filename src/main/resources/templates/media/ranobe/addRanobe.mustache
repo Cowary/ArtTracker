@@ -15,21 +15,21 @@
 <h2>Добавление ранобе</h2>
 {{#ranobe}}
     <p>
-        Название: {{nameEn}} / {{nameRu}} <br>
+        Название: {{originalTitle}} / {{title}} <br>
         Томов: {{volumes}}
         Глав: {{chapters}} <br>
-        Дата выхода: {{airedOn}} <br>
+        Дата выхода: {{releaseDate}} <br>
     </p>
 {{/ranobe}}
 <form method="post" >
     <label>
-        <input name="nameEn" {{#ranobe}} value="{{ranobe.nameEn}}" {{/ranobe}} hidden>
-        <input name="nameRu" {{#ranobe}} value="{{ranobe.nameRu}}" {{/ranobe}} hidden>
+        <input name="originalTitle" {{#ranobe}} value="{{ranobe.originalTitle}}" {{/ranobe}} hidden>
+        <input name="title" {{#ranobe}} value="{{ranobe.title}}" {{/ranobe}} hidden>
         Статус: <input name="status" list="statusList" {{#ranobe}} value="{{ranobe.status}}" {{/ranobe}} ><br>
         Оценка: <input name="score" type="number" min="1" max="5"  {{#ranobe}} value="{{ranobe.score}}" {{/ranobe}} ><br>
         <input name="chapters" {{#ranobe}} value="{{ranobe.chapters}}" {{/ranobe}} hidden>
         <input name="volumes" {{#ranobe}} value="{{ranobe.volumes}}" {{/ranobe}} hidden>
-        Дата выхода: <input name="airedOn" type="date" {{#ranobe}} value="{{ranobe.airedOn}}" {{/ranobe}} hidden>
+        Дата выхода: <input name="releaseDate" type="date" {{#ranobe}} value="{{ranobe.releaseDate}}" {{/ranobe}} hidden>
         <input name="shikiId" {{#ranobe}} value="{{ranobe.shikiId}}" {{/ranobe}} hidden> <br>
     </label>
     <br>

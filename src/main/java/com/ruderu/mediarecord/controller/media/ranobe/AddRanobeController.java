@@ -47,7 +47,7 @@ public class AddRanobeController {
         model.addAttribute("ongoingStart", "no");
         String url = "/resources/images/image.jpeg";
         model.addAttribute("image",url);
-        System.out.println(DateFormat.HTML.format(ranobe.getAiredOn()));
+        System.out.println(DateFormat.HTML.format(ranobe.getReleaseDate()));
 
         return "media/ranobe/addRanobe";
     }

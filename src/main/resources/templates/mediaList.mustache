@@ -35,7 +35,6 @@
             <th>Score</th>
             <th>Дата выхода</th>
             <th>Даты просмотра</th>
-            <th>ShikiId</th>
             <th>Ongoing Start</th>
             <th>Comment</th>
         </tr>
@@ -44,13 +43,12 @@
             <tr>
                 <td>{{id}}</td>
                 <td>{{type}}</td>
-                <td>{{nameEn}} / {{nameRu}}</td>
+                <td>{{#originalTitle}} {{originalTitle}}  / {{/originalTitle}} {{title}}</td>
                 <td>{{status}}</td>
-                <td>{{score}}</td>
-                <td>{{airedOn}}</td>
+                <td>{{#score}} {{score}} {{/score}}</td>
+                <td>{{#releaseDate}} {{releaseDate}} {{/releaseDate}}</td>
                 <td>{{#startDate}} {{startDate}} {{/startDate}} - {{#endDate}} {{endDate}} {{/endDate}}</td>
-                <td>{{shikiId}}</td>
-                <td>{{ongoingStart}}</td>
+                <td>{{#ongoingStart}} {{ongoingStart}} {{/ongoingStart}}</td>
                 <td>{{#comment}} {{comment}} {{/comment}}</td>
             </tr>
         {{/mediaList}}

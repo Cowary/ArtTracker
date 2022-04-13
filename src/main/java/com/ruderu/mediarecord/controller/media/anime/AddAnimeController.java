@@ -54,7 +54,7 @@ public class AddAnimeController {
         model.addAttribute("ongoingStart", "no");
         String url = "/resources/images/image.jpeg";
         model.addAttribute("image",url);
-        System.out.println(DateFormat.HTML.format(anime.getAiredOn()));
+        System.out.println(DateFormat.HTML.format(anime.getReleaseDate()));
 
         return "media/anime/addAnim";
     }

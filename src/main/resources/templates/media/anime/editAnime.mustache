@@ -15,19 +15,19 @@
 <h2>Настройка аниме</h2>
 {{#anime}}
     <p>
-        Название: {{nameEn}} / {{nameRu}} <br>
+        Название: {{originalTitle}} / {{title}} <br>
         Эпизоды: {{episodes}} <br>
-        Дата выхода: {{airedOn}} <br>
+        Дата выхода: {{releaseDate}} <br>
     </p>
 {{/anime}}
 <form method="post" >
     <label>
-        <input name="nameEn" {{#anime}} value="{{anime.nameEn}}" {{/anime}} hidden>
-        <input name="nameRu" {{#anime}} value="{{anime.nameRu}}" {{/anime}} hidden>
+        <input name="originalTitle" {{#anime}} value="{{anime.originalTitle}}" {{/anime}} hidden>
+        <input name="title" {{#anime}} value="{{anime.title}}" {{/anime}} hidden>
         Статус: <input name="status" list="statusList" {{#anime}} value="{{anime.status}}" {{/anime}} ><br>
         Оценка: <input name="score" type="number" min="1" max="5"  {{#anime}} value="{{anime.score}}" {{/anime}} ><br>
         <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} hidden>
-        Дата выхода: <input name="airedOn" type="date" {{#anime}} value="{{anime.airedOn}}" {{/anime}} hidden>
+        Дата выхода: <input name="releaseDate" type="date" {{#anime}} value="{{anime.releaseDate}}" {{/anime}} hidden>
         <input name="shikiId" {{#anime}} value="{{anime.shikiId}}" {{/anime}} hidden>
 
     </label>

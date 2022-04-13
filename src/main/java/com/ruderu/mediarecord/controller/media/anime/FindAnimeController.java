@@ -26,7 +26,7 @@ public class FindAnimeController {
             @ModelAttribute("anime") Anime anime,
             Model model
     ) {
-        List<AnimeModel> list = ShikimoriApi.searchByName(anime.getNameEn());
+        List<AnimeModel> list = ShikimoriApi.searchByName(anime.getOriginalTitle());
         model.addAttribute("list", list);
 
         return "media/anime/findAnime";

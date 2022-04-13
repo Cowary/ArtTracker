@@ -18,8 +18,8 @@ public class Anime implements Media {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nameEn;
-    private String nameRu;
+    private String originalTitle;
+    private String title;
     private Integer episodes;
     private String status;
     private Integer score;
@@ -31,7 +31,7 @@ public class Anime implements Media {
     private Date endDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    private Date airedOn;
+    private Date releaseDate;
     private Long shikiId;
     private Integer duration;
     private String ongoingStart;
@@ -40,39 +40,39 @@ public class Anime implements Media {
     @Transient
     private String type = "Anime";
 
-    public Anime(String nameEn, String nameRu, Integer episodes, String status, Integer score, Date endDate, Date airedOn) {
-        this.nameEn = nameEn;
-        this.nameRu = nameRu;
+    public Anime(String originalTitle, String title, Integer episodes, String status, Integer score, Date endDate, Date releaseDate) {
+        this.originalTitle = originalTitle;
+        this.title = title;
         this.episodes = episodes;
         this.status = status;
         this.score = score;
         this.endDate = endDate;
-        this.airedOn = airedOn;
+        this.releaseDate = releaseDate;
     }
 
-    public Anime(String nameEn, String nameRu, Integer episodes, Date airedOn, Long shikiId) {
-        this.nameEn = nameEn;
-        this.nameRu = nameRu;
+    public Anime(String originalTitle, String title, Integer episodes, Date releaseDate, Long shikiId) {
+        this.originalTitle = originalTitle;
+        this.title = title;
         this.episodes = episodes;
         this.status = "Ready to Start";
         this.score = 0;
-        this.airedOn = airedOn;
+        this.releaseDate = releaseDate;
         this.shikiId = shikiId;
         this.comment = "";
         this.episodesEnd = 0;
     }
 
-    public Anime(String nameEn, String nameRu, Integer episodes, String status, Integer score, Date airedOn) {
-        this.nameEn = nameEn;
-        this.nameRu = nameRu;
+    public Anime(String originalTitle, String title, Integer episodes, String status, Integer score, Date releaseDate) {
+        this.originalTitle = originalTitle;
+        this.title = title;
         this.episodes = episodes;
         this.status = status;
         this.score = score;
-        this.airedOn = airedOn;
+        this.releaseDate = releaseDate;
     }
 
-    public Anime(String nameEn) {
-        this.nameEn = nameEn;
+    public Anime(String originalTitle) {
+        this.originalTitle = originalTitle;
     }
 
     public Anime() {
