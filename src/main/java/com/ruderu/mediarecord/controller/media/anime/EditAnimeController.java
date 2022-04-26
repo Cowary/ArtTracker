@@ -1,7 +1,7 @@
 package com.ruderu.mediarecord.controller.media.anime;
 
-import com.ruderu.mediarecord.dbCase.AnimeStudioCrud;
-import com.ruderu.mediarecord.entity.Anime;
+import com.ruderu.mediarecord.dbCase.anime.AnimeStudioCrud;
+import com.ruderu.mediarecord.entity.anime.Anime;
 import com.ruderu.mediarecord.repo.AnimeRepo;
 import com.ruderu.mediarecord.util.DateFormat;
 import org.springframework.beans.factory.annotation.Autowired;

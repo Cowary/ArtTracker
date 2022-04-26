@@ -1,6 +1,6 @@
 package com.ruderu.mediarecord.controller.media.ranobe;
 
-import com.ruderu.mediarecord.entity.Ranobe;
+import com.ruderu.mediarecord.entity.ranobe.Ranobe;
 import com.ruderu.mediarecord.model.shiki.RanobeModel;
 import com.ruderu.mediarecord.rest.ShikimoriApi;
 import org.springframework.stereotype.Controller;

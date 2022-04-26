@@ -1,6 +1,6 @@
 package com.ruderu.mediarecord.controller.media.manga;
 
-import com.ruderu.mediarecord.entity.Manga;
+import com.ruderu.mediarecord.entity.manga.Manga;
 import com.ruderu.mediarecord.repo.MangaRep;
 import com.ruderu.mediarecord.util.DateFormat;
 import org.springframework.beans.factory.annotation.Autowired;

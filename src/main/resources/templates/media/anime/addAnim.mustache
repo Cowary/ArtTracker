@@ -12,49 +12,50 @@
         <option>no</option>
     </datalist>
 
-<h2>Создание/Настройка аниме</h2>
-{{#anime}}
-    <p>
-        Название: {{originalTitle}} / {{title}} <br>
-        Эпизоды: {{episodes}} <br>
-        Дата выхода: {{releaseDate}} <br>
-    </p>
-{{/anime}}
-<form method="post" >
-    <label>
-        <input name="originalTitle" {{#anime}} value="{{anime.originalTitle}}" {{/anime}} hidden>
-        <input name="title" {{#anime}} value="{{anime.title}}" {{/anime}} hidden>
-        Статус: <input name="status" list="statusList" {{#anime}} value="{{anime.status}}" {{/anime}} ><br>
-        Оценка: <input name="score" type="number" min="0" max="5"  {{#anime}} value="{{anime.score}}" {{/anime}} ><br>
-        <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} hidden>
-        Дата выхода: <input name="releaseDate" type="date" {{#anime}} value="{{anime.releaseDate}}" {{/anime}} hidden>
-        <input name="shikiId" {{#anime}} value="{{anime.shikiId}}" {{/anime}} hidden>
+    <h2>Создание/Настройка аниме</h2>
 
-    </label>
-    <br>
-    <label>
-        Просмотрено серий <input name="episodesEnd" type="number" min="0" {{#episodesEnd}} value="{{episodesEnd}}" {{/episodesEnd}} >
-        Просмотр начат в онгоинге? <input name="ongoingStart" list="ongoingList" {{#ongoing}} value="{{ongoing}}" {{/ongoing}}>
-        Дата начала просмотра: <input name="startDate" type="date" {{#startDate}} value="{{startDate}}" {{/startDate}}>
-        Дата окончания просмотра: <input name="endDate" type="date" {{#endDate}} value="{{endDate}}" {{/endDate}}>
-        Комментарий: <input name="comment" {{#comment}} value="{{comment}}" {{/comment}}>
-    </label><br>
-    <table>
-        <tr>
-            Студии:
-        </tr>
-        {{#studioList}}
+    {{#anime}}
+        <p>
+            Название: {{originalTitle}} / {{title}} <br>
+            Эпизоды: {{episodes}} <br>
+            Дата выхода: {{releaseDate}} <br>
+        </p>
+    {{/anime}}
+    <form method="post" >
+        <label>
+            <input name="originalTitle" {{#anime}} value="{{anime.originalTitle}}" {{/anime}} hidden>
+            <input name="title" {{#anime}} value="{{anime.title}}" {{/anime}} hidden>
+            Статус: <input name="status" list="statusList" {{#anime}} value="{{anime.status}}" {{/anime}} ><br>
+            Оценка: <input name="score" type="number" min="0" max="5"  {{#anime}} value="{{anime.score}}" {{/anime}} ><br>
+            <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} hidden>
+            Дата выхода: <input name="releaseDate" type="date" {{#anime}} value="{{anime.releaseDate}}" {{/anime}} hidden>
+            <input name="shikiId" {{#anime}} value="{{anime.shikiId}}" {{/anime}} hidden>
+
+        </label>
+        <br>
+        <label>
+            Просмотрено серий <input name="episodesEnd" type="number" min="0" {{#episodesEnd}} value="{{episodesEnd}}" {{/episodesEnd}} >
+            Просмотр начат в онгоинге? <input name="ongoingStart" list="ongoingList" {{#ongoing}} value="{{ongoing}}" {{/ongoing}}>
+            Дата начала просмотра: <input name="startDate" type="date" {{#startDate}} value="{{startDate}}" {{/startDate}}>
+            Дата окончания просмотра: <input name="endDate" type="date" {{#endDate}} value="{{endDate}}" {{/endDate}}>
+            Комментарий: <input name="comment" {{#comment}} value="{{comment}}" {{/comment}}>
+        </label><br>
+        <table>
             <tr>
-                {{name}}
+                Студии:
             </tr>
-        {{/studioList}}
+            {{#studioList}}
+                <tr>
+                    {{name}}
+                </tr>
+            {{/studioList}}
 
-    </table>
-    <input value="Сохранить" type="submit">
-    <br>
-    <p>
-        <img alt="haruhi" {{#image}}src="{{image}}"{{/image}} width="200" height="300">
-    </p>
-</form>
+        </table>
+        <input value="Сохранить" type="submit">
+        <br>
+        <p>
+            <img alt="haruhi" {{#image}}src="{{image}}"{{/image}} width="200" height="300">
+        </p>
+    </form>
 </body>
 </html>

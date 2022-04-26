@@ -1,7 +1,8 @@
-package com.ruderu.mediarecord.dbCase;
+package com.ruderu.mediarecord.dbCase.manga;
 
-import com.ruderu.mediarecord.entity.MangaPublisher;
+import com.ruderu.mediarecord.dbCase.PublisherCrud;
 import com.ruderu.mediarecord.entity.Publisher;
+import com.ruderu.mediarecord.entity.manga.MangaPublisher;
 import com.ruderu.mediarecord.model.shiki.PublisherModel;
 import com.ruderu.mediarecord.repo.MangaPublisherRepo;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -21,8 +21,14 @@
     </head>
     <body>
     <h2>MediaList</h2>
+
+    <div>
+        <a href="/title"><--</a>
+    </div>
+    <br>
+
     <form method="get">
-        <input name="status" list="statusList" {{#status}} value="{{status}}" {{/status}} ><br>
+        <input name="status" list="statusList" {{#status}} value="{{status}}" {{/status}} autocomplete="off" ><br>
         <input type="submit" value="Применить">
     </form>
 
@@ -43,7 +49,7 @@
             <tr>
                 <td>{{id}}</td>
                 <td>{{type}}</td>
-                <td>{{#originalTitle}} {{originalTitle}}  / {{/originalTitle}} {{title}}</td>
+                <td>{{#originalTitle}} {{originalTitle}}  / {{/originalTitle}} {{#title}} {{title}} {{/title}}</td>
                 <td>{{status}}</td>
                 <td>{{#score}} {{score}} {{/score}}</td>
                 <td>{{#releaseDate}} {{releaseDate}} {{/releaseDate}}</td>

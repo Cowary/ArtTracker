@@ -1,6 +1,6 @@
 package com.ruderu.mediarecord.controller;
 
-import com.ruderu.mediarecord.entity.Anime;
+import com.ruderu.mediarecord.entity.anime.Anime;
 import com.ruderu.mediarecord.model.shiki.AnimeModel;
 import com.ruderu.mediarecord.repo.AnimeRepo;
 import org.springframework.beans.factory.annotation.Autowired;

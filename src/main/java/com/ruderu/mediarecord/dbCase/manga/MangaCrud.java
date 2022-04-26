@@ -1,6 +1,6 @@
-package com.ruderu.mediarecord.dbCase;
+package com.ruderu.mediarecord.dbCase.manga;
 
-import com.ruderu.mediarecord.entity.Manga;
+import com.ruderu.mediarecord.entity.manga.Manga;
 import com.ruderu.mediarecord.repo.MangaRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

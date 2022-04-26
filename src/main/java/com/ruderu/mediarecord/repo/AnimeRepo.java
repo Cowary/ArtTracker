@@ -1,6 +1,6 @@
 package com.ruderu.mediarecord.repo;
 
-import com.ruderu.mediarecord.entity.Anime;
+import com.ruderu.mediarecord.entity.anime.Anime;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

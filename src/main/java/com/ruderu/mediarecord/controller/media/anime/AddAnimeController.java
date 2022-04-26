@@ -1,8 +1,8 @@
 package com.ruderu.mediarecord.controller.media.anime;
 
-import com.ruderu.mediarecord.dbCase.AnimeRoleCrud;
-import com.ruderu.mediarecord.dbCase.AnimeStudioCrud;
-import com.ruderu.mediarecord.entity.Anime;
+import com.ruderu.mediarecord.dbCase.anime.AnimeRoleCrud;
+import com.ruderu.mediarecord.dbCase.anime.AnimeStudioCrud;
+import com.ruderu.mediarecord.entity.anime.Anime;
 import com.ruderu.mediarecord.model.shiki.AnimeModel;
 import com.ruderu.mediarecord.model.shiki.StudioModel;
 import com.ruderu.mediarecord.repo.AnimeRepo;

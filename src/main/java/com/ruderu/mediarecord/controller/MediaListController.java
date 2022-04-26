@@ -1,11 +1,11 @@
 package com.ruderu.mediarecord.controller;
 
-import com.ruderu.mediarecord.dbCase.AnimeCrud;
-import com.ruderu.mediarecord.dbCase.MangaCrud;
-import com.ruderu.mediarecord.dbCase.RanobeCrud;
+import com.ruderu.mediarecord.dbCase.anime.AnimeCrud;
 import com.ruderu.mediarecord.dbCase.book.BookCrud;
 import com.ruderu.mediarecord.dbCase.game.GameCrud;
+import com.ruderu.mediarecord.dbCase.manga.MangaCrud;
 import com.ruderu.mediarecord.dbCase.movie.MovieCrud;
+import com.ruderu.mediarecord.dbCase.ranobe.RanobeCrud;
 import com.ruderu.mediarecord.dbCase.tv.TvCrud;
 import com.ruderu.mediarecord.entity.Media;
 import org.springframework.beans.factory.annotation.Autowired;

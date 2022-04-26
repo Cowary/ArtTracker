@@ -1,8 +1,8 @@
 package com.ruderu.mediarecord.controller.media.manga;
 
-import com.ruderu.mediarecord.dbCase.MangaPublisherCrud;
-import com.ruderu.mediarecord.dbCase.MangaRoleCrud;
-import com.ruderu.mediarecord.entity.Manga;
+import com.ruderu.mediarecord.dbCase.manga.MangaPublisherCrud;
+import com.ruderu.mediarecord.dbCase.manga.MangaRoleCrud;
+import com.ruderu.mediarecord.entity.manga.Manga;
 import com.ruderu.mediarecord.model.shiki.MangaModel;
 import com.ruderu.mediarecord.repo.MangaRep;
 import com.ruderu.mediarecord.rest.ShikimoriApi;

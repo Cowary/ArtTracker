@@ -6,7 +6,10 @@ public class SimpleGetExample {
 
     public static void main(String[] args) {
 
-        TmdbApi.searchFilm("Spider-man");
+        //TmdbApi.searchMovieById(557);
+        //TmdbApi.searchFilm("Spider-man");
+
+        System.out.println("kek");
 
 //        RestTemplate restTemplate = new RestTemplate();
 //        AnimeModel[] models = restTemplate.getForObject(URL_EXAMPLE, AnimeModel[].class);

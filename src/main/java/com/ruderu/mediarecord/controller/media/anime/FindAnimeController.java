@@ -1,6 +1,6 @@
 package com.ruderu.mediarecord.controller.media.anime;
 
-import com.ruderu.mediarecord.entity.Anime;
+import com.ruderu.mediarecord.entity.anime.Anime;
 import com.ruderu.mediarecord.model.shiki.AnimeModel;
 import com.ruderu.mediarecord.rest.ShikimoriApi;
 import org.springframework.stereotype.Controller;

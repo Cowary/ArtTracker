@@ -1,5 +1,6 @@
 package com.ruderu.mediarecord.rest;
 
+
 import com.ruderu.mediarecord.model.tmdb.MovieModel;
 import com.ruderu.mediarecord.model.tmdb.ResultModel;
 import com.ruderu.mediarecord.model.tmdb.SearchModel;

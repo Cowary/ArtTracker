@@ -1,7 +1,8 @@
-package com.ruderu.mediarecord.dbCase;
+package com.ruderu.mediarecord.dbCase.ranobe;
 
+import com.ruderu.mediarecord.dbCase.PersonCrud;
 import com.ruderu.mediarecord.entity.Person;
-import com.ruderu.mediarecord.entity.RanobeRole;
+import com.ruderu.mediarecord.entity.ranobe.RanobeRole;
 import com.ruderu.mediarecord.model.shiki.RoleModel;
 import com.ruderu.mediarecord.repo.RanobeRoleRep;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,5 @@
-package com.ruderu.mediarecord.entity;
+package com.ruderu.mediarecord.entity.ranobe;
+
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,24 +14,24 @@ import javax.persistence.Id;
 @Setter
 @ToString
 
-@Entity(name = "manga_role")
-public class MangaRole {
+@Entity(name = "ranobe_role")
+public class RanobeRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nameEn;
     private String nameRu;
-    private Long mangaId;
+    private Long ranobeId;
     private Long personId;
 
-    public MangaRole(String nameEn, String nameRu, Long mangaId, Long personId) {
+    public RanobeRole(String nameEn, String nameRu, Long ranobeId, Long personId) {
         this.nameEn = nameEn;
         this.nameRu = nameRu;
-        this.mangaId = mangaId;
+        this.ranobeId = ranobeId;
         this.personId = personId;
     }
 
-    public MangaRole() {
+    public RanobeRole() {
     }
 }

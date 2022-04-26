@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class AddMovieController {
@@ -60,8 +61,7 @@ public class AddMovieController {
             List<String> studioList = Arrays
                     .stream(studio.split("/"))
                     .map(String::trim)
-                    .toList();
-
+                    .collect(Collectors.toList());
             studioList.forEach(
                     s -> movieProductionCrud.create(s, movie.getId())
             );

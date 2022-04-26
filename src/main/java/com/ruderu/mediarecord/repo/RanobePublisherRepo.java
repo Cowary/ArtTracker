@@ -1,6 +1,6 @@
 package com.ruderu.mediarecord.repo;
 
-import com.ruderu.mediarecord.entity.RanobePublisher;
+import com.ruderu.mediarecord.entity.ranobe.RanobePublisher;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

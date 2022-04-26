@@ -1,5 +1,6 @@
-package com.ruderu.mediarecord.entity;
+package com.ruderu.mediarecord.entity.ranobe;
 
+import com.ruderu.mediarecord.entity.Media;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,7 +14,7 @@ import java.util.Date;
 @ToString
 
 @Entity(name = "ranobe")
-public class Ranobe implements Media{
+public class Ranobe implements Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

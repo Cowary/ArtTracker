@@ -1,6 +1,6 @@
-package com.ruderu.mediarecord.dbCase;
+package com.ruderu.mediarecord.dbCase.ranobe;
 
-import com.ruderu.mediarecord.entity.Ranobe;
+import com.ruderu.mediarecord.entity.ranobe.Ranobe;
 import com.ruderu.mediarecord.repo.RanobeRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

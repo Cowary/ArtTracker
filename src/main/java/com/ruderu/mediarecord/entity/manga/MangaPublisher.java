@@ -1,4 +1,4 @@
-package com.ruderu.mediarecord.entity;
+package com.ruderu.mediarecord.entity.manga;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,20 +13,20 @@ import javax.persistence.Id;
 @Setter
 @ToString
 
-@Entity(name = "ranobe_publisher")
-public class RanobePublisher {
+@Entity(name = "manga_publisher")
+public class MangaPublisher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long ranobeId;
+    private Long mangaId;
     private Long publisherId;
 
-    public RanobePublisher(Long ranobeId, Long publisherId) {
-        this.ranobeId = ranobeId;
+    public MangaPublisher(Long mangaId, Long publisherId) {
+        this.mangaId = mangaId;
         this.publisherId = publisherId;
     }
 
-    public RanobePublisher() {
+    public MangaPublisher() {
     }
 }

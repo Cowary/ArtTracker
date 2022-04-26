@@ -1,5 +1,6 @@
-package com.ruderu.mediarecord.entity;
+package com.ruderu.mediarecord.entity.manga;
 
+import com.ruderu.mediarecord.entity.Media;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

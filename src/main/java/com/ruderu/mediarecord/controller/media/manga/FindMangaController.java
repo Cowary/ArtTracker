@@ -1,6 +1,6 @@
 package com.ruderu.mediarecord.controller.media.manga;
 
-import com.ruderu.mediarecord.entity.Manga;
+import com.ruderu.mediarecord.entity.manga.Manga;
 import com.ruderu.mediarecord.model.shiki.MangaModel;
 import com.ruderu.mediarecord.rest.ShikimoriApi;
 import org.springframework.stereotype.Controller;
