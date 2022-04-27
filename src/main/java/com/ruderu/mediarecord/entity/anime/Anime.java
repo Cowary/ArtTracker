@@ -36,7 +36,6 @@ public class Anime implements Media {
     private Long shikiId;
     private Integer duration;
     private String ongoingStart;
-    private String comment;
     private Integer episodesEnd;
     @Transient
     private String type = "Anime";
@@ -59,7 +58,6 @@ public class Anime implements Media {
         this.score = 0;
         this.releaseDate = releaseDate;
         this.shikiId = shikiId;
-        this.comment = "";
         this.episodesEnd = 0;
     }
 

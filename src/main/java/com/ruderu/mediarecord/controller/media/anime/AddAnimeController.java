@@ -65,8 +65,7 @@ public class AddAnimeController {
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
             @RequestParam() String ongoingStart,
-            @RequestParam(required = false) Integer episodesEnd,
-            @RequestParam(required = false) String comment
+            @RequestParam(required = false) Integer episodesEnd
     ) {
         AnimeModel animeModel = ShikimoriApi.findById(Math.toIntExact(anime.getShikiId()));
         anime.setDuration(animeModel.getDuration());
@@ -84,7 +83,6 @@ public class AddAnimeController {
         }
         if(ongoingStart != null) anime.setOngoingStart(ongoingStart);
         if(episodesEnd != null) anime.setEpisodesEnd(episodesEnd);
-        if(comment != null) anime.setComment(comment);
 
         animeRepo.save(anime);
         studioModelList.forEach(studioModel -> {

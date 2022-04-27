@@ -31,20 +31,13 @@ public class AddTvController {
     public String post(
             @ModelAttribute("tv") Tv tv,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
-            @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
-            @RequestParam(required = false) String comment
+            @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate
     ) {
         if(startDate != null) {
             tv.setStartDate(startDate);
         }
         if(endDate != null) {
             tv.setEndDate(endDate);
-        }
-        if(tv.getComment().isEmpty()) {
-            tv.setComment(null);
-        }
-        if(!comment.isEmpty()) {
-            tv.setComment(comment);
         }
 
         tv.setId(null);

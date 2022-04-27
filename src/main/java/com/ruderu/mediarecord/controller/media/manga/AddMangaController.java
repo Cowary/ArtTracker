@@ -59,7 +59,6 @@ public class AddMangaController {
             @ModelAttribute("manga") Manga manga,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
-            @RequestParam(required = false) String comment,
             @RequestParam() String ongoingStart
     ) {
         MangaModel mangaModel = ShikimoriApi.findMangaById(Math.toIntExact(manga.getShikiId()));
@@ -71,7 +70,6 @@ public class AddMangaController {
             manga.setEndDate(endDate);
         }
         if(ongoingStart != null) manga.setOngoingStart(ongoingStart);
-        if(comment != null) manga.setComment(comment);
 
         mangaRep.save(manga);
 

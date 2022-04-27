@@ -1,0 +1,58 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../main.css">
+</head>
+
+<datalist id="statusList">
+    <option>Ready to start</option>
+    <option>Watching</option>
+    <option>Dropped</option>
+    <option>Finished</option>
+</datalist>
+
+<h2>MediaList</h2>
+
+<div>
+    <a href="/title"><--</a>
+</div>
+<div>
+    <a href="/title/view/media">Все</a>
+    <a href="/title/view/watch">Видео</a>
+    <a href="/title/view/read">Книги</a>
+    <a href="/title/view/play">Игры</a>
+</div>
+<br>
+
+<form method="get">
+    <input name="status" list="statusList" {{#status}} value="{{status}}" {{/status}} autocomplete="off" ><br>
+    <input type="submit" value="Применить">
+</form>
+
+<table>
+    <tr>
+        <th>Media Id</th>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Score</th>
+        <th>Дата выхода</th>
+        <th>Даты прохождения</th>
+    </tr>
+
+    {{#mediaList}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{type}}</td>
+            <td>{{#title}} {{title}} {{/title}}</td>
+            <td>{{status}}</td>
+            <td>{{#score}} {{score}} {{/score}}</td>
+            <td>{{#releaseDate}} {{releaseDate}} {{/releaseDate}}</td>
+            <td>{{#startDate}} {{startDate}} {{/startDate}} - {{#endDate}} {{endDate}} {{/endDate}}</td>
+        </tr>
+    {{/mediaList}}
+
+</table>
+</body>
+
+</html>

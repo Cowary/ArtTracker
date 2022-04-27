@@ -40,18 +40,11 @@ public class AddMovieController {
     public String post(
             @ModelAttribute("movie") Movie movie,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
-            @RequestParam(required = false) String comment,
             @RequestParam(required = false) String studio
     ) {
 
         if(endDate != null) {
             movie.setEndDate(endDate);
-        }
-        if(movie.getComment().isEmpty()) {
-            movie.setComment(null);
-        }
-        if(!comment.isEmpty()) {
-            movie.setComment(comment);
         }
 
         movie.setId(null);

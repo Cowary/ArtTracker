@@ -1,4 +1,9 @@
 <html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../../main.css">
+    </head>
+
     <datalist id="statusList">
         <option>Ready to start</option>
         <option>Watching</option>
@@ -6,24 +11,16 @@
         <option>Finished</option>
     </datalist>
 
-    <head>
-        <title>Spring Boot Mustache</title>
-        <style>
-            table {
-                border-collapse: collapse;
-            }
-
-            table, td, th {
-                border: 1px solid #999;
-                padding: 5px;
-            }
-        </style>
-    </head>
-    <body>
     <h2>MediaList</h2>
 
     <div>
         <a href="/title"><--</a>
+    </div>
+    <div>
+        <a href="/title/view/media">Все</a>
+        <a href="/title/view/watch">Видео</a>
+        <a href="/title/view/read">Книги</a>
+        <a href="/title/view/play">Игры</a>
     </div>
     <br>
 
@@ -36,13 +33,15 @@
         <tr>
             <th>Media Id</th>
             <th>Type</th>
-            <th>Anime name</th>
+            <th>Name</th>
+            <th>Сезонов</th>
+            <th>Эпизоды</th>
+            <th>Время</th>
             <th>Status</th>
             <th>Score</th>
             <th>Дата выхода</th>
             <th>Даты просмотра</th>
             <th>Ongoing Start</th>
-            <th>Comment</th>
         </tr>
 
         {{#mediaList}}
@@ -50,15 +49,18 @@
                 <td>{{id}}</td>
                 <td>{{type}}</td>
                 <td>{{#originalTitle}} {{originalTitle}}  / {{/originalTitle}} {{#title}} {{title}} {{/title}}</td>
+                <td>{{#seasonsEnd}} {{seasonsEnd}} / {{/seasonsEnd}} {{#seasons}} {{seasons}} {{/seasons}}</td>
+                <td>{{#episodesEnd}} {{episodesEnd}} / {{/episodesEnd}} {{#episodes}} {{episodes}} {{/episodes}}</td>
+                <td>{{#duration}} {{duration}} {{/duration}}</td>
                 <td>{{status}}</td>
                 <td>{{#score}} {{score}} {{/score}}</td>
                 <td>{{#releaseDate}} {{releaseDate}} {{/releaseDate}}</td>
                 <td>{{#startDate}} {{startDate}} {{/startDate}} - {{#endDate}} {{endDate}} {{/endDate}}</td>
                 <td>{{#ongoingStart}} {{ongoingStart}} {{/ongoingStart}}</td>
-                <td>{{#comment}} {{comment}} {{/comment}}</td>
             </tr>
         {{/mediaList}}
 
     </table>
     </body>
+
 </html>

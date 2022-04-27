@@ -35,7 +35,6 @@ public class Manga implements Media {
     private Date endDate;
     private String ongoingStart;
     private Long shikiId;
-    private String comment;
     private Integer volumesEnd;
     private Integer chaptersEnd;
     @Transient
@@ -49,10 +48,6 @@ public class Manga implements Media {
         this.releaseDate = releaseDate;
         this.shikiId = shikiId;
         this.status = "Ready to Start";
-        this.score = 0;
-        this.comment = "";
-        this.volumesEnd = 0;
-        this.chaptersEnd = 0;
     }
 
     public Manga() {

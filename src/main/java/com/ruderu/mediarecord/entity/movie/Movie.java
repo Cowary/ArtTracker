@@ -30,7 +30,6 @@ public class Movie implements Media {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date endDate;
-    private String comment;
     @Transient
     private String type = "Movie";
 
@@ -42,7 +41,7 @@ public class Movie implements Media {
         this.status = "Ready to Start";
     }
 
-    public Movie(String originalTitle, String title, Date releaseDate, Integer duration, String status, Integer score, Date endDate, String comment) {
+    public Movie(String originalTitle, String title, Date releaseDate, Integer duration, String status, Integer score, Date endDate) {
         this.originalTitle = originalTitle;
         this.title = title;
         this.releaseDate = releaseDate;
@@ -50,7 +49,6 @@ public class Movie implements Media {
         this.status = status;
         this.score = score;
         this.endDate = endDate;
-        this.comment = comment;
     }
 
     public Movie() {

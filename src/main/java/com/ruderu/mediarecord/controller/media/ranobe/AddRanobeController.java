@@ -69,7 +69,6 @@ public class AddRanobeController {
             ranobe.setEndDate(endDate);
         }
         if(ongoingStart != null) ranobe.setOngoingStart(ongoingStart);
-        if(comment != null) ranobe.setComment(comment);
 
         ranobeRep.save(ranobe);
         ranobePublisherCrud.create(ranobe.getId(), List.of(ranobeModel.getPublishers()));

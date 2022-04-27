@@ -1,4 +1,4 @@
-package com.ruderu.mediarecord.controller.media.ranobe;
+package com.ruderu.mediarecord.controller.media;
 
 import com.ruderu.mediarecord.entity.ranobe.Ranobe;
 import com.ruderu.mediarecord.repo.RanobeRep;

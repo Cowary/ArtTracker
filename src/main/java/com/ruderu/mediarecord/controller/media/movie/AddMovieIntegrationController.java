@@ -62,7 +62,6 @@ public class AddMovieIntegrationController {
     public String post(
             @ModelAttribute("movie") Movie movie,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
-            @RequestParam(required = false) String comment,
             @RequestParam(required = false) long tmdbId
     ) {
         System.out.println(movie.toString());
@@ -70,12 +69,6 @@ public class AddMovieIntegrationController {
         MovieModel movieModel = TmdbApi.searchMovieById(Math.toIntExact(tmdbId));
         if(endDate != null) {
             movie.setEndDate(endDate);
-        }
-        if(movie.getComment().isEmpty()) {
-            movie.setComment(null);
-        }
-        if(!comment.isEmpty()) {
-            movie.setComment(comment);
         }
         movie.setId(null);
         movieRepo.save(movie);
