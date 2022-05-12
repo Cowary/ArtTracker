@@ -24,10 +24,10 @@ public class EditAnimeController {
 
     @GetMapping("title/anime/edit")
     public String get(
-            @RequestParam long animeId,
+            @RequestParam long id,
             Model model
     ) {
-        Anime anime = animeRepo.findById(animeId).orElseThrow();
+        Anime anime = animeRepo.findById(id).orElseThrow();
 
         model.addAttribute("anime", anime);
 
@@ -36,14 +36,14 @@ public class EditAnimeController {
 
     @PostMapping("title/anime/edit")
     public String post(
-            @RequestParam() long animeId,
+            @RequestParam() long id,
             @RequestParam() String status,
             @RequestParam() int score,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
             @RequestParam() String ongoingStart
     ) {
-        Anime anime = animeRepo.findById(animeId).orElseThrow();
+        Anime anime = animeRepo.findById(id).orElseThrow();
         anime.setStatus(status);
         anime.setScore(score);
         if(startDate != null) {

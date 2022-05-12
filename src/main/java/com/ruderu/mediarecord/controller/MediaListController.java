@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,5 +50,16 @@ public class MediaListController {
 
         model.addAttribute("mediaList", mediaList);
         return "media/view/mediaList";
+    }
+
+    @GetMapping("/title/view/edit")
+    public String post(
+            @RequestParam int id,
+            @RequestParam String type,
+            RedirectAttributes redirectAttributes
+    ) {
+        redirectAttributes.addAttribute("id", id);
+
+        return "redirect:../" + type.toLowerCase() + "/edit";
     }
 }

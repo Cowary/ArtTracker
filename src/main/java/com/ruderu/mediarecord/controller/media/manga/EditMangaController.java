@@ -21,11 +21,11 @@ public class EditMangaController {
 
     @GetMapping("title/manga/edit")
     public String get(
-            @RequestParam long mangaId,
+            @RequestParam long id,
             Model model
     ) {
 
-        Manga manga = mangaRep.findById(mangaId).orElseThrow();
+        Manga manga = mangaRep.findById(id).orElseThrow();
 
         model.addAttribute("manga", manga);
 
@@ -34,14 +34,14 @@ public class EditMangaController {
 
     @PostMapping("title/manga/edit")
     public String post(
-            @RequestParam() long animeId,
+            @RequestParam() long id,
             @RequestParam() String status,
             @RequestParam() int score,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
             @RequestParam() String ongoingStart
     ) {
-        Manga manga = mangaRep.findById(animeId).orElseThrow();
+        Manga manga = mangaRep.findById(id).orElseThrow();
         manga.setStatus(status);
         manga.setScore(score);
         if(startDate != null) {
