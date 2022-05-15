@@ -1,48 +1,50 @@
 <html>
+    <body>
+    <datalist id="statusList">
+        <option>Ready to start</option>
+        <option>Watching</option>
+        <option>Dropped</option>
+        <option>Finished</option>
+    </datalist>
+    <datalist id="ongoingList">
+        <option>yes</option>
+        <option>no</option>
+    </datalist>
 
-<body>
-<datalist id="statusList">
-    <option>Ready to start</option>
-    <option>Watching</option>
-    <option>Dropped</option>
-    <option>Finished</option>
-</datalist>
-<datalist id="ongoingList">
-    <option>yes</option>
-    <option>no</option>
-</datalist>
+    <h2>Добавление манги</h2>
+    <div>
+        <a href="../../title"><--</a>
+    </div>
+    {{#ranobe}}
+        <p>
+            Название: {{originalTitle}} / {{title}} <br>
+            Эпизоды: {{chapters}} <br>
+            Дата выхода: {{releaseDate}} <br>
+        </p>
+    {{/ranobe}}
+    <form method="post" >
+        <label>
+            <input name="originalTitle" {{#ranobe}} value="{{ranobe.originalTitle}}" {{/ranobe}} hidden>
+            <input name="title" {{#ranobe}} value="{{ranobe.title}}" {{/ranobe}} hidden>
+            Статус: <input name="status" list="statusList" {{#ranobe}} value="{{ranobe.status}}" {{/ranobe}} ><br>
+            Оценка: <input name="score" type="number" min="1" max="5"  {{#ranobe}} value="{{ranobe.score}}" {{/ranobe}} ><br>
+            <input name="chapters" {{#ranobe}} value="{{ranobe.chapters}}" {{/ranobe}} hidden>
+            Дата выхода: <input name="releaseDate" type="date" {{#ranobe}} value="{{ranobe.releaseDate}}" {{/ranobe}} hidden>
+            <input name="shikiId" {{#ranobe}} value="{{ranobe.shikiId}}" {{/ranobe}} hidden>
 
-<h2>Добавление манги</h2>
-{{#ranobe}}
-    <p>
-        Название: {{originalTitle}} / {{title}} <br>
-        Эпизоды: {{chapters}} <br>
-        Дата выхода: {{releaseDate}} <br>
-    </p>
-{{/ranobe}}
-<form method="post" >
-    <label>
-        <input name="originalTitle" {{#ranobe}} value="{{ranobe.originalTitle}}" {{/ranobe}} hidden>
-        <input name="title" {{#ranobe}} value="{{ranobe.title}}" {{/ranobe}} hidden>
-        Статус: <input name="status" list="statusList" {{#ranobe}} value="{{ranobe.status}}" {{/ranobe}} ><br>
-        Оценка: <input name="score" type="number" min="1" max="5"  {{#ranobe}} value="{{ranobe.score}}" {{/ranobe}} ><br>
-        <input name="chapters" {{#ranobe}} value="{{ranobe.chapters}}" {{/ranobe}} hidden>
-        Дата выхода: <input name="releaseDate" type="date" {{#ranobe}} value="{{ranobe.releaseDate}}" {{/ranobe}} hidden>
-        <input name="shikiId" {{#ranobe}} value="{{ranobe.shikiId}}" {{/ranobe}} hidden>
-
-    </label>
-    <br>
-    <label>
-        Просмотр начат в онгоинге? <input name="ongoingStart" list="ongoingList" {{#ranobe}} value="{{ranobe.ongoingStart}}" {{/ranobe}}>
-        Дата начала просмотра: <input name="startDate" type="date" {{#ranobe}} value="{{ranobe.startDate}}" {{/ranobe}}>
-        Дата окончания просмотра: <input name="endDate" type="date" {{#ranobe}} value="{{ranobe.endDate}}" {{/ranobe}}>
-    </label><br>
-    <input value="Сохранить" type="submit">
-    <br>
-</form>
-<form method="post" action="./delete">
-    <input name="id" {{#ranobe}} value="{{ranobe.id}}" {{/ranobe}} hidden>
-    <input value="Удалить" type="submit">
-</form>
-</body>
+        </label>
+        <br>
+        <label>
+            Просмотр начат в онгоинге? <input name="ongoingStart" list="ongoingList" {{#ranobe}} value="{{ranobe.ongoingStart}}" {{/ranobe}}>
+            Дата начала просмотра: <input name="startDate" type="date" {{#ranobe}} value="{{ranobe.startDate}}" {{/ranobe}}>
+            Дата окончания просмотра: <input name="endDate" type="date" {{#ranobe}} value="{{ranobe.endDate}}" {{/ranobe}}>
+        </label><br>
+        <input value="Сохранить" type="submit">
+        <br>
+    </form>
+    <form method="post" action="./delete">
+        <input name="id" {{#ranobe}} value="{{ranobe.id}}" {{/ranobe}} hidden>
+        <input value="Удалить" type="submit">
+    </form>
+    </body>
 </html>

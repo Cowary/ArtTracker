@@ -13,6 +13,9 @@
     </datalist>
 
     <h2>Создание/Настройка аниме</h2>
+    <div>
+        <a href="../../title"><--</a>
+    </div>
 
     {{#anime}}
         <p>
@@ -21,12 +24,12 @@
             Дата выхода: {{releaseDate}} <br>
         </p>
     {{/anime}}
-    <form method="post" >
+    <form method="post">
         <label>
             <input name="originalTitle" {{#anime}} value="{{anime.originalTitle}}" {{/anime}} hidden>
             <input name="title" {{#anime}} value="{{anime.title}}" {{/anime}} hidden>
             Статус: <input name="status" list="statusList" {{#anime}} value="{{anime.status}}" {{/anime}} ><br>
-            Оценка: <input name="score" type="number" min="0" max="5"  {{#anime}} value="{{anime.score}}" {{/anime}} ><br>
+            Оценка: <input name="score" type="number" min="0" max="5"  {{#anime.score}} value="{{anime.score}}" {{/anime.score}} ><br>
             <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} hidden>
             Дата выхода: <input name="releaseDate" type="date" {{#anime}} value="{{anime.releaseDate}}" {{/anime}} hidden>
             <input name="shikiId" {{#anime}} value="{{anime.shikiId}}" {{/anime}} hidden>

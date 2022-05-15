@@ -1,44 +1,41 @@
 <html>
-
-<head>
-
-</head>
-
-<body>
-<h2>Поиск манги</h2>
+    <body>
+    <h2>Поиск манги</h2>
 
 
-<form method="post">
-    <input name="originalTitle" {{#manga}} value="{{manga.originalTitle}}" {{/manga}} required><p>
-    <input value="Поиск" type="submit"><p>
-</form>
-<label>Название</label>
-<table class="wide">
-    <tr>
-        <th>ID</th>
-        <th>NameEn</th>
-        <th>NameRu</th>
-        <th>Score</th>
-        <th>chapters</th>
-    </tr>
-
-    {{#list}}
+    <form method="post">
+        <input name="originalTitle" {{#manga}} value="{{manga.originalTitle}}" {{/manga}} required><p>
+        <input value="Поиск" type="submit"><p>
+    </form>
+    <label>Название</label>
+    <div>
+        <a href="../../title"><--</a>
+    </div>
+    <table class="wide">
         <tr>
-            <td>{{id}}</td>
-            <td>{{name}}</td>
-            <td>{{russian}}</td>
-            <td>{{score}}</td>
-            <td>{{chapters}}</td>
-            <td>
-                <form method="post" action="./saveManga">
-                    <input name="mangaId" value="{{id}}">
-                    <input value="Добавить" type="submit">
-                </form>
-            </td>
+            <th>ID</th>
+            <th>NameEn</th>
+            <th>NameRu</th>
+            <th>Score</th>
+            <th>chapters</th>
         </tr>
-    {{/list}}
-</table>
 
-</body>
+        {{#list}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+                <td>{{russian}}</td>
+                <td>{{score}}</td>
+                <td>{{chapters}}</td>
+                <td>
+                    <form method="post" action="./saveManga">
+                        <input name="mangaId" value="{{id}}">
+                        <input value="Добавить" type="submit">
+                    </form>
+                </td>
+            </tr>
+        {{/list}}
+    </table>
 
+    </body>
 </html>
