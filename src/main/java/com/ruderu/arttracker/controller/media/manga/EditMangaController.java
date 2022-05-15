@@ -63,6 +63,6 @@ public class EditMangaController {
         Manga manga = mangaRep.findById(id).orElseThrow();
         mangaRep.delete(manga);
 
-        return "redirect:../manga";
+        return "redirect:../view/media";
     }
 }

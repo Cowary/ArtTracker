@@ -65,6 +65,6 @@ public class EditAnimeController {
         Anime anime = animeRepo.findById(id).orElseThrow();
         animeRepo.delete(anime);
 
-        return "redirect:../anime";
+        return "redirect:../view/media";
     }
 }

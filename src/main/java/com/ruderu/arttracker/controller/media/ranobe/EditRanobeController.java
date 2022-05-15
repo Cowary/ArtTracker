@@ -1,4 +1,4 @@
-package com.ruderu.arttracker.controller.media;
+package com.ruderu.arttracker.controller.media.ranobe;
 
 import com.ruderu.arttracker.entity.ranobe.Ranobe;
 import com.ruderu.arttracker.repo.RanobeRep;
@@ -21,11 +21,11 @@ public class EditRanobeController {
 
     @GetMapping("title/ranobe/edit")
     public String get(
-            @RequestParam long mangaId,
+            @RequestParam long id,
             Model model
     ) {
 
-        Ranobe ranobe = ranobeRep.findById(mangaId).orElseThrow();
+        Ranobe ranobe = ranobeRep.findById(id).orElseThrow();
 
         model.addAttribute("ranobe", ranobe);
 
@@ -34,14 +34,14 @@ public class EditRanobeController {
 
     @PostMapping("title/ranobe/edit")
     public String post(
-            @RequestParam() long ranobeId,
+            @RequestParam() long id,
             @RequestParam() String status,
             @RequestParam() int score,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
             @RequestParam() String ongoingStart
     ) {
-        Ranobe ranobe = ranobeRep.findById(ranobeId).orElseThrow();
+        Ranobe ranobe = ranobeRep.findById(id).orElseThrow();
         ranobe.setStatus(status);
         ranobe.setScore(score);
         if(startDate != null) {

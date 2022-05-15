@@ -29,7 +29,7 @@
             <input name="originalTitle" {{#anime}} value="{{anime.originalTitle}}" {{/anime}} hidden>
             <input name="title" {{#anime}} value="{{anime.title}}" {{/anime}} hidden>
             Статус: <input name="status" list="statusList" {{#anime}} value="{{anime.status}}" {{/anime}} ><br>
-            Оценка: <input name="score" type="number" min="1" max="5"  {{#anime}} value="{{anime.score}}" {{/anime}} ><br>
+            Оценка: <input name="score" type="number" min="1" max="5"  {{#anime.score}} value="{{anime.score}}" {{/anime.score}} ><br>
             <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} hidden>
             Дата выхода: <input name="releaseDate" type="date" {{#anime}} value="{{anime.releaseDate}}" {{/anime}} hidden>
             <input name="shikiId" {{#anime}} value="{{anime.shikiId}}" {{/anime}} hidden>
@@ -38,8 +38,8 @@
         <br>
         <label>
             Просмотр начат в онгоинге? <input name="ongoingStart" list="ongoingList" {{#anime}} value="{{anime.ongoingStart}}" {{/anime}}>
-            Дата начала просмотра: <input name="startDate" type="date" {{#anime}} value="{{anime.startDate}}" {{/anime}}>
-            Дата окончания просмотра: <input name="endDate" type="date" {{#anime}} value="{{anime.endDate}}" {{/anime}}>
+            Дата начала просмотра: <input name="startDate" type="date" {{#anime.startDate}} value="{{anime.startDate}}" {{/anime.startDate}}>
+            Дата окончания просмотра: <input name="endDate" type="date" {{#anime.endDate}} value="{{anime.endDate}}" {{/anime.endDate}}>
         </label><br>
         <input value="Сохранить" type="submit">
         <br>

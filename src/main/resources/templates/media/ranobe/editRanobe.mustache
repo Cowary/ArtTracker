@@ -27,7 +27,7 @@
             <input name="originalTitle" {{#ranobe}} value="{{ranobe.originalTitle}}" {{/ranobe}} hidden>
             <input name="title" {{#ranobe}} value="{{ranobe.title}}" {{/ranobe}} hidden>
             Статус: <input name="status" list="statusList" {{#ranobe}} value="{{ranobe.status}}" {{/ranobe}} ><br>
-            Оценка: <input name="score" type="number" min="1" max="5"  {{#ranobe}} value="{{ranobe.score}}" {{/ranobe}} ><br>
+            Оценка: <input name="score" type="number" min="1" max="5"  {{#ranobe.score}} value="{{ranobe.score}}" {{/ranobe.score}} ><br>
             <input name="chapters" {{#ranobe}} value="{{ranobe.chapters}}" {{/ranobe}} hidden>
             Дата выхода: <input name="releaseDate" type="date" {{#ranobe}} value="{{ranobe.releaseDate}}" {{/ranobe}} hidden>
             <input name="shikiId" {{#ranobe}} value="{{ranobe.shikiId}}" {{/ranobe}} hidden>
@@ -36,8 +36,8 @@
         <br>
         <label>
             Просмотр начат в онгоинге? <input name="ongoingStart" list="ongoingList" {{#ranobe}} value="{{ranobe.ongoingStart}}" {{/ranobe}}>
-            Дата начала просмотра: <input name="startDate" type="date" {{#ranobe}} value="{{ranobe.startDate}}" {{/ranobe}}>
-            Дата окончания просмотра: <input name="endDate" type="date" {{#ranobe}} value="{{ranobe.endDate}}" {{/ranobe}}>
+            Дата начала просмотра: <input name="startDate" type="date" {{#ranobe.startDate}} value="{{ranobe.startDate}}" {{/ranobe.startDate}}>
+            Дата окончания просмотра: <input name="endDate" type="date" {{#ranobe.endDate}} value="{{ranobe.endDate}}" {{/ranobe.endDate}}>
         </label><br>
         <input value="Сохранить" type="submit">
         <br>
