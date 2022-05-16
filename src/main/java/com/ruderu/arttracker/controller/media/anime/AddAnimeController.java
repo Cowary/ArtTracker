@@ -9,7 +9,6 @@ import com.ruderu.arttracker.repo.AnimeRepo;
 import com.ruderu.arttracker.repo.AnimeStudioRep;
 import com.ruderu.arttracker.rest.ShikimoriApi;
 import com.ruderu.arttracker.util.DateFormat;
-import com.ruderu.arttracker.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -71,13 +70,9 @@ public class AddAnimeController {
         List<StudioModel> studioModelList = List.of(animeModel.getStudios());
         if(startDate != null) {
             anime.setStartDate(startDate);
-        } else {
-            anime.setStartDate(DateUtil.def());
         }
         if(endDate != null) {
             anime.setEndDate(endDate);
-        } else {
-            anime.setEndDate(DateUtil.def());
         }
         if(ongoingStart != null) anime.setOngoingStart(ongoingStart);
         if(episodesEnd != null) anime.setEpisodesEnd(episodesEnd);

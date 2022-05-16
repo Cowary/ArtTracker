@@ -36,14 +36,19 @@ public class EditMangaController {
     public String post(
             @RequestParam() long id,
             @RequestParam() String status,
-            @RequestParam() int score,
+            @RequestParam(required = false) String score,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
-            @RequestParam() String ongoingStart
+            @RequestParam(required = false) String ongoingStart
     ) {
         Manga manga = mangaRep.findById(id).orElseThrow();
         manga.setStatus(status);
-        manga.setScore(score);
+        if(!score.isBlank()) {
+            manga.setScore(Integer.valueOf(score));
+        }
+        else {
+            manga.setScore(null);
+        }
         if(startDate != null) {
             manga.setStartDate(startDate);
         }
@@ -53,7 +58,7 @@ public class EditMangaController {
         if(ongoingStart != null) manga.setOngoingStart(ongoingStart);
         System.out.println(manga);
         mangaRep.save(manga);
-        return "media/manga/editManga";
+        return "redirect:../view/media";
     }
 
     @PostMapping("title/manga/delete")

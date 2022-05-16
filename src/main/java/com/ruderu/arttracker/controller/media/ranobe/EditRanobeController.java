@@ -36,14 +36,19 @@ public class EditRanobeController {
     public String post(
             @RequestParam() long id,
             @RequestParam() String status,
-            @RequestParam() int score,
+            @RequestParam(required = false) String score,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
-            @RequestParam() String ongoingStart
+            @RequestParam(required = false) String ongoingStart
     ) {
         Ranobe ranobe = ranobeRep.findById(id).orElseThrow();
         ranobe.setStatus(status);
-        ranobe.setScore(score);
+        if(!score.isBlank()) {
+            ranobe.setScore(Integer.valueOf(score));
+        }
+        else {
+            ranobe.setScore(null);
+        }
         if(startDate != null) {
             ranobe.setStartDate(startDate);
         }
@@ -53,7 +58,7 @@ public class EditRanobeController {
         if(ongoingStart != null) ranobe.setOngoingStart(ongoingStart);
         System.out.println(ranobe);
         ranobeRep.save(ranobe);
-        return "media/ranobe/editRanobe";
+        return "redirect:../view/media";
     }
 
     @PostMapping("title/ranobe/delete")
@@ -63,6 +68,6 @@ public class EditRanobeController {
         Ranobe ranobe = ranobeRep.findById(id).orElseThrow();
         ranobeRep.delete(ranobe);
 
-        return "redirect:../ranobe";
+        return "redirect:../view/media";
     }
 }
