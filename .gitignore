@@ -1,3 +1,7 @@
 /.idea
 /target
 /ArtTracker.iml
+/src/main/webapp/resources/images/image.jpeg
+/src/main/resources/application.properties
+/.jpb.
+/.jpb/persistence-units.xml
