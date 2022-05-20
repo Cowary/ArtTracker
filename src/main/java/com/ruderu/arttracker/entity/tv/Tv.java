@@ -25,6 +25,7 @@ public class Tv implements Media {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
+    private Integer releaseYear;
     private String status;
     private Integer score;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

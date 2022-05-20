@@ -27,12 +27,13 @@
         <label>
             <input name="originalTitle" {{#manga}} value="{{manga.originalTitle}}" {{/manga}} hidden>
             <input name="title" {{#manga}} value="{{manga.title}}" {{/manga}} hidden>
-            Статус: <input name="status" list="statusList" {{#manga}} value="{{manga.status}}" {{/manga}} ><br>
+            Статус: <input name="status" list="statusList" {{#manga.status}} value="{{manga.status}}" {{/manga.status}} ><br>
             Оценка: <input name="score" type="number" min="0" max="5"  {{#manga.score}} value="{{manga.score}}" {{/manga.score}} ><br>
             <input name="chapters" {{#manga}} value="{{manga.chapters}}" {{/manga}} hidden>
             <input name="volumes" {{#manga}} value="{{manga.volumes}}" {{/manga}} hidden>
             Дата выхода: <input name="releaseDate" type="date" {{#manga}} value="{{manga.releaseDate}}" {{/manga}} hidden>
             <input name="shikiId" {{#manga}} value="{{manga.shikiId}}" {{/manga}} hidden>
+            <input name="releaseYear" {{#manga}} value="{{manga.releaseYear}}" {{/manga}} hidden>
         </label>
         <br>
         <label>

@@ -1,6 +1,8 @@
 package com.ruderu.arttracker.util;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.concurrent.TimeUnit;
 
 public class DateUtil {
@@ -19,5 +21,11 @@ public class DateUtil {
 
     public static Date def() {
         return new Date(-5364673200000L);
+    }
+
+    public static int getYear(Date date) {
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        return calendar.get(Calendar.YEAR);
     }
 }

@@ -27,12 +27,13 @@
         <label>
             <input name="originalTitle" {{#ranobe}} value="{{ranobe.originalTitle}}" {{/ranobe}} hidden>
             <input name="title" {{#ranobe}} value="{{ranobe.title}}" {{/ranobe}} hidden>
-            Статус: <input name="status" list="statusList" {{#ranobe}} value="{{ranobe.status}}" {{/ranobe}} ><br>
+            Статус: <input name="status" list="statusList" {{#ranobe.status}} value="{{ranobe.status}}" {{/ranobe.status}} ><br>
             Оценка: <input name="score" type="number" min="1" max="5"  {{#ranobe.score}} value="{{ranobe.score}}" {{/ranobe.score}} ><br>
             <input name="chapters" {{#ranobe}} value="{{ranobe.chapters}}" {{/ranobe}} hidden>
             <input name="volumes" {{#ranobe}} value="{{ranobe.volumes}}" {{/ranobe}} hidden>
             Дата выхода: <input name="releaseDate" type="date" {{#ranobe}} value="{{ranobe.releaseDate}}" {{/ranobe}} hidden>
             <input name="shikiId" {{#ranobe}} value="{{ranobe.shikiId}}" {{/ranobe}} hidden> <br>
+            <input name="releaseYear" {{#manga}} value="{{manga.releaseYear}}" {{/manga}} hidden>
         </label>
         <br>
         <label>

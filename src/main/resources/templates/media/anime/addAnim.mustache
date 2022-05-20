@@ -28,12 +28,12 @@
         <label>
             <input name="originalTitle" {{#anime}} value="{{anime.originalTitle}}" {{/anime}} hidden>
             <input name="title" {{#anime}} value="{{anime.title}}" {{/anime}} hidden>
-            Статус: <input name="status" list="statusList" {{#anime}} value="{{anime.status}}" {{/anime}} ><br>
+            Статус: <input name="status" list="statusList" {{#anime.status}} value="{{anime.status}}" {{/anime.status}} ><br>
             Оценка: <input name="score" type="number" min="1" max="5"  {{#anime.score}} value="{{anime.score}}" {{/anime.score}} ><br>
             <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}} hidden>
             Дата выхода: <input name="releaseDate" type="date" {{#anime}} value="{{anime.releaseDate}}" {{/anime}} hidden>
             <input name="shikiId" {{#anime}} value="{{anime.shikiId}}" {{/anime}} hidden>
-
+            <input name="releaseYear" {{#anime}} value="{{anime.releaseYear}}" {{/anime}} hidden>
         </label>
         <br>
         <label>

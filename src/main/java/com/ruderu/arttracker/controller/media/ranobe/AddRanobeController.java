@@ -35,14 +35,12 @@ public class AddRanobeController {
             Model model
     ) {
         RanobeModel ranobeModel = ShikimoriApi.findRanobeById(ranobeId);
-        //FileUtil.downloadFile("https://dere.shikimori.one" + ranobeModel.getImage().getOriginal(), "image");
 
         Ranobe ranobe = new Ranobe(ranobeModel.getName(), ranobeModel.getRussian(), ranobeModel.getVolumes(), ranobeModel.getChapters(), DateFormat.HTMLshort.parse(ranobeModel.getAired_on()), (long) ranobeModel.getId());
         model.addAttribute("ranobe", ranobe);
         model.addAttribute("startDate", ranobe.getStartDate());
         model.addAttribute("endDate", ranobe.getEndDate());
         model.addAttribute("ongoingStart", "no");
-        //String url = "/resources/images/image.jpeg";
         String url = "https://dere.shikimori.one" + ranobeModel.getImage().getOriginal();
         model.addAttribute("image",url);
         System.out.println(DateFormat.HTML.format(ranobe.getReleaseDate()));
@@ -72,8 +70,6 @@ public class AddRanobeController {
         ranobePublisherCrud.create(ranobe.getId(), List.of(ranobeModel.getPublishers()));
         ranobeRoleCrud.createRanobeRole(ranobe.getId(), List.of(ranobeModel.getRoleModels()));
 
-//        File file = new File(FileUtil.path + "image" + ".jpeg");
-//        Assert.isTrue(file.delete(), "Rename file");
         return "media/ranobe/addRanobe";
     }
 }

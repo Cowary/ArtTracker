@@ -1,6 +1,7 @@
 package com.ruderu.arttracker.entity.anime;
 
 import com.ruderu.arttracker.entity.Media;
+import com.ruderu.arttracker.util.DateUtil;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -33,6 +34,7 @@ public class Anime implements Media {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
+    private Integer releaseYear;
     private Long shikiId;
     private Integer duration;
     private String ongoingStart;
@@ -40,32 +42,13 @@ public class Anime implements Media {
     @Transient
     private String type = "Anime";
 
-    public Anime(String originalTitle, String title, Integer episodes, String status, Integer score, Date endDate, Date releaseDate) {
-        this.originalTitle = originalTitle;
-        this.title = title;
-        this.episodes = episodes;
-        this.status = status;
-        this.score = score;
-        this.endDate = endDate;
-        this.releaseDate = releaseDate;
-    }
-
     public Anime(String originalTitle, String title, Integer episodes, Date releaseDate, Long shikiId) {
         this.originalTitle = originalTitle;
         this.title = title;
         this.episodes = episodes;
-        this.status = "Ready to Start";
         this.releaseDate = releaseDate;
+        this.releaseYear = DateUtil.getYear(releaseDate);
         this.shikiId = shikiId;
-    }
-
-    public Anime(String originalTitle, String title, Integer episodes, String status, Integer score, Date releaseDate) {
-        this.originalTitle = originalTitle;
-        this.title = title;
-        this.episodes = episodes;
-        this.status = status;
-        this.score = score;
-        this.releaseDate = releaseDate;
     }
 
     public Anime(String originalTitle) {

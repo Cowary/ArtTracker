@@ -39,7 +39,6 @@ public class AddAnimeController {
             Model model
     ) {
         AnimeModel animeModel = ShikimoriApi.findById(animeId);
-        //FileUtil.downloadFile("https://dere.shikimori.one" + animeModel.getImage().getOriginal(), "image");
 
         Anime anime = new Anime(animeModel.getName(), animeModel.getRussian(), animeModel.getEpisodes(), DateFormat.HTMLshort.parse(animeModel.getAired_on()), (long) animeModel.getId());
         List<StudioModel> studioModelList = List.of(animeModel.getStudios());
@@ -48,7 +47,6 @@ public class AddAnimeController {
         model.addAttribute("endDate", anime.getEndDate());
         model.addAttribute("studioList", studioModelList);
         model.addAttribute("ongoingStart", "no");
-        //String url = "/resources/images/image.jpeg";
         String url = "https://dere.shikimori.one" + animeModel.getImage().getOriginal();
         model.addAttribute("image",url);
         System.out.println(DateFormat.HTML.format(anime.getReleaseDate()));

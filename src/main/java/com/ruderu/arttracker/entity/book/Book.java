@@ -29,6 +29,7 @@ public class Book implements Media {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
+    private Integer releaseYear;
     private Integer score;
     private String status;
     private String author;

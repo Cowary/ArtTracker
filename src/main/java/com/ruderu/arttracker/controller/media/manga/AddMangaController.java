@@ -35,16 +35,12 @@ public class AddMangaController {
             Model model
     ) {
         MangaModel mangaModel = ShikimoriApi.findMangaById(mangaId);
-        //FileUtil.downloadFile("https://dere.shikimori.one" + mangaModel.getImage().getOriginal(), "image");
 
         Manga manga = new Manga(mangaModel.getName(), mangaModel.getRussian(), mangaModel.getVolumes(), mangaModel.getChapters(), DateFormat.HTMLshort.parse(mangaModel.getAired_on()), (long) mangaModel.getId());
-        //List<StudioModel> studioModelList = List.of(mangaModel.getStudios());
         model.addAttribute("manga", manga);
         model.addAttribute("startDate", manga.getStartDate());
         model.addAttribute("endDate", manga.getEndDate());
-        //model.addAttribute("studioList", studioModelList);
         model.addAttribute("ongoingStart", "no");
-        //String url = "/resources/images/image.jpeg";
         String url = "https://dere.shikimori.one" + mangaModel.getImage().getOriginal();
         model.addAttribute("image",url);
         System.out.println(DateFormat.HTML.format(manga.getReleaseDate()));

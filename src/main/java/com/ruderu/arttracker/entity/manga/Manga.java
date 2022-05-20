@@ -1,6 +1,7 @@
 package com.ruderu.arttracker.entity.manga;
 
 import com.ruderu.arttracker.entity.Media;
+import com.ruderu.arttracker.util.DateUtil;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -27,6 +28,7 @@ public class Manga implements Media {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
+    private Integer releaseYear;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date startDate;
@@ -46,6 +48,7 @@ public class Manga implements Media {
         this.volumes = volumes;
         this.chapters = chapters;
         this.releaseDate = releaseDate;
+        this.releaseYear = DateUtil.getYear(releaseDate);
         this.shikiId = shikiId;
         this.status = "Ready to Start";
     }
