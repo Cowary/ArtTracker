@@ -38,10 +38,8 @@ public class AddRanobeController {
 
         Ranobe ranobe = new Ranobe(ranobeModel.getName(), ranobeModel.getRussian(), ranobeModel.getVolumes(), ranobeModel.getChapters(), DateFormat.HTMLshort.parse(ranobeModel.getAired_on()), (long) ranobeModel.getId());
         model.addAttribute("ranobe", ranobe);
-        model.addAttribute("startDate", ranobe.getStartDate());
-        model.addAttribute("endDate", ranobe.getEndDate());
-        model.addAttribute("ongoingStart", "no");
         String url = "https://dere.shikimori.one" + ranobeModel.getImage().getOriginal();
+        model.addAttribute("add", true);
         model.addAttribute("image",url);
         System.out.println(DateFormat.HTML.format(ranobe.getReleaseDate()));
 
