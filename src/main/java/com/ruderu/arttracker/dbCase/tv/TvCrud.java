@@ -17,4 +17,16 @@ public class TvCrud {
         if(status.equals("")) return tvRepo.findAll();
         else return tvRepo.findByStatus(status);
     }
+
+    public Tv findById(long id) {
+        return tvRepo.findById(id).orElseThrow();
+    }
+
+    public void save(Tv tv) {
+        tvRepo.save(tv);
+    }
+
+    public void delete(Tv tv) {
+        tvRepo.delete(tv);
+    }
 }

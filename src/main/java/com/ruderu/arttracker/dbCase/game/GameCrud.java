@@ -17,4 +17,16 @@ public class GameCrud {
         if(status.equals("")) return gameRepo.findAll();
         else return gameRepo.findByStatus(status);
     }
+
+    public Game findById(long id) {
+        return gameRepo.findById(id).orElseThrow();
+    }
+
+    public void save(Game game) {
+        gameRepo.save(game);
+    }
+
+    public void delete(Game game) {
+        gameRepo.delete(game);
+    }
 }

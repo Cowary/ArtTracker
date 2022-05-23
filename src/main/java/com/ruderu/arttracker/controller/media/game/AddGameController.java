@@ -2,17 +2,12 @@ package com.ruderu.arttracker.controller.media.game;
 
 import com.ruderu.arttracker.entity.game.Game;
 import com.ruderu.arttracker.repo.game.GameRepo;
-import com.ruderu.arttracker.util.DateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Date;
 
 @Controller
 public class AddGameController {
@@ -29,16 +24,8 @@ public class AddGameController {
 
     @PostMapping("title/game/add")
     public String post(
-            @ModelAttribute("game") Game game,
-            @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
-            @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate
+            @ModelAttribute("game") Game game
     ) {
-        if(startDate != null) {
-            game.setStartDate(startDate);
-        }
-        if(endDate != null) {
-            game.setEndDate(endDate);
-        }
         System.out.println(game);
         gameRepo.save(game);
 

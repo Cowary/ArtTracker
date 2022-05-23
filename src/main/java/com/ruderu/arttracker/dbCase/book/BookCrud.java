@@ -17,4 +17,16 @@ public class BookCrud {
         if(status.equals("")) return bookRepo.findAll();
         else return bookRepo.findByStatus(status);
     }
+
+    public Book findById(long id) {
+        return bookRepo.findById(id).orElseThrow();
+    }
+
+    public void save(Book book) {
+        bookRepo.save(book);
+    }
+
+    public void delete(Book book) {
+        bookRepo.delete(book);
+    }
 }

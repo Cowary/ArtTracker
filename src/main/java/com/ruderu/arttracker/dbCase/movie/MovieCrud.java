@@ -17,4 +17,16 @@ public class MovieCrud {
         if(status.equals("")) return movieRepo.findAll();
         else return movieRepo.findByStatus(status);
     }
+
+    public Movie findById(long id) {
+        return movieRepo.findById(id).orElseThrow();
+    }
+
+    public void save(Movie movie) {
+        movieRepo.save(movie);
+    }
+
+    public void delete(Movie movie) {
+        movieRepo.delete(movie);
+    }
 }

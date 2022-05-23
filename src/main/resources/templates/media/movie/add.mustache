@@ -1,39 +1,47 @@
 <html>
 
 <body>
-<datalist id="statusList">
-    <option>Ready to start</option>
-    <option>Watching</option>
-    <option>Dropped</option>
-    <option>Finished</option>
-</datalist>
-<datalist id="ongoingList">
-    <option>yes</option>
-    <option>no</option>
-</datalist>
+    <datalist id="statusList">
+        <option>Ready to start</option>
+        <option>Watching</option>
+        <option>Dropped</option>
+        <option>Finished</option>
+    </datalist>
+    <datalist id="ongoingList">
+        <option>yes</option>
+        <option>no</option>
+    </datalist>
 
-<h2>Добавление фильма</h2>
-<form method="post" >
-    <label>
-        Название на английском: <input name="originalTitle" {{#movie}} value="{{movie.originalTitle}}" {{/movie}}><br>
-        Название на русском: <input name="title" {{#movie}} value="{{movie.title}}" {{/movie}}><br>
-        Статус: <input name="status" list="statusList" {{#movie}} value="{{movie.status}}" {{/movie}} ><br>
-        Оценка: <input name="score" type="number" min="0" max="5"  {{#movie.score}} value="{{movie.score}}" {{/movie.score}} ><br>
-        Дата выхода: <input name="releaseDate" type="date" {{#movie}} value="{{movie.releaseDate}}" {{/movie}}><br>
-        Длительность: <input name="duration" {{#movie}} value="{{movie.duration}}" {{/movie}}><br>
-    </label>
-    <br>
-    <label>
-        Дата просмотра: <input name="endDate" type="date" {{#endDate}} value="{{endDate}}" {{/endDate}}><br>
-    </label><br>
-    <table>
-        <tr>
-            Студии: <input name="studio" {{#studio}} value="{{studio}}" {{/studio}}>
-        </tr>
-
-    </table>
-    <input value="Сохранить" type="submit">
-    <br>
-</form>
+    <h2>Добавление/Настройка фильма</h2>
+    <div>
+        <a href="../../title"><--</a>
+    </div>
+    <form method="post" >
+        <label>
+            Название: <input name="title" {{#movie}} value="{{movie.title}}" {{/movie}}><br>
+            Оригинальное название: <input name="originalTitle" {{#movie}} value="{{movie.originalTitle}}" {{/movie}}><br>
+            Статус: <input name="status" list="statusList" {{#movie}} value="{{movie.status}}" {{/movie}} ><br>
+            Оценка: <input name="score" type="number" min="0" max="5"  {{#movie.score}} value="{{movie.score}}" {{/movie.score}} ><br>
+            Дата выхода: <input name="releaseDate" type="date" {{#movie}} value="{{movie.releaseDate}}" {{/movie}}><br>
+            Длительность: <input name="duration" {{#movie}} value="{{movie.duration}}" {{/movie}}><br>
+        </label>
+        <br>
+        <label>
+            Дата просмотра: <input name="endDate" type="date" {{#movie.endDate}} value="{{movie.endDate}}" {{/movie.endDate}}><br>
+        </label><br>
+        <input value="Сохранить" type="submit">
+        <br>
+        {{#add}}
+            <p>
+                <img alt="haruhi" {{#image}}src="{{image}}"{{/image}} width="200" height="300">
+            </p>
+        {{/add}}
+    </form>
+    {{#edit}}
+        <form method="post" action="./delete">
+            <input name="id" {{#movie}} value="{{movie.id}}" {{/movie}} hidden>
+            <input value="Удалить" type="submit">
+        </form>
+    {{/edit}}
 </body>
 </html>

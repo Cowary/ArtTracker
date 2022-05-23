@@ -1,32 +1,45 @@
 <html>
-
 <body>
-<datalist id="statusList">
-    <option>Ready to start</option>
-    <option>Watching</option>
-    <option>Dropped</option>
-    <option>Finished</option>
-</datalist>
-<datalist id="ongoingList">
-    <option>yes</option>
-    <option>no</option>
-</datalist>
+    <datalist id="statusList">
+        <option>Ready to start</option>
+        <option>Watching</option>
+        <option>Dropped</option>
+        <option>Finished</option>
+    </datalist>
+    <datalist id="ongoingList">
+        <option>yes</option>
+        <option>no</option>
+    </datalist>
 
-<h2>Добавление игры</h2>
-<form method="post" >
-    <label>
-        Название: <input name="name" {{#game}} value="{{game.name}}" {{/game}}><br>
-        Статус: <input name="status" list="statusList" {{#game}} value="{{game.status}}" {{/game}}><br>
-        Оценка: <input name="score" type="number" min="0" max="10"  {{#game.score}} value="{{game.score}}" {{/game.score}} ><br>
-        Дата выхода: <input name="releaseDate" type="date" {{#game}} value="{{game.releaseDate}}" {{/game}}><br>
-    </label>
-    <br>
-    <label>
-        Дата старта прохожождения: <input name="startDate" type="date" {{#startDate}} value="{{startDate}}" {{/startDate}}>
-        Дата окончания прохождения: <input name="endDate" type="date" {{#endDate}} value="{{endDate}}" {{/endDate}}><br>
-    </label><br>
-    <input value="Сохранить" type="submit">
-    <br>
-</form>
+    <h2>Добавление/Редактирование игры</h2>
+    <div>
+        <a href="../../title"><--</a>
+    </div>
+    <form method="post" >
+        <label>
+            Название: <input name="title" {{#game}} value="{{game.title}}" {{/game}}><br>
+            Статус: <input name="status" list="statusList" {{#game}} value="{{game.status}}" {{/game}}><br>
+            Оценка: <input name="score" type="number" min="0" max="10"  {{#game.score}} value="{{game.score}}" {{/game.score}} ><br>
+            Дата выхода: <input name="releaseDate" type="date" {{#game}} value="{{game.releaseDate}}" {{/game}}><br>
+        </label>
+        <br>
+        <label>
+            Дата старта прохожождения: <input name="startDate" type="date" {{#game.startDate}} value="{{game.startDate}}" {{/game.startDate}}>
+            Дата окончания прохождения: <input name="endDate" type="date" {{#game.endDate}} value="{{game.endDate}}" {{/game.endDate}}><br>
+        </label><br>
+        <input value="Сохранить" type="submit">
+        <br>
+        {{#add}}
+            <p>
+                <img alt="haruhi" {{#image}}src="{{image}}"{{/image}} width="200" height="300">
+            </p>
+        {{/add}}
+    </form>
+    {{#edit}}
+        <form method="post" action="./delete">
+            <input name="id" {{#game}} value="{{game.id}}" {{/game}} hidden>
+            <input value="Удалить" type="submit">
+        </form>
+    {{/edit}}
 </body>
 </html>
