@@ -21,10 +21,12 @@
             Название: <input name="title" {{#tv}} value="{{tv.title}}" {{/tv}}><br>
             Оригинальное название: <input name="originalTitle" {{#tv}} value="{{tv.originalTitle}}" {{/tv}}><br>
             Количество сезонов: <input name="seasons" {{#tv}} value="{{tv.seasons}}" {{/tv}}> <br>
-            Просмотренно сезонов: <input name="seasons_end" {{#tv}} value="{{tv.seasons_end}}" {{/tv}}> <br>
-            Статус: <input name="status" list="statusList" {{#tv}} value="{{tv.status}}" {{/tv}}><br>
-            Оценка: <input name="score" type="number" min="0" max="5"  {{#tv.score}} value="{{tv.score}}" {{/tv.score}} ><br>
-            Дата выхода: <input name="releaseDate" type="date" {{#tv}} value="{{tv.releaseDate}}" {{/tv}}><br>
+            Просмотренно сезонов: <input name="seasons_end" {{#tv.seasons_end}} value="{{tv.seasons_end}}" {{/tv.seasons_end}}> <br>
+            Статус: <input name="status" list="statusList" {{#tv.status}} value="{{tv.status}}" {{/tv.status}}><br>
+            Оценка: <input name="score" type="number" min="1" max="5"  {{#tv.score}} value="{{tv.score}}" {{/tv.score}} ><br>
+            Дата выхода: <input name="releaseYear" type="number" {{#tv.releaseYear}} value="{{tv.releaseYear}}" {{/tv.releaseYear}}><br>
+            <input name="integId" type="number" value="{{#integId}}{{integId}}{{/integId}}" hidden>
+
         </label>
         <br>
         <label>

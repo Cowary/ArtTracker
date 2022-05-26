@@ -20,10 +20,11 @@
         <label>
             Название: <input name="title" {{#movie}} value="{{movie.title}}" {{/movie}}><br>
             Оригинальное название: <input name="originalTitle" {{#movie}} value="{{movie.originalTitle}}" {{/movie}}><br>
-            Статус: <input name="status" list="statusList" {{#movie}} value="{{movie.status}}" {{/movie}} ><br>
+            Статус: <input name="status" list="statusList" {{#movie.status}} value="{{movie.status}}" {{/movie.status}} ><br>
             Оценка: <input name="score" type="number" min="0" max="5"  {{#movie.score}} value="{{movie.score}}" {{/movie.score}} ><br>
-            Дата выхода: <input name="releaseDate" type="date" {{#movie}} value="{{movie.releaseDate}}" {{/movie}}><br>
+            Дата выхода: <input name="releaseYear" type="number" {{#movie}} value="{{movie.releaseYear}}" {{/movie}}><br>
             Длительность: <input name="duration" {{#movie}} value="{{movie.duration}}" {{/movie}}><br>
+            <input name="integId" type="number" value="{{#integId}}{{integId}}{{/integId}}">
         </label>
         <br>
         <label>

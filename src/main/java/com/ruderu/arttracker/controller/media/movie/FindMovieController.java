@@ -1,11 +1,10 @@
 package com.ruderu.arttracker.controller.media.movie;
 
-import com.ruderu.arttracker.model.tmdb.ResultModel;
-import com.ruderu.arttracker.rest.TmdbApi;
+import com.ruderu.arttracker.model.kin.KinResultModel;
+import com.ruderu.arttracker.rest.KinApi;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -13,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-public class FindMovieIntegrationController {
+public class FindMovieController {
 
     @GetMapping("/title/movie/find")
     public String get() {
@@ -22,22 +21,23 @@ public class FindMovieIntegrationController {
 
     @PostMapping("/title/movie/find")
     public String post(
-            @ModelAttribute("movieName") String movieName,
+            @RequestParam String keyword,
             Model model
     ) {
-        List<ResultModel> list = TmdbApi.searchFilm(movieName);
+        List<KinResultModel> list = KinApi.searchByKeyword(keyword, "FILM");
         model.addAttribute("list", list);
 
         return "media/movie/find";
+
     }
 
     @PostMapping("/title/movie/save")
     public String post(
-            @RequestParam int id,
+            @RequestParam int filmId,
             RedirectAttributes redirectAttributes
     ) {
-        redirectAttributes.addAttribute("id", id);
+        redirectAttributes.addAttribute("filmId", filmId);
 
-        return "redirect:./addIntegration";
+        return "redirect:./add";
     }
 }

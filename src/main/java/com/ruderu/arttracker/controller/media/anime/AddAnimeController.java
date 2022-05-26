@@ -33,19 +33,20 @@ public class AddAnimeController {
 
     @GetMapping("title/anime/add")
     public String get(
-            @RequestParam int animeId,
+            @RequestParam(required = false) Integer animeId,
             Model model
     ) {
-        AnimeModel animeModel = ShikimoriApi.findById(animeId);
+        if(animeId != null) {
+            AnimeModel animeModel = ShikimoriApi.findById(animeId);
 
-        Anime anime = new Anime(animeModel.getName(), animeModel.getRussian(), animeModel.getEpisodes(), DateFormat.HTMLshort.parse(animeModel.getAired_on()), (long) animeModel.getId());
-        List<StudioModel> studioModelList = List.of(animeModel.getStudios());
-        model.addAttribute("anime", anime);
-        model.addAttribute("studioList", studioModelList);
-        String url = "https://dere.shikimori.one" + animeModel.getImage().getOriginal();
-        model.addAttribute("add", true);
-        model.addAttribute("image", url);
-        System.out.println(DateFormat.HTML.format(anime.getReleaseDate()));
+            Anime anime = new Anime(animeModel.getName(), animeModel.getRussian(), animeModel.getEpisodes(), DateFormat.HTMLshort.parse(animeModel.getAired_on()), (long) animeModel.getId());
+            List<StudioModel> studioModelList = List.of(animeModel.getStudios());
+            model.addAttribute("anime", anime);
+            model.addAttribute("studioList", studioModelList);
+            String url = "https://dere.shikimori.one" + animeModel.getImage().getOriginal();
+            model.addAttribute("add", true);
+            model.addAttribute("image", url);
+        }
 
         return "media/anime/addAnim";
     }

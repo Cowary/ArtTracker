@@ -34,22 +34,11 @@ public class Movie implements Media {
     @Transient
     private String type = "Movie";
 
-    public Movie(String originalTitle, String title, Date releaseDate, Integer duration) {
-        this.title = title;
-        this.originalTitle = originalTitle;
-        this.releaseDate = releaseDate;
-        this.duration = duration;
-        this.status = "Ready to Start";
-    }
-
-    public Movie(String originalTitle, String title, Date releaseDate, Integer duration, String status, Integer score, Date endDate) {
+    public Movie(String originalTitle, String title, int releaseYear, Integer duration) {
         this.originalTitle = originalTitle;
         this.title = title;
-        this.releaseDate = releaseDate;
+        this.releaseYear = releaseYear;
         this.duration = duration;
-        this.status = status;
-        this.score = score;
-        this.endDate = endDate;
     }
 
     public Movie() {

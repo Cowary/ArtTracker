@@ -29,25 +29,25 @@ public class AddMangaController {
     @Autowired
     MangaRoleCrud mangaRoleCrud;
 
-    @GetMapping("title/manga/addManga")
+    @GetMapping("title/manga/add")
     public String get(
-            @RequestParam int mangaId,
+            @RequestParam(required = false) Integer mangaId,
             Model model
     ) {
-        MangaModel mangaModel = ShikimoriApi.findMangaById(mangaId);
+        if(mangaId != null) {
+            MangaModel mangaModel = ShikimoriApi.findMangaById(mangaId);
 
-        Manga manga = new Manga(mangaModel.getName(), mangaModel.getRussian(), mangaModel.getVolumes(), mangaModel.getChapters(), DateFormat.HTMLshort.parse(mangaModel.getAired_on()), (long) mangaModel.getId());
-        model.addAttribute("manga", manga);
-        model.addAttribute("ongoingStart", "no");
-        String url = "https://dere.shikimori.one" + mangaModel.getImage().getOriginal();
-        model.addAttribute("add", true);
-        model.addAttribute("image",url);
-        System.out.println(DateFormat.HTML.format(manga.getReleaseDate()));
+            Manga manga = new Manga(mangaModel.getName(), mangaModel.getRussian(), mangaModel.getVolumes(), mangaModel.getChapters(), DateFormat.HTMLshort.parse(mangaModel.getAired_on()), (long) mangaModel.getId());
+            model.addAttribute("manga", manga);
+            String url = "https://dere.shikimori.one" + mangaModel.getImage().getOriginal();
+            model.addAttribute("add", true);
+            model.addAttribute("image",url);
+        }
 
         return "media/manga/addManga";
     }
 
-    @PostMapping("title/manga/addManga")
+    @PostMapping("title/manga/add")
     public String post(
             @ModelAttribute("manga") Manga manga,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
@@ -69,8 +69,6 @@ public class AddMangaController {
         mangaPublisherCrud.create(manga.getId(), List.of(mangaModel.getPublishers()));
         mangaRoleCrud.create(manga.getId(), List.of(mangaModel.getRoleModels()));
 
-//        File file = new File(FileUtil.path + "image" + ".jpeg");
-//        Assert.isTrue(file.delete(), "Rename file");
         return "media/manga/addManga";
     }
 }

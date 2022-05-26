@@ -4,6 +4,7 @@ import com.ruderu.arttracker.model.shiki.AnimeModel;
 import com.ruderu.arttracker.model.shiki.MangaModel;
 import com.ruderu.arttracker.model.shiki.RanobeModel;
 import com.ruderu.arttracker.model.shiki.RoleModel;
+import com.ruderu.arttracker.util.ProperUtil;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class ShikimoriApi {
 
-    static final String URL = "https://shikimori.one/api";
+    static final String URL;
     static final String URL_SEARCH_ANIME = "/animes?limit=50&search=";
     static final String URL_ANIME = "/animes/";
     static final String URL_SEARCH_MANGA = "/mangas?limit=50&search=";
@@ -21,6 +22,10 @@ public class ShikimoriApi {
     static final String URL_RANOBE = "/ranobe/";
     static final String URL_ROLES =  "/roles";
 
+    static {
+        ProperUtil properUtil = ProperUtil.setPath("api.properties");
+        URL = properUtil.getProp("shiki.URL");
+    }
 
     static RestTemplate restTemplate = new RestTemplate();
 

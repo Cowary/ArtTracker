@@ -1,15 +1,21 @@
 package com.ruderu.arttracker.rest;
 
-public class SimpleGetExample {
+import com.ruderu.arttracker.model.kin.KinResultModel;
 
-    static final String URL_EXAMPLE = "https://shikimori.one/api/animes?limit=10&search='Кровь'";
+import java.util.List;
+
+public class SimpleGetExample {
 
     public static void main(String[] args) {
 
         //TmdbApi.searchMovieById(557);
         //TmdbApi.searchFilm("Spider-man");
+        //KinApi.searchByName(301);
 
-        System.out.println("kek");
+        List<KinResultModel> list = KinApi.searchByKeyword("Матрица", "FILM");
+
+        ShikimoriApi.searchByName("харухи");
+        System.out.println(list);
 
 //        RestTemplate restTemplate = new RestTemplate();
 //        AnimeModel[] models = restTemplate.getForObject(URL_EXAMPLE, AnimeModel[].class);

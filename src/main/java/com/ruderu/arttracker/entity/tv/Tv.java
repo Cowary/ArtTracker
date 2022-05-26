@@ -38,4 +38,14 @@ public class Tv implements Media {
     private Integer seasons_end;
     @Transient
     private String type = "Tv";
+
+    public Tv(String originalTitle, String title, Integer releaseYear, Integer seasons) {
+        this.originalTitle = originalTitle;
+        this.title = title;
+        this.releaseYear = releaseYear;
+        this.seasons = seasons;
+    }
+
+    public Tv() {
+    }
 }

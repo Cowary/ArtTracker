@@ -29,29 +29,28 @@ public class AddRanobeController {
     @Autowired
     RanobeRoleCrud ranobeRoleCrud;
 
-    @GetMapping("title/ranobe/addRanobe")
+    @GetMapping("title/ranobe/add")
     public String get(
-            @RequestParam int ranobeId,
+            @RequestParam(required = false) Integer ranobeId,
             Model model
     ) {
-        RanobeModel ranobeModel = ShikimoriApi.findRanobeById(ranobeId);
-
-        Ranobe ranobe = new Ranobe(ranobeModel.getName(), ranobeModel.getRussian(), ranobeModel.getVolumes(), ranobeModel.getChapters(), DateFormat.HTMLshort.parse(ranobeModel.getAired_on()), (long) ranobeModel.getId());
-        model.addAttribute("ranobe", ranobe);
-        String url = "https://dere.shikimori.one" + ranobeModel.getImage().getOriginal();
-        model.addAttribute("add", true);
-        model.addAttribute("image",url);
-        System.out.println(DateFormat.HTML.format(ranobe.getReleaseDate()));
+        if(ranobeId != null) {
+            RanobeModel ranobeModel = ShikimoriApi.findRanobeById(ranobeId);
+            Ranobe ranobe = new Ranobe(ranobeModel.getName(), ranobeModel.getRussian(), ranobeModel.getVolumes(), ranobeModel.getChapters(), DateFormat.HTMLshort.parse(ranobeModel.getAired_on()), (long) ranobeModel.getId());
+            model.addAttribute("ranobe", ranobe);
+            String url = "https://dere.shikimori.one" + ranobeModel.getImage().getOriginal();
+            model.addAttribute("add", true);
+            model.addAttribute("image",url);
+        }
 
         return "media/ranobe/addRanobe";
     }
 
-    @PostMapping("title/ranobe/addRanobe")
+    @PostMapping("title/ranobe/add")
     public String post(
             @ModelAttribute("ranobe") Ranobe ranobe,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date startDate,
             @RequestParam(required = false) @DateTimeFormat(pattern = DateFormat.HTMLshort_PATTER) Date endDate,
-            @RequestParam(required = false) String comment,
             @RequestParam() String ongoingStart
     ) {
         RanobeModel ranobeModel = ShikimoriApi.findRanobeById(Math.toIntExact(ranobe.getShikiId()));
