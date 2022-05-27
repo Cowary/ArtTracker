@@ -23,7 +23,7 @@ public class ShikimoriApi {
     static final String URL_ROLES =  "/roles";
 
     static {
-        ProperUtil properUtil = ProperUtil.setPath("api.properties");
+        ProperUtil properUtil = new ProperUtil();
         URL = properUtil.getProp("shiki.URL");
     }
 

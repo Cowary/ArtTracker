@@ -25,7 +25,7 @@ public class KinApi {
     private final static  HttpEntity<String> request;
 
     static {
-        ProperUtil properUtil = ProperUtil.setPath("api.properties");
+        ProperUtil properUtil = new ProperUtil();
 
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set(
