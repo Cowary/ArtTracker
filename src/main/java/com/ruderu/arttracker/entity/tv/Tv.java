@@ -36,6 +36,9 @@ public class Tv implements Media {
     private Date endDate;
     private Integer seasons;
     private Integer seasons_end;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date lastUpd;
     @Transient
     private String type = "Tv";
 

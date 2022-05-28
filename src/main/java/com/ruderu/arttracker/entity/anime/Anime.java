@@ -39,6 +39,9 @@ public class Anime implements Media {
     private Integer duration;
     private String ongoingStart;
     private Integer episodesEnd;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date lastUpd;
     @Transient
     private String type = "Anime";
 

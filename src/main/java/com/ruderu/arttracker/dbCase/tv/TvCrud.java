@@ -2,6 +2,7 @@ package com.ruderu.arttracker.dbCase.tv;
 
 import com.ruderu.arttracker.entity.tv.Tv;
 import com.ruderu.arttracker.repo.tv.TvRepo;
+import com.ruderu.arttracker.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,7 @@ public class TvCrud {
     }
 
     public void save(Tv tv) {
+        tv.setLastUpd(DateUtil.now());
         tvRepo.save(tv);
     }
 

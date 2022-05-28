@@ -33,6 +33,9 @@ public class Book implements Media {
     private Integer score;
     private String status;
     private String author;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date lastUpd;
     @Transient
     private String type = "Book";
 

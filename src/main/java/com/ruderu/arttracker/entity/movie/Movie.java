@@ -31,6 +31,9 @@ public class Movie implements Media {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date endDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date lastUpd;
     @Transient
     private String type = "Movie";
 

@@ -32,6 +32,9 @@ public class Game implements Media {
     private Integer releaseYear;
     private Integer score;
     private String status;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date lastUpd;
     @Transient
     private String type = "Game";
 

@@ -39,6 +39,9 @@ public class Manga implements Media {
     private Long shikiId;
     private Integer volumesEnd;
     private Integer chaptersEnd;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date lastUpd;
     @Transient
     private String type = "Manga";
 

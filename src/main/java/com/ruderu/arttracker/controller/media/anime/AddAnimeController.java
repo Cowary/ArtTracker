@@ -1,12 +1,11 @@
 package com.ruderu.arttracker.controller.media.anime;
 
+import com.ruderu.arttracker.dbCase.anime.AnimeCrud;
 import com.ruderu.arttracker.dbCase.anime.AnimeRoleCrud;
 import com.ruderu.arttracker.dbCase.anime.AnimeStudioCrud;
 import com.ruderu.arttracker.entity.anime.Anime;
 import com.ruderu.arttracker.model.shiki.AnimeModel;
 import com.ruderu.arttracker.model.shiki.StudioModel;
-import com.ruderu.arttracker.repo.AnimeRepo;
-import com.ruderu.arttracker.repo.AnimeStudioRep;
 import com.ruderu.arttracker.rest.ShikimoriApi;
 import com.ruderu.arttracker.util.DateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +22,7 @@ import java.util.List;
 public class AddAnimeController {
 
     @Autowired
-    AnimeRepo animeRepo;
-    @Autowired
-    AnimeStudioRep animeStudioRep;
+    AnimeCrud animeCrud;
     @Autowired
     AnimeStudioCrud animeStudioCrud;
     @Autowired
@@ -60,7 +57,7 @@ public class AddAnimeController {
 
         List<StudioModel> studioModelList = List.of(animeModel.getStudios());
 
-        animeRepo.save(anime);
+        animeCrud.save(anime);
         studioModelList.forEach(studioModel -> animeStudioCrud.create(studioModel.getName(), anime.getId())
         );
         animeRoleCrud.create(anime.getId(), animeModel.getRoleModels());

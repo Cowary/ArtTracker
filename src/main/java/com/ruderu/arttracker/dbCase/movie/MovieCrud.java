@@ -2,6 +2,7 @@ package com.ruderu.arttracker.dbCase.movie;
 
 import com.ruderu.arttracker.entity.movie.Movie;
 import com.ruderu.arttracker.repo.movie.MovieRepo;
+import com.ruderu.arttracker.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,7 @@ public class MovieCrud {
     }
 
     public void save(Movie movie) {
+        movie.setLastUpd(DateUtil.now());
         movieRepo.save(movie);
     }
 

@@ -40,6 +40,9 @@ public class Ranobe implements Media {
     private Long shikiId;
     private Integer volumesEnd;
     private Integer chaptersEnd;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date lastUpd;
     @Transient
     private static final String type = "Ranobe";
 

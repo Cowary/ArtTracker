@@ -2,6 +2,7 @@ package com.ruderu.arttracker.dbCase.game;
 
 import com.ruderu.arttracker.entity.game.Game;
 import com.ruderu.arttracker.repo.game.GameRepo;
+import com.ruderu.arttracker.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,7 @@ public class GameCrud {
     }
 
     public void save(Game game) {
+        game.setLastUpd(DateUtil.now());
         gameRepo.save(game);
     }
 
