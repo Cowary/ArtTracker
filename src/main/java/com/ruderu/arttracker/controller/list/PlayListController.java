@@ -1,4 +1,4 @@
-package com.ruderu.arttracker.controller;
+package com.ruderu.arttracker.controller.list;
 
 import com.ruderu.arttracker.dbCase.game.GameCrud;
 import com.ruderu.arttracker.entity.Media;

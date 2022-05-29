@@ -7,31 +7,36 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class HomeTest {
+public class MediaTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void correctTest() throws Exception {
-        this.mockMvc.perform(get("/title"))
+    public void mediaTest() throws Exception {
+        this.mockMvc.perform(get("/title/view/media"))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void findAnimeTest() throws Exception {
-        this.mockMvc.perform(get("/title/anime/find"))
+    public void playTest() throws Exception {
+        this.mockMvc.perform(get("/title/view/play"))
                 .andExpect(status().isOk());
     }
 
-    public void addAnimeTest() throws Exception {
-        this.mockMvc.perform(get("/title/anime/addAnime"))
-                .andDo(print())
+    @Test
+    public void readTest() throws Exception {
+        this.mockMvc.perform(get("/title/view/read"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void watchTest() throws Exception {
+        this.mockMvc.perform(get("/title/view/watch"))
                 .andExpect(status().isOk());
     }
 }

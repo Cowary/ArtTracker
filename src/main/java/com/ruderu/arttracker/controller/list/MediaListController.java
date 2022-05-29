@@ -1,4 +1,4 @@
-package com.ruderu.arttracker.controller;
+package com.ruderu.arttracker.controller.list;
 
 import com.ruderu.arttracker.dbCase.anime.AnimeCrud;
 import com.ruderu.arttracker.dbCase.book.BookCrud;
@@ -60,6 +60,6 @@ public class MediaListController {
     ) {
         redirectAttributes.addAttribute("id", id);
 
-        return "redirect:../" + type.toLowerCase() + "/edit";
+        return String.format("redirect:../%s/edit", type.toLowerCase());
     }
 }

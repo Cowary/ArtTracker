@@ -1,8 +1,8 @@
-package com.ruderu.arttracker.controller;
+package com.ruderu.arttracker.controller.list;
 
-import com.ruderu.arttracker.dbCase.anime.AnimeCrud;
-import com.ruderu.arttracker.dbCase.movie.MovieCrud;
-import com.ruderu.arttracker.dbCase.tv.TvCrud;
+import com.ruderu.arttracker.dbCase.book.BookCrud;
+import com.ruderu.arttracker.dbCase.manga.MangaCrud;
+import com.ruderu.arttracker.dbCase.ranobe.RanobeCrud;
 import com.ruderu.arttracker.entity.Media;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,24 +14,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class WatchListController {
+public class ReadListController {
 
     @Autowired
-    AnimeCrud animeCrud;
+    MangaCrud mangaCrud;
     @Autowired
-    MovieCrud movieCrud;
+    RanobeCrud ranobeCrud;
     @Autowired
-    TvCrud tvCrud;
+    BookCrud bookCrud;
 
-    @GetMapping("/title/view/watch")
+    @GetMapping("/title/view/read")
     public String get(@RequestParam(required = false, defaultValue = "") String status,
                       Model model) {
         List<Media> mediaList = new ArrayList<>();
-        mediaList.addAll(animeCrud.getAll(status));
-        mediaList.addAll(movieCrud.getAll(status));
-        mediaList.addAll(tvCrud.getAll(status));
+        mediaList.addAll(mangaCrud.getAll(status));
+        mediaList.addAll(ranobeCrud.getAll(status));
+        mediaList.addAll(bookCrud.getAll(status));
 
         model.addAttribute("mediaList", mediaList);
-        return "media/view/watch";
+        return "media/view/read";
     }
 }

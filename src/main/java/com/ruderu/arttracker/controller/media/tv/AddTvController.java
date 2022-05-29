@@ -26,7 +26,7 @@ public class AddTvController {
             @RequestParam(required = false) Integer filmId,
             Model model
     ) {
-        if(filmId != 0) {
+        if(filmId != null) {
             KinFilmModel kinFilmModel = KinApi.searchById(filmId);
             int seasonsTotal = KinApi.totalSeasons(filmId);
             Tv tv = new Tv(kinFilmModel.getNameOriginal(), kinFilmModel.getNameRu(), kinFilmModel.getYear(), seasonsTotal);
