@@ -40,6 +40,6 @@ public class FindMangaController {
     ) {
         redirectAttributes.addAttribute("mangaId", mangaId);
 
-        return "redirect:./addManga";
+        return "redirect:./add";
     }
 }

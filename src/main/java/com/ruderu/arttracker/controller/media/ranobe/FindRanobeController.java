@@ -40,6 +40,6 @@ public class FindRanobeController {
     ) {
         redirectAttributes.addAttribute("ranobeId", ranobeId);
 
-        return "redirect:./addRanobe";
+        return "redirect:./add";
     }
 }

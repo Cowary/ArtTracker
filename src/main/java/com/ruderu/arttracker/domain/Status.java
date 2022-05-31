@@ -2,10 +2,7 @@ package com.ruderu.arttracker.domain;
 
 public enum Status {
     READY("Ready to start"),
-    WATCHING("Watching"),
-    READING("Reading"),
-    PLAYING("Playing"),
-    LISTENING("Listening"),
+    IN_PROGRESS("In progress"),
     DROPPED("Dropped"),
     FINISHED("Finished");
 
