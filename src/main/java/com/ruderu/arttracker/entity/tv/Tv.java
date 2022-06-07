@@ -30,9 +30,6 @@ public class Tv implements Media {
     private Integer score;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    private Date startDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
     private Date endDate;
     private Integer seasons;
     private Integer seasons_end;

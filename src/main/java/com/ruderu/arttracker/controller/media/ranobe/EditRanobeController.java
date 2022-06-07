@@ -1,7 +1,9 @@
 package com.ruderu.arttracker.controller.media.ranobe;
 
+import com.ruderu.arttracker.dbCase.ranobe.RanobeVolumeCrud;
 import com.ruderu.arttracker.entity.ranobe.Ranobe;
-import com.ruderu.arttracker.repo.RanobeRep;
+import com.ruderu.arttracker.entity.ranobe.RanobeVolume;
+import com.ruderu.arttracker.repo.ranobe.RanobeRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,14 +17,20 @@ public class EditRanobeController {
 
     @Autowired
     RanobeRep ranobeRep;
+    @Autowired
+    RanobeVolumeCrud ranobeVolumeCrud;
+
 
     @GetMapping("title/ranobe/edit")
     public String get(
             @RequestParam long id,
             Model model
     ) {
-        Ranobe ranobe = ranobeRep.findById(id).orElseThrow();
+        RanobeVolume ranobeVolume = ranobeVolumeCrud.getById(id);
+        Ranobe ranobe = ranobeRep.findById(ranobeVolume.getRanobeId()).orElseThrow();
 
+        model.addAttribute("ranobeVolume", ranobeVolume);
+        model.addAttribute("titleVolume", ranobeVolume.getTitle());
         model.addAttribute("ranobe", ranobe);
         model.addAttribute("edit", true);
 
@@ -31,10 +39,14 @@ public class EditRanobeController {
 
     @PostMapping("title/ranobe/edit")
     public String post(
-            @ModelAttribute("ranobe") Ranobe ranobe
+            @ModelAttribute("ranobe") Ranobe ranobe,
+            @ModelAttribute("ranobeVolume") RanobeVolume ranobeVolume,
+            @RequestParam("titleVolume") String titleVolume
     ) {
         System.out.println(ranobe);
-        ranobeRep.save(ranobe);
+        //ranobe.setId(ranobeVolume.getRanobeId());
+        ranobeVolume.setTitle(titleVolume);
+        ranobeVolumeCrud.save(ranobeVolume, ranobe);
         return "redirect:../view/media";
     }
 
@@ -42,8 +54,8 @@ public class EditRanobeController {
     public String post(
             @RequestParam() long id
     ) {
-        Ranobe ranobe = ranobeRep.findById(id).orElseThrow();
-        ranobeRep.delete(ranobe);
+        RanobeVolume ranobeVolume = ranobeVolumeCrud.getById(id);
+        ranobeVolumeCrud.delete(ranobeVolume);
 
         return "redirect:../view/media";
     }

@@ -1,7 +1,7 @@
 package com.ruderu.arttracker.dbCase.ranobe;
 
 import com.ruderu.arttracker.entity.ranobe.Ranobe;
-import com.ruderu.arttracker.repo.RanobeRep;
+import com.ruderu.arttracker.repo.ranobe.RanobeRep;
 import com.ruderu.arttracker.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,5 +22,14 @@ public class RanobeCrud {
     public void save(Ranobe ranobe) {
         ranobe.setLastUpd(DateUtil.now());
         ranobeRep.save(ranobe);
+    }
+
+    public Ranobe findById(Long id) {
+        return ranobeRep.findById(id)
+                .orElseThrow();
+    }
+
+    public Ranobe findByOriginalTitle(String originalTitle) {
+        return ranobeRep.findRanobeByOriginalTitle(originalTitle);
     }
 }

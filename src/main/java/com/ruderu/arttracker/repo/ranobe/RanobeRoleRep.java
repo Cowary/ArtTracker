@@ -1,4 +1,4 @@
-package com.ruderu.arttracker.repo;
+package com.ruderu.arttracker.repo.ranobe;
 
 import com.ruderu.arttracker.entity.ranobe.RanobeRole;
 import org.springframework.data.repository.CrudRepository;

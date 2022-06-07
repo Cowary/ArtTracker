@@ -17,23 +17,24 @@
     </div>
     <form method="post" >
         <label>
-            Название: <input name="title" {{#ranobe}} value="{{ranobe.title}}" {{/ranobe}}><br>
+            Название тома: <input name="titleVolume" {{#titleVolume}} value="{{titleVolume}} {{/titleVolume}}">
+            Название серии: <input name="title" {{#ranobe}} value="{{ranobe.title}}" {{/ranobe}}><br>
             Оригинальное название: <input name="originalTitle" {{#ranobe}} value="{{ranobe.originalTitle}}" {{/ranobe}}><br>
-            Статус: <input name="status" list="statusList" {{#ranobe.status}} value="{{ranobe.status}}" {{/ranobe.status}} ><br>
-            Оценка: <input name="score" type="number" min="1" max="5"  {{#ranobe.score}} value="{{ranobe.score}}" {{/ranobe.score}} ><br>
-            Глав: <input name="chapters" {{#ranobe}} value="{{ranobe.chapters}}" {{/ranobe}}>
+            Статус: <input name="status" list="statusList" {{#ranobeVolume.status}} value="{{ranobeVolume.status}}" {{/ranobeVolume.status}} ><br>
+            Оценка: <input name="score" type="number" min="1" max="5"  {{#ranobeVolume.score}} value="{{ranobeVolume.score}}" {{/ranobeVolume.score}} ><br>
+            Глав: <input name="chapters" {{#ranobeVolume}} value="{{ranobeVolume.chapters}}" {{/ranobeVolume}}>
             Томов: <input name="volumes" {{#ranobe}} value="{{ranobe.volumes}}" {{/ranobe}}><br>
             Дата выхода: <input name="releaseDate" type="date" {{#ranobe}} value="{{ranobe.releaseDate}}" {{/ranobe}}>
             <input name="shikiId" {{#ranobe}} value="{{ranobe.shikiId}}" {{/ranobe}} hidden> <br>
             <input name="releaseYear" {{#ranobe}} value="{{ranobe.releaseYear}}" {{/ranobe}} hidden>
+            <input name="id" {{#ranobe.id}} value="{{ranobe.id}}" {{/ranobe.id}} hidden>
         </label>
         <br>
         <label>
             Просмотр начат в онгоинге? <input name="ongoingStart" list="ongoingList" {{#ranobe.ongoing}} value="{{ranobe.ongoing}}" {{/ranobe.ongoing}}>
-            Дата начала просмотра: <input name="startDate" type="date" {{#ranobe.startDate}} value="{{ranobe.startDate}}" {{/ranobe.startDate}}>
-            Дата окончания просмотра: <input name="endDate" type="date" {{#ranobe.endDate}} value="{{ranobe.endDate}}" {{/ranobe.endDate}}> <br>
+            Дата окончания просмотра: <input name="endDate" type="date" {{#ranobeVolume.endDate}} value="{{ranobeVolume.endDate}}" {{/ranobeVolume.endDate}}> <br>
             Прочитано томов: <input name="volumesEnd" type="number" min="0" {{#ranobe.volumesEnd}} value="{{ranobe.volumesEnd}}" {{/ranobe.volumesEnd}}>
-            Прочитано глав: <input name="chaptersEnd" type="number" min="0" {{#ranobe.volumesEnd}} value="{{ranobe.chaptersEnd}}" {{/ranobe.volumesEnd}}>
+            Прочитано глав: <input name="chaptersEnd" type="number" min="0" {{#ranobeVolume.chaptersEnd}} value="{{ranobeVolume.chaptersEnd}}" {{/ranobeVolume.chaptersEnd}}>
         </label><br>
         <table>
             <tr>
@@ -56,7 +57,7 @@
     </form>
     {{#edit}}
         <form method="post" action="./delete">
-            <input name="id" {{#ranobe}} value="{{ranobe.id}}" {{/ranobe}} hidden>
+            <input name="id" {{#ranobeVolume}} value="{{ranobeVolume.id}}" {{/ranobeVolume}} hidden>
             <input value="Удалить" type="submit">
         </form>
     {{/edit}}

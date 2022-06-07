@@ -5,7 +5,7 @@ import com.ruderu.arttracker.dbCase.book.BookCrud;
 import com.ruderu.arttracker.dbCase.game.GameCrud;
 import com.ruderu.arttracker.dbCase.manga.MangaCrud;
 import com.ruderu.arttracker.dbCase.movie.MovieCrud;
-import com.ruderu.arttracker.dbCase.ranobe.RanobeCrud;
+import com.ruderu.arttracker.dbCase.ranobe.RanobeVolumeCrud;
 import com.ruderu.arttracker.dbCase.tv.TvCrud;
 import com.ruderu.arttracker.entity.Media;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class MediaListController {
     @Autowired
     MangaCrud mangaCrud;
     @Autowired
-    RanobeCrud ranobeCrud;
+    RanobeVolumeCrud ranobeVolumeCrud;
     @Autowired
     MovieCrud movieCrud;
     @Autowired
@@ -42,7 +42,7 @@ public class MediaListController {
         List<Media> mediaList = new ArrayList<>();
         mediaList.addAll(animeCrud.getAll(status));
         mediaList.addAll(mangaCrud.getAll(status));
-        mediaList.addAll(ranobeCrud.getAll(status));
+        mediaList.addAll(ranobeVolumeCrud.getAll(status));
         mediaList.addAll(movieCrud.getAll(status));
         mediaList.addAll(gameCrud.getAll(status));
         mediaList.addAll(bookCrud.getAll(status));

@@ -31,9 +31,6 @@ public class Manga implements Media {
     private Integer releaseYear;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    private Date startDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
     private Date endDate;
     private String ongoingStart;
     private Long shikiId;
