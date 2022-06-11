@@ -21,11 +21,11 @@
             Оригинальное название: <input name="originalTitle" {{#manga}} value="{{manga.originalTitle}}" {{/manga}}><br>
             Статус: <input name="status" list="statusList" {{#manga.status}} value="{{manga.status}}" {{/manga.status}} ><br>
             Оценка: <input name="score" type="number" min="0" max="5"  {{#manga.score}} value="{{manga.score}}" {{/manga.score}} ><br>
-            Главы: <input name="chapters" {{#manga}} value="{{manga.chapters}}" {{/manga}}>
-            Тома: <input name="volumes" {{#manga}} value="{{manga.volumes}}" {{/manga}}><br>
-            Дата выхода: <input name="releaseDate" type="date" {{#manga}} value="{{manga.releaseDate}}" {{/manga}}><br>
-            <input name="shikiId" {{#manga}} value="{{manga.shikiId}}" {{/manga}} hidden>
-            <input name="releaseYear" {{#manga}} value="{{manga.releaseYear}}" {{/manga}} hidden>
+            Главы: <input name="chapters" {{#manga.chapters}} value="{{manga.chapters}}" {{/manga.chapters}}>
+            Тома: <input name="volumes" {{#manga.volumes}} value="{{manga.volumes}}" {{/manga.volumes}}><br>
+            Дата выхода: <input name="releaseDate" type="date" {{#manga.releaseDate}} value="{{manga.releaseDate}}" {{/manga.releaseDate}}><br>
+            <input name="shikiId" {{#manga.shikiId}} value="{{manga.shikiId}}" {{/manga.shikiId}} hidden>
+            <input name="releaseYear" {{#manga.releaseYear}} value="{{manga.releaseYear}}" {{/manga.releaseYear}} hidden>
         </label>
         <br>
         <label>

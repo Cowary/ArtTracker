@@ -49,13 +49,13 @@ public class AddMangaController {
     public String post(
             @ModelAttribute("manga") Manga manga
     ) {
-        MangaModel mangaModel = ShikimoriApi.findMangaById(Math.toIntExact(manga.getShikiId()));
-
         mangaCrud.save(manga);
 
-        mangaPublisherCrud.create(manga.getId(), List.of(mangaModel.getPublishers()));
-        mangaRoleCrud.create(manga.getId(), List.of(mangaModel.getRoleModels()));
-
+        if(manga.getShikiId() != null) {
+            MangaModel mangaModel = ShikimoriApi.findMangaById(Math.toIntExact(manga.getShikiId()));
+            mangaPublisherCrud.create(manga.getId(), List.of(mangaModel.getPublishers()));
+            mangaRoleCrud.create(manga.getId(), List.of(mangaModel.getRoleModels()));
+        }
         return "media/manga/addManga";
     }
 }
