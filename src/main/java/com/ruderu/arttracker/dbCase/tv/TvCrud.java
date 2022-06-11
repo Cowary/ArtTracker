@@ -23,6 +23,10 @@ public class TvCrud {
         return tvRepo.findById(id).orElseThrow();
     }
 
+    public Tv findByOriginalTitle(String originalTitle) {
+        return tvRepo.findByOriginalTitle(originalTitle).orElse(null);
+    }
+
     public void save(Tv tv) {
         tv.setLastUpd(DateUtil.now());
         tvRepo.save(tv);

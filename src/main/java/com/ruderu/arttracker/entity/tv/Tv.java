@@ -32,7 +32,7 @@ public class Tv implements Media {
     @Temporal(TemporalType.DATE)
     private Date endDate;
     private Integer seasons;
-    private Integer seasons_end;
+    private Integer seasonsEnd;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date lastUpd;

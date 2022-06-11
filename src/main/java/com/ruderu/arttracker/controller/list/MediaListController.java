@@ -6,7 +6,7 @@ import com.ruderu.arttracker.dbCase.game.GameCrud;
 import com.ruderu.arttracker.dbCase.manga.MangaCrud;
 import com.ruderu.arttracker.dbCase.movie.MovieCrud;
 import com.ruderu.arttracker.dbCase.ranobe.RanobeVolumeCrud;
-import com.ruderu.arttracker.dbCase.tv.TvCrud;
+import com.ruderu.arttracker.dbCase.tv.TvSeasonsCrud;
 import com.ruderu.arttracker.entity.Media;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public class MediaListController {
     @Autowired
     BookCrud bookCrud;
     @Autowired
-    TvCrud tvCrud;
+    TvSeasonsCrud tvSeasonsCrud;
 
     @GetMapping("/title/view/media")
     public String get(@RequestParam(required = false, defaultValue = "") String status,
@@ -46,7 +46,7 @@ public class MediaListController {
         mediaList.addAll(movieCrud.getAll(status));
         mediaList.addAll(gameCrud.getAll(status));
         mediaList.addAll(bookCrud.getAll(status));
-        mediaList.addAll(tvCrud.getAll(status));
+        mediaList.addAll(tvSeasonsCrud.getAll(status));
 
         model.addAttribute("mediaList", mediaList);
         return "media/view/mediaList";

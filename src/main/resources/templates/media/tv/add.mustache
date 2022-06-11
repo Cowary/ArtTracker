@@ -18,19 +18,24 @@
     </div>
     <form method="post" >
         <label>
+            Название сезона: <input name="titleSeason" {{#titleSeason}} value="{{titleSeason}}" {{/titleSeason}}>
             Название: <input name="title" {{#tv}} value="{{tv.title}}" {{/tv}}><br>
             Оригинальное название: <input name="originalTitle" {{#tv}} value="{{tv.originalTitle}}" {{/tv}}><br>
             Количество сезонов: <input name="seasons" {{#tv}} value="{{tv.seasons}}" {{/tv}}> <br>
             Просмотренно сезонов: <input name="seasons_end" {{#tv.seasons_end}} value="{{tv.seasons_end}}" {{/tv.seasons_end}}> <br>
-            Статус: <input name="status" list="statusList" {{#tv.status}} value="{{tv.status}}" {{/tv.status}}><br>
-            Оценка: <input name="score" type="number" min="1" max="5"  {{#tv.score}} value="{{tv.score}}" {{/tv.score}} ><br>
+            Количество серий: <input name="episodes" {{#tvSeason.episodes}} value="{{tvSeason.episodes}}" {{/tvSeason.episodes}}>
+
+            Просмотренной серий: <input name="episodesEnd" {{#tvSeason.episodesEnd}} value="{{tvSeason.episodesEnd}}" {{/tvSeason.episodesEnd}}><br>
+            Статус: <input name="status" list="statusList" {{#tvSeason.status}} value="{{tvSeason.status}}" {{/tvSeason.status}}><br>
+            Оценка: <input name="score" type="number" min="1" max="5"  {{#tvSeason.score}} value="{{tvSeason.score}}" {{/tvSeason.score}} ><br>
             Дата выхода: <input name="releaseYear" type="number" {{#tv.releaseYear}} value="{{tv.releaseYear}}" {{/tv.releaseYear}}><br>
             <input name="integId" type="number" value="{{#integId}}{{integId}}{{/integId}}" hidden>
+            <input name="id" type="number" {{#tv.id}} value="{{tv.id}}" {{/tv.id}} hidden>
 
         </label>
         <br>
         <label>
-            Дата просмотра: <input name="endDate" type="date" {{#tv.endDate}} value="{{tv.endDate}}" {{/tv.endDate}}><br>
+            Дата просмотра: <input name="endDate" type="date" {{#tvSeason.endDate}} value="{{tvSeason.endDate}}" {{/tvSeason.endDate}}><br>
         </label><br>
         <input value="Сохранить" type="submit">
         <br>
@@ -42,7 +47,7 @@
     </form>
     {{#edit}}
         <form method="post" action="./delete">
-            <input name="id" {{#tv}} value="{{tv.id}}" {{/tv}} hidden>
+            <input name="id" {{#tvSeason}} value="{{tvSeason.id}}" {{/tvSeason}} hidden>
             <input value="Удалить" type="submit">
         </form>
     {{/edit}}

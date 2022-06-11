@@ -15,4 +15,8 @@ public class TvIntegrationCrud {
         TvIntegration tvIntegration = new TvIntegration(name, tvId, idIntegration);
         tvIntegrationRepo.save(tvIntegration);
     }
+
+    public TvIntegration findByTvId(long tvId) {
+        return tvIntegrationRepo.findByIdTv(tvId).orElse(null);
+    }
 }
