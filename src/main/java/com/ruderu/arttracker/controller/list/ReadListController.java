@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ReadListController {
@@ -30,6 +31,10 @@ public class ReadListController {
         mediaList.addAll(mangaCrud.getAll(status));
         mediaList.addAll(ranobeCrud.getAll(status));
         mediaList.addAll(bookCrud.getAll(status));
+
+        mediaList = mediaList.stream()
+                .sorted((o1, o2) -> new Media().getComparator().compare(o1, o2))
+                .collect(Collectors.toList());
 
         model.addAttribute("mediaList", mediaList);
         return "media/view/read";

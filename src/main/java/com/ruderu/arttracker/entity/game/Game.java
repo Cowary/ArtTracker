@@ -14,7 +14,7 @@ import java.util.Date;
 @ToString
 
 @Entity(name = "game")
-public class Game implements Media {
+public class Game extends Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

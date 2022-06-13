@@ -15,7 +15,7 @@ import java.util.Date;
 @ToString
 
 @Entity(name = "anime")
-public class Anime implements Media {
+public class Anime extends Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

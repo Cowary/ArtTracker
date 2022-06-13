@@ -14,7 +14,7 @@ import java.util.Date;
 @ToString
 
 @Entity(name = "tv_seasons")
-public class TvSeason implements Media {
+public class TvSeason extends Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

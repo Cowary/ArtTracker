@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class PlayListController {
@@ -21,6 +22,10 @@ public class PlayListController {
     public String get(@RequestParam(required = false, defaultValue = "") String status,
                       Model model) {
         List<Media> mediaList = new ArrayList<>(gameCrud.getAll(status));
+
+        mediaList = mediaList.stream()
+                .sorted((o1, o2) -> new Media().getComparator().compare(o1, o2))
+                .collect(Collectors.toList());
 
         model.addAttribute("mediaList", mediaList);
         return "media/view/play";

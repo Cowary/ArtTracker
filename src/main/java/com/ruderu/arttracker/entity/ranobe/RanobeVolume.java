@@ -14,7 +14,7 @@ import java.util.Date;
 @ToString
 
 @Entity(name = "ranobe_volume")
-public class RanobeVolume implements Media {
+public class RanobeVolume extends Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

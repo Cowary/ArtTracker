@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class MediaListController {
@@ -47,6 +48,10 @@ public class MediaListController {
         mediaList.addAll(gameCrud.getAll(status));
         mediaList.addAll(bookCrud.getAll(status));
         mediaList.addAll(tvSeasonsCrud.getAll(status));
+
+        mediaList = mediaList.stream()
+                        .sorted((o1, o2) -> new Media().getComparator().compare(o1, o2))
+                        .collect(Collectors.toList());
 
         model.addAttribute("mediaList", mediaList);
         return "media/view/mediaList";

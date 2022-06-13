@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class WatchListController {
@@ -30,6 +31,10 @@ public class WatchListController {
         mediaList.addAll(animeCrud.getAll(status));
         mediaList.addAll(movieCrud.getAll(status));
         mediaList.addAll(tvSeasonsCrud.getAll(status));
+
+        mediaList = mediaList.stream()
+                .sorted((o1, o2) -> new Media().getComparator().compare(o1, o2))
+                .collect(Collectors.toList());
 
         model.addAttribute("mediaList", mediaList);
         return "media/view/watch";
