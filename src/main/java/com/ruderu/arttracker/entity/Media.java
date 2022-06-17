@@ -18,6 +18,7 @@ public class Media {
     private String status;
     @Temporal(TemporalType.DATE)
     private Date endDate;
+    private Long usrId;
 
     Comparator<Media> comparator = new Comparator<Media>() {
         @Override

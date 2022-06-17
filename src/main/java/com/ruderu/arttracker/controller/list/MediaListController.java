@@ -40,6 +40,7 @@ public class MediaListController {
     @GetMapping("/title/view/media")
     public String get(@RequestParam(required = false, defaultValue = "") String status,
             Model model) {
+
         List<Media> mediaList = new ArrayList<>();
         mediaList.addAll(animeCrud.getAll(status));
         mediaList.addAll(mangaCrud.getAll(status));

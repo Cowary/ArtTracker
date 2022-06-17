@@ -9,6 +9,8 @@ import java.util.Optional;
 public interface AnimeRepo extends CrudRepository<Anime, Long> {
 
     List<Anime> findAll();
+    List<Anime> findAllByUsrId(Long usrId);
     Optional<Anime> findById(Long id);
     List<Anime> findByStatus(String status);
+    List<Anime> findByStatusAndUsrId(String status, Long usrId);
 }

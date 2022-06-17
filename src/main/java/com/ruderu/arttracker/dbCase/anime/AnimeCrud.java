@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.dbCase.anime;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.entity.anime.Anime;
 import com.ruderu.arttracker.repo.AnimeRepo;
 import com.ruderu.arttracker.util.DateUtil;
@@ -13,10 +14,13 @@ public class AnimeCrud {
 
     @Autowired
     AnimeRepo animeRepo;
+    @Autowired
+    UserService userService;
 
     public List<Anime> getAll(String status) {
-        if(status.equals("")) return animeRepo.findAll();
-        else return animeRepo.findByStatus(status);
+        long userId = userService.getIdCurrentUser();
+        if(status.equals("")) return animeRepo.findAllByUsrId(userId);
+        else return animeRepo.findByStatusAndUsrId(status, userId);
     }
 
     public void save(Anime anime) {
