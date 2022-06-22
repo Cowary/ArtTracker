@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.controller.list;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.dbCase.anime.AnimeCrud;
 import com.ruderu.arttracker.dbCase.book.BookCrud;
 import com.ruderu.arttracker.dbCase.game.GameCrud;
@@ -36,10 +37,15 @@ public class MediaListController {
     BookCrud bookCrud;
     @Autowired
     TvSeasonsCrud tvSeasonsCrud;
+    @Autowired
+    UserService userService;
 
     @GetMapping("/title/view/media")
     public String get(@RequestParam(required = false, defaultValue = "") String status,
             Model model) {
+
+        String nickname = userService.getNameCurrentUser();
+        model.addAttribute("nickname", nickname);
 
         List<Media> mediaList = new ArrayList<>();
         mediaList.addAll(animeCrud.getAll(status));
@@ -55,6 +61,7 @@ public class MediaListController {
                         .collect(Collectors.toList());
 
         model.addAttribute("mediaList", mediaList);
+        model.addAttribute(nickname);
         return "media/view/mediaList";
     }
 

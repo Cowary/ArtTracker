@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.controller.list;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.dbCase.book.BookCrud;
 import com.ruderu.arttracker.dbCase.manga.MangaCrud;
 import com.ruderu.arttracker.dbCase.ranobe.RanobeCrud;
@@ -23,10 +24,15 @@ public class ReadListController {
     RanobeCrud ranobeCrud;
     @Autowired
     BookCrud bookCrud;
+    @Autowired
+    UserService userService;
 
     @GetMapping("/title/view/read")
     public String get(@RequestParam(required = false, defaultValue = "") String status,
                       Model model) {
+        String nickname = userService.getNameCurrentUser();
+        model.addAttribute("nickname", nickname);
+
         List<Media> mediaList = new ArrayList<>();
         mediaList.addAll(mangaCrud.getAll(status));
         mediaList.addAll(ranobeCrud.getAll(status));

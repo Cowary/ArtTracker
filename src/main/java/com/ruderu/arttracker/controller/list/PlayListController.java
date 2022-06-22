@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.controller.list;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.dbCase.game.GameCrud;
 import com.ruderu.arttracker.entity.Media;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,15 @@ public class PlayListController {
 
     @Autowired
     GameCrud gameCrud;
+    @Autowired
+    UserService userService;
 
     @GetMapping("/title/view/play")
     public String get(@RequestParam(required = false, defaultValue = "") String status,
                       Model model) {
+
+        String nickname = userService.getNameCurrentUser();
+        model.addAttribute("nickname", nickname);
         List<Media> mediaList = new ArrayList<>(gameCrud.getAll(status));
 
         mediaList = mediaList.stream()

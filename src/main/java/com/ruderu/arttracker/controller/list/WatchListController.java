@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.controller.list;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.dbCase.anime.AnimeCrud;
 import com.ruderu.arttracker.dbCase.movie.MovieCrud;
 import com.ruderu.arttracker.dbCase.tv.TvSeasonsCrud;
@@ -23,10 +24,15 @@ public class WatchListController {
     MovieCrud movieCrud;
     @Autowired
     TvSeasonsCrud tvSeasonsCrud;
+    @Autowired
+    UserService userService;
 
     @GetMapping("/title/view/watch")
     public String get(@RequestParam(required = false, defaultValue = "") String status,
                       Model model) {
+        String nickname = userService.getNameCurrentUser();
+        model.addAttribute("nickname", nickname);
+
         List<Media> mediaList = new ArrayList<>();
         mediaList.addAll(animeCrud.getAll(status));
         mediaList.addAll(movieCrud.getAll(status));

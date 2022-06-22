@@ -72,7 +72,14 @@ public class UserService implements UserDetailsService {
     }
 
     public Long getIdCurrentUser() {
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        return userRepo.findByUsername(name).getId();
+        return userRepo.findByUsername(getName()).getId();
+    }
+
+    public String getNameCurrentUser() {
+        return userRepo.findByUsername(getName()).getUsername();
+    }
+
+    private String getName() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 }
