@@ -31,6 +31,7 @@ public class TvSeason extends Media {
     @Temporal(TemporalType.DATE)
     private Date lastUpd;
     private Long tvId;
+    private Long usrId;
 
     @Transient
     private String originalTitle;

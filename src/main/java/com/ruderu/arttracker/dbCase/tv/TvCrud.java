@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.dbCase.tv;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.entity.tv.Tv;
 import com.ruderu.arttracker.repo.tv.TvRepo;
 import com.ruderu.arttracker.util.DateUtil;
@@ -13,6 +14,8 @@ public class TvCrud {
 
     @Autowired
     TvRepo tvRepo;
+    @Autowired
+    UserService userService;
 
     public List<Tv> getAll(String status) {
         if(status.equals("")) return tvRepo.findAll();

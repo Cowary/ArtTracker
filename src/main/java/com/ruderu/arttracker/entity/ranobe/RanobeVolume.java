@@ -31,6 +31,7 @@ public class RanobeVolume extends Media {
     @Temporal(TemporalType.DATE)
     private Date lastUpd;
     private Long ranobeId;
+    private Long usrId;
     @Transient
     private String originalTitle;
     @Transient

@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.dbCase.game;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.entity.game.Game;
 import com.ruderu.arttracker.repo.game.GameRepo;
 import com.ruderu.arttracker.util.DateUtil;
@@ -13,9 +14,12 @@ public class GameCrud {
 
     @Autowired
     GameRepo gameRepo;
+    @Autowired
+    UserService userService;
 
     public List<Game> getAll(String status) {
-        if(status.equals("")) return gameRepo.findAll();
+        long userId = userService.getIdCurrentUser();
+        if(status.equals("")) return gameRepo.findAllByUsrId(userId);
         else return gameRepo.findByStatus(status);
     }
 
@@ -25,6 +29,7 @@ public class GameCrud {
 
     public void save(Game game) {
         game.setLastUpd(DateUtil.now());
+        game.setUsrId(userService.getIdCurrentUser());
         gameRepo.save(game);
     }
 

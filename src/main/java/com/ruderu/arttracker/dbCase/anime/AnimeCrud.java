@@ -25,6 +25,7 @@ public class AnimeCrud {
 
     public void save(Anime anime) {
         anime.setLastUpd(DateUtil.now());
+        anime.setUsrId(userService.getIdCurrentUser());
         animeRepo.save(anime);
     }
 }

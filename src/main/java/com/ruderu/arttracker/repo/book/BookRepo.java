@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface BookRepo extends CrudRepository<Book, Long> {
 
     List<Book> findAll();
+    List<Book> findAllByUsrId(Long usrId);
     Optional<Book> findById(Long id);
     List<Book> findByStatus(String status);
 }

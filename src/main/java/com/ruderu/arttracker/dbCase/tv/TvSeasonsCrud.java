@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.dbCase.tv;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.entity.tv.Tv;
 import com.ruderu.arttracker.entity.tv.TvSeason;
 import com.ruderu.arttracker.repo.tv.TvSeasonsRepo;
@@ -16,6 +17,8 @@ public class TvSeasonsCrud {
     TvSeasonsRepo tvSeasonsRepo;
     @Autowired
     TvCrud tvCrud;
+    @Autowired
+    UserService userService;
 
     public void save(TvSeason tvSeason, Tv tv) {
         System.out.println(tv);
@@ -23,13 +26,14 @@ public class TvSeasonsCrud {
         tv.setLastUpd(DateUtil.now());
         tvCrud.save(tv);
         tvSeason.setTvId(tv.getId());
-        System.out.println(tvSeason);
+        tvSeason.setUsrId(userService.getIdCurrentUser());
         tvSeasonsRepo.save(tvSeason);
     }
 
     public List<TvSeason> getAll(String status) {
         List<TvSeason> tvSeasons;
-        if(status.equals("")) tvSeasons = tvSeasonsRepo.findAll();
+        long userId = userService.getIdCurrentUser();
+        if(status.equals("")) tvSeasons = tvSeasonsRepo.findAllByUsrId(userId);
         else tvSeasons = tvSeasonsRepo.findAllByStatus(status);
 
         fill(tvSeasons);

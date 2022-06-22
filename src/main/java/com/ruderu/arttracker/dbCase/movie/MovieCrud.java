@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.dbCase.movie;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.entity.movie.Movie;
 import com.ruderu.arttracker.repo.movie.MovieRepo;
 import com.ruderu.arttracker.util.DateUtil;
@@ -13,9 +14,12 @@ public class MovieCrud {
 
     @Autowired
     MovieRepo movieRepo;
+    @Autowired
+    UserService userService;
 
     public List<Movie> getAll(String status) {
-        if(status.equals("")) return movieRepo.findAll();
+        long userId = userService.getIdCurrentUser();
+        if(status.equals("")) return movieRepo.findAllByUsrId(userId);
         else return movieRepo.findByStatus(status);
     }
 
@@ -25,6 +29,7 @@ public class MovieCrud {
 
     public void save(Movie movie) {
         movie.setLastUpd(DateUtil.now());
+        movie.setUsrId(userService.getIdCurrentUser());
         movieRepo.save(movie);
     }
 

@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.dbCase.ranobe;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.entity.ranobe.Ranobe;
 import com.ruderu.arttracker.entity.ranobe.RanobeVolume;
 import com.ruderu.arttracker.repo.ranobe.RanobeVolumeRepo;
@@ -16,18 +17,22 @@ public class RanobeVolumeCrud {
     RanobeVolumeRepo ranobeVolumeRepo;
     @Autowired
     RanobeCrud ranobeCrud;
+    @Autowired
+    UserService userService;
 
     public void save(RanobeVolume ranobeVolume, Ranobe ranobe) {
         ranobeVolume.setLastUpd(DateUtil.now());
         ranobe.setLastUpd(DateUtil.now());
         ranobeCrud.save(ranobe);
         ranobeVolume.setRanobeId(ranobe.getId());
+        ranobeVolume.setUsrId(userService.getIdCurrentUser());
         ranobeVolumeRepo.save(ranobeVolume);
     }
 
     public List<RanobeVolume> getAll(String status) {
         List<RanobeVolume> ranobeVolumes;
-        if(status.equals("")) ranobeVolumes = ranobeVolumeRepo.findAll();
+        long userId = userService.getIdCurrentUser();
+        if(status.equals("")) ranobeVolumes = ranobeVolumeRepo.findAllByUsrId(userId);
         else ranobeVolumes = ranobeVolumeRepo.findAllByStatus(status);
 
         fill(ranobeVolumes);

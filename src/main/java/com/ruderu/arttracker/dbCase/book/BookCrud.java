@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.dbCase.book;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.entity.book.Book;
 import com.ruderu.arttracker.repo.book.BookRepo;
 import com.ruderu.arttracker.util.DateUtil;
@@ -13,9 +14,12 @@ public class BookCrud {
 
     @Autowired
     BookRepo bookRepo;
+    @Autowired
+    UserService userService;
 
     public List<Book> getAll(String status) {
-        if(status.equals("")) return bookRepo.findAll();
+        long userId = userService.getIdCurrentUser();
+        if(status.equals("")) return bookRepo.findAllByUsrId(userId);
         else return bookRepo.findByStatus(status);
     }
 
@@ -25,6 +29,7 @@ public class BookCrud {
 
     public void save(Book book) {
         book.setLastUpd(DateUtil.now());
+        book.setUsrId(userService.getIdCurrentUser());
         bookRepo.save(book);
     }
 
