@@ -63,6 +63,12 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
+    public void savePassword(String username, String password) {
+        User userFromDB = userRepo.findByUsername(username);
+        userFromDB.setPassword(bCryptPasswordEncoder.encode(password));
+        userRepo.save(userFromDB);
+    }
+
     public boolean deleteUser(Long userId) {
         if (userRepo.findById(userId).isPresent()) {
             userRepo.deleteById(userId);
@@ -81,5 +87,9 @@ public class UserService implements UserDetailsService {
 
     private String getName() {
         return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
+
+    public User getCurrentUser() {
+        return userRepo.findByUsername(getName());
     }
 }

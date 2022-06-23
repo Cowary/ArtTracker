@@ -41,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 //Перенарпавление на главную страницу после успешного входа
-                .defaultSuccessUrl("/ArtTracker/title")
+                .defaultSuccessUrl("/title")
                 .permitAll()
                 .and()
                 .logout()
