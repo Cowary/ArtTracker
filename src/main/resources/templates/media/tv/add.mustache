@@ -7,10 +7,6 @@
         <option>Dropped</option>
         <option>Finished</option>
     </datalist>
-    <datalist id="ongoingList">
-        <option>yes</option>
-        <option>no</option>
-    </datalist>
 
     <h2>Добавление/Настройка сериала</h2>
     <div>
@@ -31,6 +27,7 @@
             Дата выхода: <input name="releaseYear" type="number" {{#tv.releaseYear}} value="{{tv.releaseYear}}" {{/tv.releaseYear}}><br>
             <input name="integId" type="number" value="{{#integId}}{{integId}}{{/integId}}" hidden>
             <input name="id" type="number" {{#tv.id}} value="{{tv.id}}" {{/tv.id}} hidden>
+            <input name="usrId" {{#tv.usrId}} value="{{tv.usrId}}" {{/tv.usrId}} hidden>
 
         </label>
         <br>

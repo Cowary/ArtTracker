@@ -6,10 +6,6 @@
         <option>Dropped</option>
         <option>Finished</option>
     </datalist>
-    <datalist id="ongoingList">
-        <option>yes</option>
-        <option>no</option>
-    </datalist>
 
     <h2>Добавление/Редактирование книги</h2>
     <div>
@@ -22,6 +18,7 @@
             Оценка: <input name="score" type="number" min="0" max="10"  {{#book.score}} value="{{book.score}}" {{/book.score}}><br>
             Дата выхода: <input name="releaseDate" type="date" {{#book}} value="{{book.releaseDate}}" {{/book}}><br>
             Автор: <input name="author" {{#book}} value="{{book.author}}" {{/book}}><br>
+            <input name="usrId" {{#book.usrId}} value="{{book.usrId}}" {{/book.usrId}} hidden>
         </label>
         <br>
         <label>

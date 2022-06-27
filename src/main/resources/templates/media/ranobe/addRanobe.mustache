@@ -6,10 +6,6 @@
         <option>Dropped</option>
         <option>Finished</option>
     </datalist>
-    <datalist id="ongoingList">
-        <option>yes</option>
-        <option>no</option>
-    </datalist>
 
     <h2>Добавление/Редактирование ранобе</h2>
     <div>
@@ -28,10 +24,10 @@
             <input name="shikiId" {{#ranobe}} value="{{ranobe.shikiId}}" {{/ranobe}} hidden> <br>
             <input name="releaseYear" {{#ranobe}} value="{{ranobe.releaseYear}}" {{/ranobe}} hidden>
             <input name="id" {{#ranobe.id}} value="{{ranobe.id}}" {{/ranobe.id}} hidden>
+            <input name="usrId" {{#ranobeVolume.usrId}} value="{{ranobeVolume.usrId}}" {{/ranobeVolume.usrId}} hidden>
         </label>
         <br>
         <label>
-            Просмотр начат в онгоинге? <input name="ongoingStart" list="ongoingList" {{#ranobe.ongoing}} value="{{ranobe.ongoing}}" {{/ranobe.ongoing}}>
             Дата окончания просмотра: <input name="endDate" type="date" {{#ranobeVolume.endDate}} value="{{ranobeVolume.endDate}}" {{/ranobeVolume.endDate}}> <br>
             Прочитано томов: <input name="volumesEnd" type="number" min="0" {{#ranobe.volumesEnd}} value="{{ranobe.volumesEnd}}" {{/ranobe.volumesEnd}}>
             Прочитано глав: <input name="chaptersEnd" type="number" min="0" {{#ranobeVolume.chaptersEnd}} value="{{ranobeVolume.chaptersEnd}}" {{/ranobeVolume.chaptersEnd}}>

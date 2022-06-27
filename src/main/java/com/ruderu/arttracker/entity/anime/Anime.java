@@ -34,7 +34,6 @@ public class Anime extends Media {
     private Integer releaseYear;
     private Long shikiId;
     private Integer duration;
-    private String ongoingStart;
     private Integer episodesEnd;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
@@ -43,13 +42,14 @@ public class Anime extends Media {
     @Transient
     private String type = "Anime";
 
-    public Anime(String originalTitle, String title, Integer episodes, Date releaseDate, Long shikiId) {
+    public Anime(String originalTitle, String title, Integer episodes, Date releaseDate, Long shikiId, Integer duration) {
         this.originalTitle = originalTitle;
         this.title = title;
         this.episodes = episodes;
         this.releaseDate = releaseDate;
         this.releaseYear = DateUtil.getYear(releaseDate);
         this.shikiId = shikiId;
+        this.duration = duration;
     }
 
     public Anime(String originalTitle) {

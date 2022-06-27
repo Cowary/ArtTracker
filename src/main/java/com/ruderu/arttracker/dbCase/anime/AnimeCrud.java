@@ -28,4 +28,16 @@ public class AnimeCrud {
         anime.setUsrId(userService.getIdCurrentUser());
         animeRepo.save(anime);
     }
+
+    public Anime getById(long id) {
+        return animeRepo.findById(id).orElseThrow();
+    }
+
+    public void delete(Anime anime) {
+        animeRepo.delete(anime);
+    }
+
+    public void deleteById(long id) {
+        animeRepo.deleteById(id);
+    }
 }

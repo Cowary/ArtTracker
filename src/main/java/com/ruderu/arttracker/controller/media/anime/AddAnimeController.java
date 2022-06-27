@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class AddAnimeController {
         if(animeId != null) {
             AnimeModel animeModel = ShikimoriApi.findById(animeId);
 
-            Anime anime = new Anime(animeModel.getName(), animeModel.getRussian(), animeModel.getEpisodes(), DateFormat.HTMLshort.parse(animeModel.getAired_on()), (long) animeModel.getId());
+            Anime anime = new Anime(animeModel.getName(), animeModel.getRussian(), animeModel.getEpisodes(), DateFormat.HTMLshort.parse(animeModel.getAired_on()), (long) animeModel.getId(), animeModel.getDuration());
             List<StudioModel> studioModelList = List.of(animeModel.getStudios());
             model.addAttribute("anime", anime);
             model.addAttribute("studioList", studioModelList);
@@ -50,10 +51,10 @@ public class AddAnimeController {
 
     @PostMapping("title/anime/add")
     public String post(
-            @ModelAttribute("anime") Anime anime
+            @ModelAttribute("anime") Anime anime,
+            RedirectAttributes redirectAttributes
     ) {
         AnimeModel animeModel = ShikimoriApi.findById(Math.toIntExact(anime.getShikiId()));
-        anime.setDuration(animeModel.getDuration());
 
         List<StudioModel> studioModelList = List.of(animeModel.getStudios());
 
@@ -61,6 +62,8 @@ public class AddAnimeController {
         studioModelList.forEach(studioModel -> animeStudioCrud.create(studioModel.getName(), anime.getId())
         );
         animeRoleCrud.create(anime.getId(), animeModel.getRoleModels());
-        return "media/anime/addAnim";
+        redirectAttributes.addAttribute("id", anime.getId());
+
+        return "redirect:../anime/edit";
     }
 }

@@ -1,10 +1,10 @@
 package com.ruderu.arttracker.controller.media.anime;
 
 import com.ruderu.arttracker.dbCase.StudioCrud;
+import com.ruderu.arttracker.dbCase.anime.AnimeCrud;
 import com.ruderu.arttracker.dbCase.anime.AnimeStudioCrud;
 import com.ruderu.arttracker.entity.Studio;
 import com.ruderu.arttracker.entity.anime.Anime;
-import com.ruderu.arttracker.repo.AnimeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,18 +19,18 @@ import java.util.List;
 public class EditAnimeController {
 
     @Autowired
-    AnimeRepo animeRepo;
-    @Autowired
     AnimeStudioCrud animeStudioCrud;
     @Autowired
     StudioCrud studioCrud;
+    @Autowired
+    AnimeCrud animeCrud;
 
     @GetMapping("title/anime/edit")
     public String get(
             @RequestParam long id,
             Model model
     ) {
-        Anime anime = animeRepo.findById(id).orElseThrow();
+        Anime anime = animeCrud.getById(id);
         List<Studio> studioModelList = studioCrud.findById(animeStudioCrud.findByAnimeId(id));
 
         model.addAttribute("anime", anime);
@@ -44,7 +44,7 @@ public class EditAnimeController {
     public String post(
             @ModelAttribute("anime") Anime anime
     ) {
-        animeRepo.save(anime);
+        animeCrud.save(anime);
 
         return "redirect:../view/media";
     }
@@ -53,8 +53,7 @@ public class EditAnimeController {
     public String post(
             @RequestParam() long id
     ) {
-        Anime anime = animeRepo.findById(id).orElseThrow();
-        animeRepo.delete(anime);
+        animeCrud.deleteById(id);
 
         return "redirect:../view/media";
     }

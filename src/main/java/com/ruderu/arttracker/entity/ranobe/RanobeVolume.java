@@ -43,8 +43,6 @@ public class RanobeVolume extends Media {
     @Transient
     private Integer releaseYear;
     @Transient
-    private String ongoingStart;
-    @Transient
     private Integer volumesEnd;
     @Transient
     private static final String type = "Ranobe";
@@ -53,7 +51,6 @@ public class RanobeVolume extends Media {
         originalTitle = ranobe.getOriginalTitle();
         volumes = ranobe.getVolumes();
         releaseDate = ranobe.getReleaseDate();
-        ongoingStart = ranobe.getOngoingStart();
         volumesEnd = ranobe.getVolumesEnd();
     }
 }

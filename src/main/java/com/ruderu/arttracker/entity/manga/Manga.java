@@ -32,7 +32,6 @@ public class Manga extends Media {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date endDate;
-    private String ongoingStart;
     private Long shikiId;
     private Integer volumesEnd;
     private Integer chaptersEnd;

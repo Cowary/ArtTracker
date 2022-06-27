@@ -1,10 +1,10 @@
 package com.ruderu.arttracker.controller.media.movie;
 
+import com.ruderu.arttracker.dbCase.movie.MovieCrud;
 import com.ruderu.arttracker.dbCase.movie.MovieIntegrationCrud;
 import com.ruderu.arttracker.dbCase.movie.MovieProductionCrud;
 import com.ruderu.arttracker.entity.movie.Movie;
 import com.ruderu.arttracker.model.kin.KinFilmModel;
-import com.ruderu.arttracker.repo.movie.MovieRepo;
 import com.ruderu.arttracker.rest.KinApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AddMovieController {
 
     @Autowired
-    MovieRepo movieRepo;
+    MovieCrud movieCrud;
     @Autowired
     MovieProductionCrud movieProductionCrud;
     @Autowired
@@ -46,7 +46,7 @@ public class AddMovieController {
             @ModelAttribute("movie") Movie movie,
             @RequestParam(required = false) String integId
     ) {
-        movieRepo.save(movie);
+        movieCrud.save(movie);
 
         if(!integId.isBlank()) {
             movieIntegrationCrud.create(Long.parseLong(integId), "kin", movie.getId());
