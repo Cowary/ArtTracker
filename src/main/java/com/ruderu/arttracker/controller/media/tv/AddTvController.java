@@ -5,8 +5,8 @@ import com.ruderu.arttracker.dbCase.tv.TvIntegrationCrud;
 import com.ruderu.arttracker.dbCase.tv.TvSeasonsCrud;
 import com.ruderu.arttracker.entity.tv.Tv;
 import com.ruderu.arttracker.entity.tv.TvSeason;
-import com.ruderu.arttracker.model.kin.KinFilmModel;
-import com.ruderu.arttracker.rest.KinApi;
+import com.ruderu.arttracker.rest.api.KinApi;
+import com.ruderu.arttracker.rest.model.kin.KinFilmModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AddTvController {
@@ -51,7 +52,8 @@ public class AddTvController {
             @ModelAttribute("tv") Tv tv,
             @ModelAttribute("tv_seasons") TvSeason tvSeason,
             @RequestParam("titleSeason") String titleSeason,
-            @RequestParam(required = false) String integId
+            @RequestParam(required = false) String integId,
+            RedirectAttributes redirectAttributes
     ) {
         System.out.println(tv);
         tvSeason.setTitle(titleSeason);
@@ -61,7 +63,8 @@ public class AddTvController {
             tvIntegrationCrud.create("kin", tv.getId(), Long.parseLong(integId));
         }
         tvSeasonsCrud.save(tvSeason, tv);
+        redirectAttributes.addAttribute("id", tvSeason.getId());
 
-        return "media/tv/add";
+        return "redirect:../tv/edit";
     }
 }

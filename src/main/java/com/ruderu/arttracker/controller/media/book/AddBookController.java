@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AddBookController {
@@ -24,10 +25,12 @@ public class AddBookController {
 
     @PostMapping("title/book/add")
     public String post(
-            @ModelAttribute("book") Book book
+            @ModelAttribute("book") Book book,
+            RedirectAttributes redirectAttributes
     ) {
         bookRepo.save(book);
+        redirectAttributes.addAttribute("id", book.getId());
 
-        return "media/book/add";
+        return "redirect:../book/edit";
     }
 }

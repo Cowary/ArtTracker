@@ -2,7 +2,7 @@ package com.ruderu.arttracker.dbCase.manga;
 
 import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.entity.manga.Manga;
-import com.ruderu.arttracker.repo.MangaRep;
+import com.ruderu.arttracker.repo.manga.MangaRep;
 import com.ruderu.arttracker.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

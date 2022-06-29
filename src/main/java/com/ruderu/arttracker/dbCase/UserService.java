@@ -2,8 +2,8 @@ package com.ruderu.arttracker.dbCase;
 
 import com.ruderu.arttracker.entity.Role;
 import com.ruderu.arttracker.entity.User;
-import com.ruderu.arttracker.repo.RoleRepo;
-import com.ruderu.arttracker.repo.UserRepo;
+import com.ruderu.arttracker.repo.user.RoleRepo;
+import com.ruderu.arttracker.repo.user.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

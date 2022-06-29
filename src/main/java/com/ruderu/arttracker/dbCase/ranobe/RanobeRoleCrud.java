@@ -3,8 +3,8 @@ package com.ruderu.arttracker.dbCase.ranobe;
 import com.ruderu.arttracker.dbCase.PersonCrud;
 import com.ruderu.arttracker.entity.Person;
 import com.ruderu.arttracker.entity.ranobe.RanobeRole;
-import com.ruderu.arttracker.model.shiki.RoleModel;
 import com.ruderu.arttracker.repo.ranobe.RanobeRoleRep;
+import com.ruderu.arttracker.rest.model.shiki.RoleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

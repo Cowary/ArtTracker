@@ -4,8 +4,8 @@ import com.ruderu.arttracker.dbCase.manga.MangaCrud;
 import com.ruderu.arttracker.dbCase.manga.MangaPublisherCrud;
 import com.ruderu.arttracker.dbCase.manga.MangaRoleCrud;
 import com.ruderu.arttracker.entity.manga.Manga;
-import com.ruderu.arttracker.model.shiki.MangaModel;
-import com.ruderu.arttracker.rest.ShikimoriApi;
+import com.ruderu.arttracker.rest.api.ShikimoriApi;
+import com.ruderu.arttracker.rest.model.shiki.MangaModel;
 import com.ruderu.arttracker.util.DateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -47,7 +48,8 @@ public class AddMangaController {
 
     @PostMapping("title/manga/add")
     public String post(
-            @ModelAttribute("manga") Manga manga
+            @ModelAttribute("manga") Manga manga,
+            RedirectAttributes redirectAttributes
     ) {
         mangaCrud.save(manga);
 
@@ -56,6 +58,8 @@ public class AddMangaController {
             mangaPublisherCrud.create(manga.getId(), List.of(mangaModel.getPublishers()));
             mangaRoleCrud.create(manga.getId(), List.of(mangaModel.getRoleModels()));
         }
-        return "media/manga/addManga";
+        redirectAttributes.addAttribute("id", manga.getId());
+
+        return "redirect:../manga/edit";
     }
 }
