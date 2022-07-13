@@ -1,8 +1,8 @@
 package com.ruderu.arttracker.domain;
 
 public enum Status {
-    READY("Ready to start"),
-    IN_PROGRESS("In progress"),
+    PLANNED("Planned"),
+    ACTIVE("Active"),
     DROPPED("Dropped"),
     FINISHED("Finished");
 

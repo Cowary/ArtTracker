@@ -5,8 +5,8 @@
     </head>
 
     <datalist id="statusList">
-        <option>Ready to start</option>
-        <option>In progress</option>
+        <option>Planned</option>
+        <option>Active</option>
         <option>Dropped</option>
         <option>Finished</option>
     </datalist>
@@ -47,12 +47,11 @@
 
         {{#mediaList}}
             <tr>
-                <td>{{id}}</td>
-                <td>{{type}}</td>
+                <td class="type_{{type}}">{{type}}</td>
                 <td>{{#originalTitle}} {{originalTitle}}  / {{/originalTitle}} {{#title}} {{title}} {{/title}}</td>
                 <td>{{#volumesEnd}} {{volumesEnd}} / {{/volumesEnd}} {{#volumes}} {{volumes}} {{/volumes}}</td>
                 <td>{{#chaptersEnd}} {{chaptersEnd}} / {{/chaptersEnd}} {{#chapters}} {{chapters}} {{/chapters}}</td>
-                <td>{{status}}</td>
+                <td class="status_{{status}}">{{status}}</td>
                 <td>{{#score}} {{score}} {{/score}}</td>
                 <td>{{#releaseYear}} {{releaseYear}} {{/releaseYear}}</td>
                 <td>{{#endDate}} {{endDate}} {{/endDate}}</td>

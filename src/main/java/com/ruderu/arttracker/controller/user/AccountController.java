@@ -21,7 +21,7 @@ public class AccountController {
         User user = userService.getCurrentUser();
         model.addAttribute("username", user.getUsername());
 
-        return "account";
+        return "user/account";
     }
 
     @PostMapping("user/changePassword")
@@ -32,14 +32,6 @@ public class AccountController {
     ) {
         userService.savePassword(username, password);
 
-        return "redirect:../";
-    }
-
-    @PostMapping("user/changeName")
-    public String post(
-            String username
-    ) {
-
-        return "redirect:../view/media";
+        return "redirect:../title";
     }
 }

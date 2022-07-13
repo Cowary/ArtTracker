@@ -63,7 +63,7 @@ public class KinApi {
 
         List<KinResultModel> resultModels = new ArrayList<>();
         int pageCount = Math.min(response.getBody().getPagesCount(), 5);
-        for (int i = 1; i <= pageCount + 1; i++) {
+        for (int i = 1; i <= pageCount; i++) {
             resultModels.addAll(searchByKeyword(keyword, i));
         }
         return resultModels

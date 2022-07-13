@@ -71,3 +71,16 @@ input.wide {
     width: 100%;
     height: 3em
 }
+
+.status_Finished { background-color: #AAFFAA; }
+.status_Active { background-color: #AAFFFF; }
+.status_Dropped { background-color: #FFBBCC; }
+.status_Planned	 { background-color: #DDDDDD; }
+
+.type_Anime { background-color: #99FF33; }
+.type_Manga { background-color: #66CCFF; }
+.type_Ranobe { background-color: #6600CC; }
+.type_Movie { background-color: #FFFF00; }
+.type_Tv { background-color: #FF6600; }
+.type_Game { background-color: #CC0066; }
+.type_Book { background-color: #FF0000; }

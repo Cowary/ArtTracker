@@ -50,7 +50,7 @@ public class Manga extends Media {
         this.releaseDate = releaseDate;
         this.releaseYear = DateUtil.getYear(releaseDate);
         this.shikiId = shikiId;
-        this.status = "Ready to Start";
+        this.status = "Planned";
     }
 
     public Manga() {
