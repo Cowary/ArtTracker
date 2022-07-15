@@ -1,19 +1,22 @@
-<html>
+<html lang="en">
+    <head>
+        <title>find</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../../main.css">
+    </head>
     <body>
     <h2>Поиск манги</h2>
-
-
     <form method="post">
-        <input name="originalTitle" {{#manga}} value="{{manga.originalTitle}}" {{/manga}} required><p>
-        <input value="Поиск" type="submit"><p>
+        <label>
+            <input name="originalTitle" size="50" {{#manga}} value="{{manga.originalTitle}}" {{/manga}} required>
+            <input value="Поиск" type="submit">
+        </label>
     </form>
-    <label>Название</label>
     <div>
         <a href="../../title"><--</a>
     </div>
     <table class="wide">
         <tr>
-            <th>ID</th>
             <th>NameEn</th>
             <th>NameRu</th>
             <th>Score</th>
@@ -28,8 +31,10 @@
                 <td>{{chapters}}</td>
                 <td>
                     <form method="post" action="./saveManga">
-                        <input name="mangaId" value="{{id}}">
-                        <input value="Добавить" type="submit">
+                        <label>
+                            <input name="mangaId" value="{{id}}" hidden>
+                            <input value="Добавить" type="submit">
+                        </label>
                     </form>
                 </td>
             </tr>

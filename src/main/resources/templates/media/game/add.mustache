@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <body>
     <datalist id="statusList">
         <option>Planned</option>
@@ -13,8 +13,8 @@
     </div>
     <form method="post" >
         <label>
-            Название: <input name="title" {{#game}} value="{{game.title}}" {{/game}}><br>
-            Статус: <input name="status" list="statusList" {{#game}} value="{{game.status}}" {{/game}}><br>
+            Название: <input name="title" size="50" {{#game}} value="{{game.title}}" {{/game}}><br>
+            Статус: <input name="status" list="statusList" size="10" {{#game}} value="{{game.status}}" {{/game}}><br>
             Оценка: <input name="score" type="number" min="0" max="10"  {{#game.score}} value="{{game.score}}" {{/game.score}} ><br>
             Дата выхода: <input name="releaseDate" type="date" {{#game}} value="{{game.releaseDate}}" {{/game}}><br>
             <input name="usrId" {{#game.usrId}} value="{{game.usrId}}" {{/game.usrId}} hidden>
@@ -33,8 +33,10 @@
     </form>
     {{#edit}}
         <form method="post" action="./delete">
-            <input name="id" {{#game}} value="{{game.id}}" {{/game}} hidden>
-            <input value="Удалить" type="submit">
+            <label>
+                <input name="id" {{#game}} value="{{game.id}}" {{/game}} hidden>
+                <input value="Удалить" type="submit">
+            </label>
         </form>
     {{/edit}}
 </body>

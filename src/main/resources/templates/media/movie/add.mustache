@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 
 <body>
     <datalist id="statusList">
@@ -14,16 +14,15 @@
     </div>
     <form method="post" >
         <label>
-            Название: <input name="title" {{#movie}} value="{{movie.title}}" {{/movie}}><br>
-            Оригинальное название: <input name="originalTitle" {{#movie}} value="{{movie.originalTitle}}" {{/movie}}><br>
-            Статус: <input name="status" list="statusList" {{#movie.status}} value="{{movie.status}}" {{/movie.status}} ><br>
+            Название: <input name="title" size="50" {{#movie}} value="{{movie.title}}" {{/movie}}><br>
+            Оригинальное название: <input name="originalTitle" size="50" {{#movie}} value="{{movie.originalTitle}}" {{/movie}}><br>
+            Статус: <input name="status" list="statusList" size="10" {{#movie.status}} value="{{movie.status}}" {{/movie.status}} ><br>
             Оценка: <input name="score" type="number" min="0" max="5"  {{#movie.score}} value="{{movie.score}}" {{/movie.score}} ><br>
             Дата выхода: <input name="releaseYear" type="number" {{#movie}} value="{{movie.releaseYear}}" {{/movie}}><br>
-            Длительность: <input name="duration" {{#movie.duration}} value="{{movie.duration}}" {{/movie.duration}}><br>
+            Длительность: <input name="duration" type="number" min="0" max="999" {{#movie.duration}} value="{{movie.duration}}" {{/movie.duration}}><br>
             <input name="integId" type="number" {{#integId}} value="{{integId}}" {{/integId}} hidden>
             <input name="usrId" {{#movie.usrId}} value="{{movie.usrId}}" {{/movie.usrId}} hidden>
         </label>
-        <br>
         <label>
             Дата просмотра: <input name="endDate" type="date" {{#movie.endDate}} value="{{movie.endDate}}" {{/movie.endDate}}><br>
         </label><br>
@@ -37,8 +36,10 @@
     </form>
     {{#edit}}
         <form method="post" action="./delete">
-            <input name="id" {{#movie}} value="{{movie.id}}" {{/movie}} hidden>
-            <input value="Удалить" type="submit">
+            <label>
+                <input name="id" {{#movie}} value="{{movie.id}}" {{/movie}} hidden>
+                <input value="Удалить" type="submit">
+            </label>
         </form>
     {{/edit}}
 </body>

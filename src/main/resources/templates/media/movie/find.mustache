@@ -1,7 +1,8 @@
-<html>
-
+<html lang="en">
 <head>
-
+    <title>find</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../main.css">
 </head>
 
 <body>
@@ -10,13 +11,14 @@
     <a href="../../title"><--</a>
 </div>
 <form method="post">
-    <input name="keyword" {{#keyword}} value="{{keyword}}" {{/keyword}} required><p>
-    <input value="Поиск" type="submit"><p>
+    <label>
+        <input name="keyword" size="50" {{#keyword}} value="{{keyword}}" {{/keyword}} required>
+        <input value="Поиск" type="submit">
+    </label>
+
 </form>
-<label>Название</label>
-<table>
+<table class="wide">
     <tr>
-        <th>ID</th>
         <th>nameEn</th>
         <th>NameRu</th>
         <th>year</th>
@@ -31,8 +33,10 @@
             <td>{{#rating}} {{rating}} {{/rating}}</td>
             <td>
                 <form method="post" action="./save">
-                    <input name="filmId" value="{{filmId}}">
-                    <input value="Добавить" type="submit">
+                    <label>
+                        <input name="filmId" value="{{filmId}}">
+                        <input value="Добавить" type="submit">
+                    </label>
                 </form>
             </td>
         </tr>

@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
     <body>
     <datalist id="statusList">
         <option>Planned</option>
@@ -7,28 +7,28 @@
         <option>Finished</option>
     </datalist>
 
+
     <h2>Добавление/Редактирование манги</h2>
     <div>
         <a href="../../title"><--</a>
     </div>
     <form method="post">
         <label>
-            Название: <input name="title" {{#manga}} value="{{manga.title}}" {{/manga}}><br>
-            Оригинальное название: <input name="originalTitle" {{#manga}} value="{{manga.originalTitle}}" {{/manga}}><br>
-            Статус: <input name="status" list="statusList" {{#manga.status}} value="{{manga.status}}" {{/manga.status}} ><br>
+            Название: <input name="title" size="50" {{#manga}} value="{{manga.title}}" {{/manga}}><br>
+            Оригинальное название: <input name="originalTitle" size="50" {{#manga}} value="{{manga.originalTitle}}" {{/manga}}><br>
+            Статус: <input name="status" list="statusList" size="10" {{#manga.status}} value="{{manga.status}}" {{/manga.status}} ><br>
             Оценка: <input name="score" type="number" min="0" max="5"  {{#manga.score}} value="{{manga.score}}" {{/manga.score}} ><br>
-            Главы: <input name="chapters" {{#manga.chapters}} value="{{manga.chapters}}" {{/manga.chapters}}>
-            Тома: <input name="volumes" {{#manga.volumes}} value="{{manga.volumes}}" {{/manga.volumes}}><br>
+            Главы: <input name="chapters" size="4" {{#manga.chapters}} value="{{manga.chapters}}" {{/manga.chapters}}>
+            Тома: <input name="volumes" size="4" {{#manga.volumes}} value="{{manga.volumes}}" {{/manga.volumes}}><br>
             Дата выхода: <input name="releaseDate" type="date" {{#manga.releaseDate}} value="{{manga.releaseDate}}" {{/manga.releaseDate}}><br>
             <input name="shikiId" {{#manga.shikiId}} value="{{manga.shikiId}}" {{/manga.shikiId}} hidden>
             <input name="releaseYear" {{#manga.releaseYear}} value="{{manga.releaseYear}}" {{/manga.releaseYear}} hidden>
             <input name="usrId" {{#manga.usrId}} value="{{manga.usrId}}" {{/manga.usrId}} hidden>
         </label>
-        <br>
         <label>
             Дата окончания просмотра: <input name="endDate" type="date" {{#manga.endDate}} value="{{manga.endDate}}" {{/manga.endDate}}> <br>
-            Прочитано томов: <input name="volumesEnd" type="number" min="0" {{#manga.volumesEnd}} value="{{manga.volumesEnd}}" {{/manga.volumesEnd}}>
-            Прочитано глав: <input name="chaptersEnd" type="number" min="0" {{#manga.chaptersEnd}} value="{{manga.chaptersEnd}}" {{/manga.chaptersEnd}}>
+            Прочитано томов: <input name="volumesEnd" type="number" min="0" max="999" {{#manga.volumesEnd}} value="{{manga.volumesEnd}}" {{/manga.volumesEnd}}>
+            Прочитано глав: <input name="chaptersEnd" type="number" min="0" max="999" {{#manga.chaptersEnd}} value="{{manga.chaptersEnd}}" {{/manga.chaptersEnd}}>
         </label><br>
         <table>
             <tr>
@@ -51,8 +51,10 @@
     </form>
     {{#edit}}
         <form method="post" action="./delete">
-            <input name="id" {{#manga}} value="{{manga.id}}" {{/manga}} hidden>
-            <input value="Удалить" type="submit">
+            <label>
+                <input name="id" {{#manga}} value="{{manga.id}}" {{/manga}} hidden>
+                <input value="Удалить" type="submit">
+            </label>
         </form>
     {{/edit}}
     </body>

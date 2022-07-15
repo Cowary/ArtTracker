@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 
 <body>
     <datalist id="statusList">
@@ -14,23 +14,20 @@
     </div>
     <form method="post" >
         <label>
-            Название сезона: <input name="titleSeason" {{#titleSeason}} value="{{titleSeason}}" {{/titleSeason}}>
-            Название: <input name="title" {{#tv}} value="{{tv.title}}" {{/tv}}><br>
-            Оригинальное название: <input name="originalTitle" {{#tv}} value="{{tv.originalTitle}}" {{/tv}}><br>
-            Количество сезонов: <input name="seasons" {{#tv}} value="{{tv.seasons}}" {{/tv}}> <br>
-            Просмотренно сезонов: <input name="seasons_end" {{#tv.seasons_end}} value="{{tv.seasons_end}}" {{/tv.seasons_end}}> <br>
-            Количество серий: <input name="episodes" {{#tvSeason.episodes}} value="{{tvSeason.episodes}}" {{/tvSeason.episodes}}>
-
-            Просмотренной серий: <input name="episodesEnd" {{#tvSeason.episodesEnd}} value="{{tvSeason.episodesEnd}}" {{/tvSeason.episodesEnd}}><br>
-            Статус: <input name="status" list="statusList" {{#tvSeason.status}} value="{{tvSeason.status}}" {{/tvSeason.status}}><br>
+            Название сезона: <input name="titleSeason" size="50" {{#titleSeason}} value="{{titleSeason}}" {{/titleSeason}}>
+            Название: <input name="title" size="50" {{#tv}} value="{{tv.title}}" {{/tv}}><br>
+            Оригинальное название: <input name="originalTitle" size="50" {{#tv}} value="{{tv.originalTitle}}" {{/tv}}><br>
+            Количество сезонов: <input name="seasons" type="number" min="0" max="999" {{#tv}} value="{{tv.seasons}}" {{/tv}}> <br>
+            Просмотренно сезонов: <input name="seasonsEnd" type="number" min="0" max="999" {{#tv.seasonsEnd}} value="{{tv.seasonsEnd}}" {{/tv.seasonsEnd}}> <br>
+            Количество серий: <input name="episodes" type="number" min="0" max="999" {{#tvSeason.episodes}} value="{{tvSeason.episodes}}" {{/tvSeason.episodes}}>
+            Просмотренной серий: <input name="episodesEnd" type="number" min="0" max="999" {{#tvSeason.episodesEnd}} value="{{tvSeason.episodesEnd}}" {{/tvSeason.episodesEnd}}><br>
+            Статус: <input name="status" list="statusList" size="10" {{#tvSeason.status}} value="{{tvSeason.status}}" {{/tvSeason.status}}><br>
             Оценка: <input name="score" type="number" min="1" max="5"  {{#tvSeason.score}} value="{{tvSeason.score}}" {{/tvSeason.score}} ><br>
             Дата выхода: <input name="releaseYear" type="number" {{#tv.releaseYear}} value="{{tv.releaseYear}}" {{/tv.releaseYear}}><br>
             <input name="integId" type="number" value="{{#integId}}{{integId}}{{/integId}}" hidden>
             <input name="id" type="number" {{#tv.id}} value="{{tv.id}}" {{/tv.id}} hidden>
             <input name="usrId" {{#tv.usrId}} value="{{tv.usrId}}" {{/tv.usrId}} hidden>
-
         </label>
-        <br>
         <label>
             Дата просмотра: <input name="endDate" type="date" {{#tvSeason.endDate}} value="{{tvSeason.endDate}}" {{/tvSeason.endDate}}><br>
         </label><br>
@@ -44,10 +41,11 @@
     </form>
     {{#edit}}
         <form method="post" action="./delete">
-            <input name="id" {{#tvSeason}} value="{{tvSeason.id}}" {{/tvSeason}} hidden>
-            <input value="Удалить" type="submit">
+            <label>
+                <input name="id" {{#tvSeason}} value="{{tvSeason.id}}" {{/tvSeason}} hidden>
+                <input value="Удалить" type="submit">
+            </label>
         </form>
     {{/edit}}
-    </form>
 </body>
 </html>

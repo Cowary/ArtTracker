@@ -1,6 +1,7 @@
-<html>
+<html lang="en">
 
 <head>
+    <title>find</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../main.css">
 </head>
@@ -12,13 +13,13 @@
     </div>
 
     <form method="post">
-        <input name="originalTitle" {{#anime}} value="{{anime.originalTitle}}" {{/anime}} required><p>
-        <input value="Поиск" type="submit"><p>
+        <label>
+            <input name="originalTitle" {{#anime}} value="{{anime.originalTitle}}" {{/anime}} required size="50">
+            <input value="Поиск" type="submit">
+        </label>
     </form>
-    <label>Название</label>
     <table class="wide">
         <tr>
-            <th>ID</th>
             <th>NameEn</th>
             <th>NameRu</th>
             <th>Score</th>
@@ -33,8 +34,10 @@
                 <td>{{episodes}}</td>
                 <td>
                     <form method="post" action="./saveAnime">
-                        <input name="animeId" value="{{id}}">
-                        <input value="Добавить" type="submit">
+                        <label>
+                            <input name="animeId" value="{{id}}" hidden>
+                            <input value="Добавить" type="submit">
+                        </label>
                     </form>
                 </td>
             </tr>

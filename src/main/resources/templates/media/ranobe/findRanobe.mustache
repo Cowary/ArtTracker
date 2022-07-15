@@ -1,6 +1,7 @@
-<html>
+<html lang="en">
 
 <head>
+    <title>find</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../main.css">
 </head>
@@ -12,10 +13,11 @@
 </div>
 
 <form method="post">
-    <input name="originalTitle" {{#ranobe}} value="{{ranobe.originalTitle}}" {{/ranobe}} required><p>
-    <input value="Поиск" type="submit"><p>
+    <label>
+        <input name="originalTitle" size="50" {{#ranobe}} value="{{ranobe.originalTitle}}" {{/ranobe}} required>
+        <input value="Поиск" type="submit">
+    </label>
 </form>
-<label>Название</label>
 
 <table class="wide">
     <tr>
@@ -34,8 +36,10 @@
             <td>{{chapters}}</td>
             <td>
                 <form method="post" action="./save">
-                    <input name="ranobeId" value="{{id}}">
-                    <input value="Добавить" type="submit">
+                    <label>
+                        <input name="ranobeId" value="{{id}}">
+                        <input value="Добавить" type="submit">
+                    </label>
                 </form>
             </td>
         </tr>

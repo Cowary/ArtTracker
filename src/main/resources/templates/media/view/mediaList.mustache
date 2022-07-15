@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
     <datalist id="statusList">
         <option>Planned</option>
         <option>Active</option>
@@ -7,6 +7,7 @@
     </datalist>
 
     <head>
+        <title>mediaList</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../../main.css">
     </head>
@@ -28,19 +29,20 @@
     <br>
 
     <form method="get">
-        <input name="status" list="statusList" {{#status}} value="{{status}}" {{/status}} autocomplete="off" ><br>
-        <input type="submit" value="Применить">
+        <label>
+            <input name="status" list="statusList" {{#status}} value="{{status}}" {{/status}} autocomplete="off" ><br>
+            <input type="submit" value="Применить">
+        </label>
     </form>
 
     <table>
         <tr>
-            <th>Media Id</th>
             <th>Type</th>
-            <th>Anime name</th>
+            <th>Name</th>
             <th>Status</th>
             <th>Score</th>
-            <th>Год выхода</th>
-            <th>Дата просмотра</th>
+            <th>Year</th>
+            <th>Date end</th>
         </tr>
 
         {{#mediaList}}

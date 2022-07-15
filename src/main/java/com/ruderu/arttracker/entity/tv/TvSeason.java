@@ -52,6 +52,7 @@ public class TvSeason extends Media {
         originalTitle = tv.getOriginalTitle();
         seasons = tv.getSeasons();
         releaseDate = tv.getReleaseDate();
+        releaseYear = tv.getReleaseYear();
         seasonsEnd = tv.getSeasonsEnd();
     }
 }

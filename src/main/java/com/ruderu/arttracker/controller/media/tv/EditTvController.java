@@ -27,7 +27,6 @@ public class EditTvController {
     ) {
         TvSeason tvSeason = tvSeasonsCrud.getById(id);
         Tv tv = tvCrud.findById(tvSeason.getTvId());
-        //Tv tv = tvCrud.findById(id);
 
         model.addAttribute(tvSeason);
         model.addAttribute("titleSeason", tvSeason.getTitle());

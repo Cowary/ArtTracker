@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 
 <body>
     <datalist id="statusList">
@@ -15,22 +15,20 @@
 
     <form method="post">
         <label>
-            Название: <input name="title" {{#anime}} value="{{anime.title}}" {{/anime}}><br>
-            Оригинальное название: <input name="originalTitle" {{#anime}} value="{{anime.originalTitle}}" {{/anime}}><br>
-            Статус: <input name="status" list="statusList" {{#anime.status}} value="{{anime.status}}" {{/anime.status}} ><br>
+            Название: <input name="title" size="50" {{#anime}} value="{{anime.title}}" {{/anime}}><br>
+            Оригинальное название: <input name="originalTitle" size="50" {{#anime}} value="{{anime.originalTitle}}" {{/anime}}><br>
+            Статус: <input name="status" list="statusList" size="10" {{#anime.status}} value="{{anime.status}}" {{/anime.status}} ><br>
             Оценка: <input name="score" type="number" min="1" max="5"  {{#anime.score}} value="{{anime.score}}" {{/anime.score}} ><br>
-            Эпизоды: <input name="episodes" {{#anime}} value="{{anime.episodes}}" {{/anime}}><br>
-            Длительность эпизода: <input name="duration" {{#anime.duration}} value="{{anime.duration}}" {{/anime.duration}}><br>
+            Эпизоды: <input name="episodes" type="number" min="0" max="999" {{#anime}} value="{{anime.episodes}}" {{/anime}}><br>
+            Длительность эпизода: <input name="duration" type="number" min="0" max="999" {{#anime.duration}} value="{{anime.duration}}" {{/anime.duration}}><br>
             Дата выхода: <input name="releaseDate" type="date" {{#anime}} value="{{anime.releaseDate}}" {{/anime}}>
             <input name="shikiId" {{#anime}} value="{{anime.shikiId}}" {{/anime}} hidden>
             <input name="releaseYear" {{#anime}} value="{{anime.releaseYear}}" {{/anime}} hidden>
             <input name="usrId" {{#anime.usrId}} value="{{anime.usrId}}" {{/anime.usrId}} hidden>
-
         </label>
         <br>
         <label>
-
-            Просмотрено серий <input name="episodesEnd" type="number" min="0" {{#anime.episodesEnd}} value="{{anime.episodesEnd}}" {{/anime.episodesEnd}}>
+            Просмотрено серий <input name="episodesEnd" type="number" min="0" max="999" {{#anime.episodesEnd}} value="{{anime.episodesEnd}}" {{/anime.episodesEnd}}>
             Дата окончания просмотра: <input name="endDate" type="date" {{#anime.endDate}} value="{{anime.endDate}}" {{/anime.endDate}}>
         </label><br>
         <table>
@@ -53,8 +51,10 @@
     </form>
     {{#edit}}
         <form method="post" action="./delete">
-            <input name="id" {{#anime}} value="{{anime.id}}" {{/anime}} hidden>
-            <input value="Удалить" type="submit">
+            <label>
+                <input name="id" {{#anime}} value="{{anime.id}}" {{/anime}} hidden>
+                <input value="Удалить" type="submit">
+            </label>
         </form>
     {{/edit}}
 </body>

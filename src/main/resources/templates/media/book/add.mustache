@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <body>
     <datalist id="statusList">
         <option>Planned</option>
@@ -13,8 +13,8 @@
     </div>
     <form method="post" >
         <label>
-            Название: <input name="title" {{#book}} value="{{book.title}}" {{/book}}><br>
-            Статус: <input name="status" list="statusList" {{#book}} value="{{book.status}}" {{/book}}><br>
+            Название: <input name="title" size="50" {{#book}} value="{{book.title}}" {{/book}}><br>
+            Статус: <input name="status" list="statusList" size="10" {{#book}} value="{{book.status}}" {{/book}}><br>
             Оценка: <input name="score" type="number" min="0" max="10"  {{#book.score}} value="{{book.score}}" {{/book.score}}><br>
             Дата выхода: <input name="releaseDate" type="date" {{#book}} value="{{book.releaseDate}}" {{/book}}><br>
             Автор: <input name="author" {{#book}} value="{{book.author}}" {{/book}}><br>
@@ -32,11 +32,13 @@
             <img alt="haruhi" {{#image}}src="{{image}}"{{/image}} width="200" height="300">
         </p>
     {{/add}}
-    </form>
     {{#edit}}
         <form method="post" action="./delete">
-            <input name="id" {{#book}} value="{{book.id}}" {{/book}} hidden>
-            <input value="Удалить" type="submit">
+            <label>
+                <input name="id" {{#book}} value="{{book.id}}" {{/book}} hidden>
+                <input value="Удалить" type="submit">
+            </label>
+
         </form>
     {{/edit}}
 </body>

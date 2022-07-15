@@ -1,5 +1,6 @@
-<html>
+<html lang="en">
     <head>
+        <title>watchList</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../../main.css">
     </head>
@@ -11,54 +12,56 @@
         <option>Finished</option>
     </datalist>
 
-    <h2>MediaList</h2>
+    <body>
+        <h2>MediaList</h2>
 
-    <div>
-        <a href="../../title"><--</a>
-    </div>
-    <div>
-        <h4>Текущий пользователь: {{nickname}}</h4>
-    </div>
-    <div>
-        <a href="../view/media">Все</a>
-        <a href="../view/watch">Видео</a>
-        <a href="../view/read">Книги</a>
-        <a href="../view/play">Игры</a>
-    </div>
-    <br>
+        <div>
+            <a href="../../title"><--</a>
+        </div>
+        <div>
+            <h4>Текущий пользователь: {{nickname}}</h4>
+        </div>
+        <div>
+            <a href="../view/media">Все</a>
+            <a href="../view/watch">Видео</a>
+            <a href="../view/read">Книги</a>
+            <a href="../view/play">Игры</a>
+        </div>
+        <br>
 
-    <form method="get">
-        <input name="status" list="statusList" {{#status}} value="{{status}}" {{/status}} autocomplete="off" ><br>
-        <input type="submit" value="Применить">
-    </form>
+        <form method="get">
+            <label>
+                <input name="status" list="statusList" {{#status}} value="{{status}}" {{/status}} autocomplete="off" ><br>
+                <input type="submit" value="Применить">
+            </label>
+        </form>
 
-    <table>
-        <tr>
-            <th>Media Id</th>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Сезонов</th>
-            <th>Эпизоды</th>
-            <th>Время</th>
-            <th>Status</th>
-            <th>Score</th>
-            <th>Год выхода</th>
-            <th>Даты просмотра</th>
-        </tr>
-
-        {{#mediaList}}
+        <table>
             <tr>
-                <td class="type_{{type}}">{{type}}</td>
-                <td>{{#originalTitle}} {{originalTitle}}  / {{/originalTitle}} {{#title}} {{title}} {{/title}}</td>
-                <td>{{#seasonsEnd}} {{seasonsEnd}} / {{/seasonsEnd}} {{#seasons}} {{seasons}} {{/seasons}}</td>
-                <td>{{#episodesEnd}} {{episodesEnd}} / {{/episodesEnd}} {{#episodes}} {{episodes}} {{/episodes}}</td>
-                <td>{{#duration}} {{duration}} {{/duration}}</td>
-                <td class="status_{{status}}">{{status}}</td>
-                <td>{{#score}} {{score}} {{/score}}</td>
-                <td>{{#releaseYear}} {{releaseYear}} {{/releaseYear}}</td>
-                <td>{{#endDate}} {{endDate}} {{/endDate}}</td>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Seasons</th>
+                <th>Episodes</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Score</th>
+                <th>Year</th>
+                <th>Date End</th>
             </tr>
-        {{/mediaList}}
-    </table>
+
+            {{#mediaList}}
+                <tr>
+                    <td class="type_{{type}}">{{type}}</td>
+                    <td>{{#originalTitle}} {{originalTitle}}  / {{/originalTitle}} {{#title}} {{title}} {{/title}}</td>
+                    <td>{{#seasonsEnd}} {{seasonsEnd}} / {{/seasonsEnd}} {{#seasons}} {{seasons}} {{/seasons}}</td>
+                    <td>{{#episodesEnd}} {{episodesEnd}} / {{/episodesEnd}} {{#episodes}} {{episodes}} {{/episodes}}</td>
+                    <td>{{#duration}} {{duration}} {{/duration}}</td>
+                    <td class="status_{{status}}">{{status}}</td>
+                    <td>{{#score}} {{score}} {{/score}}</td>
+                    <td>{{#releaseYear}} {{releaseYear}} {{/releaseYear}}</td>
+                    <td>{{#endDate}} {{endDate}} {{/endDate}}</td>
+                </tr>
+            {{/mediaList}}
+        </table>
     </body>
 </html>
