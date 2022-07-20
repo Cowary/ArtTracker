@@ -51,12 +51,12 @@ td.extraWide {
 }
 
 .invis td {
-    border: 0px;
+    border: 0;
 }
 
 td > input {
     width: 100%;
-    margin: 0px;
+    margin: 0;
 }
 
 .wordbreak {
@@ -70,6 +70,11 @@ div.column {
 input.wide {
     width: 100%;
     height: 3em
+}
+
+.dark_theme {
+    color: #fff;
+    background: #808080;
 }
 
 .status_Finished { background-color: #AAFFAA; }

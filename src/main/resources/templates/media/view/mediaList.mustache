@@ -12,50 +12,50 @@
         <link rel="stylesheet" href="../../main.css">
     </head>
     <body>
-    <h2>MediaList</h2>
+        <h2>MediaList</h2>
 
-    <div>
-        <a href="../../title"><--</a>
-    </div>
-    <div>
-        <h4>Текущий пользователь: {{nickname}}</h4>
-    </div>
-    <div>
-        <a href="../view/media">Все</a>
-        <a href="../view/watch">Видео</a>
-        <a href="../view/read">Книги</a>
-        <a href="../view/play">Игры</a>
-    </div>
-    <br>
+        <div>
+            <a href="../../title"><--</a>
+        </div>
+        <div>
+            <h4>Текущий пользователь: {{nickname}}</h4>
+        </div>
+        <div>
+            <a href="../view/media">Все</a>
+            <a href="../view/watch">Видео</a>
+            <a href="../view/read">Книги</a>
+            <a href="../view/play">Игры</a>
+        </div>
+        <br>
 
-    <form method="get">
-        <label>
-            <input name="status" list="statusList" {{#status}} value="{{status}}" {{/status}} autocomplete="off" ><br>
-            <input type="submit" value="Применить">
-        </label>
-    </form>
+        <form method="get">
+            <label>
+                <input name="status" list="statusList" {{#status}} value="{{status}}" {{/status}} autocomplete="off" ><br>
+                <input type="submit" value="Применить">
+            </label>
+        </form>
 
-    <table>
-        <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th>Score</th>
-            <th>Year</th>
-            <th>Date end</th>
-        </tr>
-
-        {{#mediaList}}
+        <table>
             <tr>
-                <td class="type_{{type}}">{{type}}</td>
-                <td><a href="./edit?id={{id}}&type={{type}}"> {{#originalTitle}} {{originalTitle}}  / {{/originalTitle}} {{#title}} {{title}} {{/title}}</td>
-                <td class="status_{{status}}">{{status}}</td>
-                <td>{{#score}} {{score}} {{/score}}</td>
-                <td>{{#releaseYear}} {{releaseYear}} {{/releaseYear}}</td>
-                <td>{{#endDate}} {{endDate}} {{/endDate}}</td>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Score</th>
+                <th>Year</th>
+                <th>Date end</th>
             </tr>
-        {{/mediaList}}
 
-    </table>
+            {{#mediaList}}
+                <tr>
+                    <td class="type_{{type}}">{{type}}</td>
+                    <td><a href="./edit?id={{id}}&type={{type}}"> {{#originalTitle}} {{originalTitle}}  / {{/originalTitle}} {{#title}} {{title}} {{/title}}</td>
+                    <td class="status_{{status}}">{{status}}</td>
+                    <td>{{#score}} {{score}} {{/score}}</td>
+                    <td>{{#releaseYear}} {{releaseYear}} {{/releaseYear}}</td>
+                    <td>{{#endDate}} {{endDate}} {{/endDate}}</td>
+                </tr>
+            {{/mediaList}}
+
+        </table>
     </body>
 </html>

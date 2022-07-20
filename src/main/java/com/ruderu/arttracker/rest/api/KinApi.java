@@ -48,8 +48,12 @@ public class KinApi {
                 KinFilmModel.class,
                 1
         );
+        KinFilmModel kinFilmModel = response.getBody();
+        if (kinFilmModel == null) {
+            throw new IllegalStateException("Ничего не найдено");
+        }
 
-        return response.getBody();
+        return kinFilmModel;
     }
 
     public static List<KinResultModel> searchByKeyword(String keyword, String type) {
@@ -62,7 +66,11 @@ public class KinApi {
         );
 
         List<KinResultModel> resultModels = new ArrayList<>();
-        int pageCount = Math.min(response.getBody().getPagesCount(), 5);
+        KinSearchModel kinSearchModel = response.getBody();
+        if (kinSearchModel == null) {
+            throw new IllegalStateException("Ничего не найдено");
+        }
+        int pageCount = Math.min(kinSearchModel.getPagesCount(), 5);
         for (int i = 1; i <= pageCount; i++) {
             resultModels.addAll(searchByKeyword(keyword, i));
         }
@@ -80,8 +88,12 @@ public class KinApi {
                 KinSeasonsModel.class,
                 1
         );
+        KinSeasonsModel kinSeasonsModel = response.getBody();
+        if (kinSeasonsModel == null) {
+            throw new IllegalStateException("Ничего не найдено");
+        }
 
-        return response.getBody().getTotal();
+        return kinSeasonsModel.getTotal();
     }
 
     private static List<KinResultModel> searchByKeyword(String keyword, int page) {
@@ -92,7 +104,11 @@ public class KinApi {
                 KinSearchModel.class,
                 1
         );
-        KinResultModel[] resultModel = response.getBody().getKinResultModels();
-        return new ArrayList<>(Arrays.asList(resultModel));
+        KinSearchModel kinSearchModel = response.getBody();
+        if (kinSearchModel == null) {
+            throw new IllegalStateException("Ничего не найдено");
+        }
+
+        return new ArrayList<>(Arrays.asList(kinSearchModel.getKinResultModels()));
     }
 }
