@@ -18,9 +18,9 @@
             Оригинальное название: <input name="originalTitle" size="50" {{#ranobe}} value="{{ranobe.originalTitle}}" {{/ranobe}}><br>
             Статус: <input name="status" list="statusList" size="10" {{#ranobeVolume.status}} value="{{ranobeVolume.status}}" {{/ranobeVolume.status}} ><br>
             Оценка: <input name="score" type="number" min="1" max="5"  {{#ranobeVolume.score}} value="{{ranobeVolume.score}}" {{/ranobeVolume.score}} ><br>
-            Глав: <input name="chapters" type="number" min="0" max="999"  {{#ranobeVolume}} value="{{ranobeVolume.chapters}}" {{/ranobeVolume}}>
-            Томов: <input name="volumes" type="number" min="0" max="999" {{#ranobe}} value="{{ranobe.volumes}}" {{/ranobe}}><br>
-            Дата выхода: <input name="releaseDate" type="date" {{#ranobe}} value="{{ranobe.releaseDate}}" {{/ranobe}}>
+            Глав: <input name="chapters" type="number" min="0" max="999"  {{#ranobeVolume.chapters}} value="{{ranobeVolume.chapters}}" {{/ranobeVolume.chapters}}>
+            Томов: <input name="volumes" type="number" min="0" max="999" {{#ranobe.volumes}} value="{{ranobe.volumes}}" {{/ranobe.volumes}}><br>
+            Дата выхода: <input name="releaseDate" type="date" {{#ranobe.releaseDate}} value="{{ranobe.releaseDate}}" {{/ranobe.releaseDate}}>
             <input name="shikiId" {{#ranobe}} value="{{ranobe.shikiId}}" {{/ranobe}} hidden> <br>
             <input name="releaseYear" {{#ranobe}} value="{{ranobe.releaseYear}}" {{/ranobe}} hidden>
             <input name="id" {{#ranobe.id}} value="{{ranobe.id}}" {{/ranobe.id}} hidden>

@@ -62,6 +62,7 @@ public class AddRanobeController {
         RanobeModel ranobeModel = ShikimoriApi.findRanobeById(Math.toIntExact(ranobe.getShikiId()));
 
         ranobeVolume.setTitle(titleVolume);
+        ranobeVolume.setId(null);
         ranobeCrud.save(ranobe);
         ranobePublisherCrud.create(ranobe.getId(), List.of(ranobeModel.getPublishers()));
         ranobeRoleCrud.createRanobeRole(ranobe.getId(), List.of(ranobeModel.getRoleModels()));
