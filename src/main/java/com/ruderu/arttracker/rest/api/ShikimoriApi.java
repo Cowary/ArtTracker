@@ -14,17 +14,24 @@ import java.util.List;
 public class ShikimoriApi {
 
     static final String URL;
-    static final String URL_SEARCH_ANIME = "/animes?limit=50&search=";
-    static final String URL_ANIME = "/animes/";
-    static final String URL_SEARCH_MANGA = "/mangas?limit=50&search=";
-    static final String URL_MANGA = "/mangas/";
-    static final String URL_SEARCH_RANOBE = "/ranobe?limit=50&search=";
-    static final String URL_RANOBE = "/ranobe/";
-    static final String URL_ROLES =  "/roles";
+    static final String URL_SEARCH_ANIME;
+    static final String URL_ANIME;
+    static final String URL_SEARCH_MANGA;
+    static final String URL_MANGA;
+    static final String URL_SEARCH_RANOBE;
+    static final String URL_RANOBE;
+    static final String URL_ROLES;
 
     static {
         ProperUtil properUtil = new ProperUtil();
         URL = properUtil.getProp("shiki.URL");
+        URL_SEARCH_ANIME = properUtil.getProp("shiki.URL_SEARCH_ANIME");
+        URL_ANIME = properUtil.getProp("shiki.URL_ANIME");
+        URL_SEARCH_MANGA = properUtil.getProp("shiki.URL_SEARCH_MANGA");
+        URL_MANGA = properUtil.getProp("shiki.URL_MANGA");
+        URL_SEARCH_RANOBE = properUtil.getProp("shiki.URL_SEARCH_RANOBE");
+        URL_RANOBE = properUtil.getProp("shiki.URL_RANOBE");
+        URL_ROLES = properUtil.getProp("shiki.URL_ROLES");
     }
 
     static RestTemplate restTemplate = new RestTemplate();
@@ -38,7 +45,7 @@ public class ShikimoriApi {
         }
     }
 
-    public static AnimeModel findById(int animeId) {
+    public static AnimeModel getById(int animeId) {
         AnimeModel model = restTemplate.getForObject(URL + URL_ANIME + animeId, AnimeModel.class);
         RoleModel[] roleModels = restTemplate.getForObject(URL + URL_ANIME + animeId + URL_ROLES, RoleModel[].class);
         if(model == null) {

@@ -35,7 +35,7 @@ public class AddAnimeController {
             Model model
     ) {
         if(animeId != null) {
-            AnimeModel animeModel = ShikimoriApi.findById(animeId);
+            AnimeModel animeModel = ShikimoriApi.getById(animeId);
 
             Anime anime = new Anime(animeModel.getName(), animeModel.getRussian(), animeModel.getEpisodes(), DateFormat.HTMLshort.parse(animeModel.getAired_on()), (long) animeModel.getId(), animeModel.getDuration());
             List<StudioModel> studioModelList = List.of(animeModel.getStudios());
@@ -54,7 +54,7 @@ public class AddAnimeController {
             @ModelAttribute("anime") Anime anime,
             RedirectAttributes redirectAttributes
     ) {
-        AnimeModel animeModel = ShikimoriApi.findById(Math.toIntExact(anime.getShikiId()));
+        AnimeModel animeModel = ShikimoriApi.getById(Math.toIntExact(anime.getShikiId()));
 
         List<StudioModel> studioModelList = List.of(animeModel.getStudios());
 
