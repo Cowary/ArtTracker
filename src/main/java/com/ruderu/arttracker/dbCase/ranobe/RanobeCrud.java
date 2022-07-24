@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.dbCase.ranobe;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.entity.ranobe.Ranobe;
 import com.ruderu.arttracker.repo.ranobe.RanobeRep;
 import com.ruderu.arttracker.util.DateUtil;
@@ -13,6 +14,8 @@ public class RanobeCrud {
 
     @Autowired
     RanobeRep ranobeRep;
+    @Autowired
+    UserService userService;
 
     public List<Ranobe> getAll(String status) {
         if(status.equals("")) return ranobeRep.findAll();
@@ -29,7 +32,7 @@ public class RanobeCrud {
                 .orElseThrow();
     }
 
-    public Ranobe findByOriginalTitleAndUserId(String originalTitle, long userId) {
-        return ranobeRep.findRanobeByOriginalTitleAndUsrId(originalTitle, userId);
+    public Ranobe findByOriginalTitleAndUserId(String originalTitle ) {
+        return ranobeRep.findRanobeByOriginalTitleAndUsrId(originalTitle, userService.getIdCurrentUser());
     }
 }

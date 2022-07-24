@@ -39,6 +39,7 @@ public class Ranobe extends Media {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date lastUpd;
+    private Long usrId;
     @Transient
     private static final String type = "Ranobe";
 

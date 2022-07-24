@@ -1,6 +1,5 @@
 package com.ruderu.arttracker.controller.media.ranobe;
 
-import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.dbCase.ranobe.RanobeCrud;
 import com.ruderu.arttracker.dbCase.ranobe.RanobePublisherCrud;
 import com.ruderu.arttracker.dbCase.ranobe.RanobeRoleCrud;
@@ -32,8 +31,6 @@ public class AddRanobeController {
     RanobeRoleCrud ranobeRoleCrud;
     @Autowired
     RanobeVolumeCrud ranobeVolumeCrud;
-    @Autowired
-    UserService userService;
 
     @GetMapping("title/ranobe/add")
     public String get(
@@ -43,7 +40,7 @@ public class AddRanobeController {
         if(shikiId != null) {
             RanobeModel ranobeModel = ShikimoriApi.findRanobeById(shikiId);
             Ranobe ranobe = new Ranobe(ranobeModel.getName(), ranobeModel.getRussian(), ranobeModel.getVolumes(), ranobeModel.getChapters(), DateFormat.HTMLshort.parse(ranobeModel.getAired_on()), (long) ranobeModel.getId());
-            Ranobe sqlRanobe = ranobeCrud.findByOriginalTitleAndUserId(ranobe.getOriginalTitle(), userService.getIdCurrentUser());
+            Ranobe sqlRanobe = ranobeCrud.findByOriginalTitleAndUserId(ranobe.getOriginalTitle());
             if(sqlRanobe != null) ranobe = sqlRanobe;
 
             model.addAttribute("ranobe", ranobe);
@@ -66,7 +63,6 @@ public class AddRanobeController {
     ) {
         RanobeModel ranobeModel = ShikimoriApi.findRanobeById(Math.toIntExact(ranobe.getShikiId()));
 
-        ranobeVolume.setUsrId(userService.getIdCurrentUser());
         ranobeVolume.setTitle(titleVolume);
         ranobeVolume.setId(null);
         if(!ranobeId.isEmpty()) ranobe.setId(Long.valueOf(ranobeId));
