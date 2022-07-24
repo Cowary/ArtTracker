@@ -30,8 +30,10 @@ public class EditRanobeController {
         Ranobe ranobe = ranobeRep.findById(ranobeVolume.getRanobeId()).orElseThrow();
 
         model.addAttribute("ranobeVolume", ranobeVolume);
+        model.addAttribute("ranobeVolumeId", id);
         model.addAttribute("titleVolume", ranobeVolume.getTitle());
         model.addAttribute("ranobe", ranobe);
+        model.addAttribute("ranobeId", ranobe.getId());
         model.addAttribute("edit", true);
 
         return "media/ranobe/addRanobe";
@@ -40,11 +42,17 @@ public class EditRanobeController {
     @PostMapping("title/ranobe/edit")
     public String post(
             @ModelAttribute("ranobe") Ranobe ranobe,
+            @RequestParam("ranobeId") long ranobeId,
             @ModelAttribute("ranobeVolume") RanobeVolume ranobeVolume,
+            @RequestParam("ranobeVolumeId") long ranobeVolumeId,
             @RequestParam("titleVolume") String titleVolume
     ) {
-        System.out.println(ranobe);
-        //ranobe.setId(ranobeVolume.getRanobeId());
+        System.out.println("ranobeId = " + ranobeId);
+        ranobe.setId(ranobeId);
+        ranobe.setUsrId(ranobeVolume.getUsrId());
+        ranobeVolume.setRanobeId(ranobeId);
+        System.out.println("ranobeVolumeId = " + ranobeVolumeId);
+        ranobeVolume.setId(ranobeVolumeId);
         ranobeVolume.setTitle(titleVolume);
         ranobeVolumeCrud.save(ranobeVolume, ranobe);
         return "redirect:../view/media";

@@ -51,6 +51,7 @@ public class RanobeVolume extends Media {
         originalTitle = ranobe.getOriginalTitle();
         volumes = ranobe.getVolumes();
         releaseDate = ranobe.getReleaseDate();
+        releaseYear = ranobe.getReleaseYear();
         volumesEnd = ranobe.getVolumesEnd();
     }
 }

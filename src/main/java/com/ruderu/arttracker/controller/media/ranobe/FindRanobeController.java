@@ -38,7 +38,7 @@ public class FindRanobeController {
             @RequestParam int ranobeId,
             RedirectAttributes redirectAttributes
     ) {
-        redirectAttributes.addAttribute("ranobeId", ranobeId);
+        redirectAttributes.addAttribute("shikiId", ranobeId);
 
         return "redirect:./add";
     }

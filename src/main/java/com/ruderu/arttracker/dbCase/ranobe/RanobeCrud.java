@@ -29,7 +29,7 @@ public class RanobeCrud {
                 .orElseThrow();
     }
 
-    public Ranobe findByOriginalTitle(String originalTitle) {
-        return ranobeRep.findRanobeByOriginalTitle(originalTitle);
+    public Ranobe findByOriginalTitleAndUserId(String originalTitle, long userId) {
+        return ranobeRep.findRanobeByOriginalTitleAndUsrId(originalTitle, userId);
     }
 }

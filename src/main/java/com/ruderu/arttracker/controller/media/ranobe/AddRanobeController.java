@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.controller.media.ranobe;
 
+import com.ruderu.arttracker.dbCase.UserService;
 import com.ruderu.arttracker.dbCase.ranobe.RanobeCrud;
 import com.ruderu.arttracker.dbCase.ranobe.RanobePublisherCrud;
 import com.ruderu.arttracker.dbCase.ranobe.RanobeRoleCrud;
@@ -31,19 +32,22 @@ public class AddRanobeController {
     RanobeRoleCrud ranobeRoleCrud;
     @Autowired
     RanobeVolumeCrud ranobeVolumeCrud;
+    @Autowired
+    UserService userService;
 
     @GetMapping("title/ranobe/add")
     public String get(
-            @RequestParam(required = false) Integer ranobeId,
+            @RequestParam(required = false) Integer shikiId,
             Model model
     ) {
-        if(ranobeId != null) {
-            RanobeModel ranobeModel = ShikimoriApi.findRanobeById(ranobeId);
+        if(shikiId != null) {
+            RanobeModel ranobeModel = ShikimoriApi.findRanobeById(shikiId);
             Ranobe ranobe = new Ranobe(ranobeModel.getName(), ranobeModel.getRussian(), ranobeModel.getVolumes(), ranobeModel.getChapters(), DateFormat.HTMLshort.parse(ranobeModel.getAired_on()), (long) ranobeModel.getId());
-            Ranobe sqlRanobe = ranobeCrud.findByOriginalTitle(ranobe.getOriginalTitle());
+            Ranobe sqlRanobe = ranobeCrud.findByOriginalTitleAndUserId(ranobe.getOriginalTitle(), userService.getIdCurrentUser());
             if(sqlRanobe != null) ranobe = sqlRanobe;
 
             model.addAttribute("ranobe", ranobe);
+            if(ranobe.getId() != null) model.addAttribute("ranobeId", ranobe.getId());
             String url = "https://dere.shikimori.one" + ranobeModel.getImage().getOriginal();
             model.addAttribute("add", true);
             model.addAttribute("image",url);
@@ -55,14 +59,18 @@ public class AddRanobeController {
     @PostMapping("title/ranobe/add")
     public String post(
             @ModelAttribute("ranobe") Ranobe ranobe,
+            @RequestParam(value = "ranobeId", required = false) String ranobeId,
             @ModelAttribute("ranobeVolume") RanobeVolume ranobeVolume,
             @RequestParam("titleVolume") String titleVolume,
             RedirectAttributes redirectAttributes
     ) {
         RanobeModel ranobeModel = ShikimoriApi.findRanobeById(Math.toIntExact(ranobe.getShikiId()));
 
+        ranobeVolume.setUsrId(userService.getIdCurrentUser());
         ranobeVolume.setTitle(titleVolume);
         ranobeVolume.setId(null);
+        if(!ranobeId.isEmpty()) ranobe.setId(Long.valueOf(ranobeId));
+        ranobe.setUsrId(ranobeVolume.getUsrId());
         ranobeCrud.save(ranobe);
         ranobePublisherCrud.create(ranobe.getId(), List.of(ranobeModel.getPublishers()));
         ranobeRoleCrud.createRanobeRole(ranobe.getId(), List.of(ranobeModel.getRoleModels()));
