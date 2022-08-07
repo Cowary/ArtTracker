@@ -30,6 +30,7 @@ public class GameCrud {
     public void save(Game game) {
         game.setLastUpd(DateUtil.now());
         game.setUsrId(userService.getIdCurrentUser());
+        if(game.getReleaseDate() != null) game.setReleaseYear(DateUtil.getYear(game.getReleaseDate()));
         gameRepo.save(game);
     }
 
