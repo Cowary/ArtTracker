@@ -1,6 +1,6 @@
 package com.ruderu.arttracker.controller.media.movie;
 
-import com.ruderu.arttracker.rest.api.KinApi;
+import com.ruderu.arttracker.rest.api.kin.KinApi;
 import com.ruderu.arttracker.rest.model.kin.KinResultModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +24,7 @@ public class FindMovieController {
             @RequestParam String keyword,
             Model model
     ) {
-        List<KinResultModel> list = KinApi.searchByKeyword(keyword, "FILM");
+        List<KinResultModel> list = KinApi.filmApi().searchByKeyword(keyword);
         model.addAttribute("list", list);
 
         return "media/movie/find";

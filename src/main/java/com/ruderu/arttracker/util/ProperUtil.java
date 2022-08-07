@@ -9,10 +9,10 @@ public class ProperUtil {
 
     private Properties properties = null;
 
-    public ProperUtil() {
+    public ProperUtil(String fileName) {
         Properties prop = new Properties();
         try {
-            InputStream stream = this.getClass().getClassLoader().getResourceAsStream("WEB-INF/config/api.properties");
+            InputStream stream = this.getClass().getClassLoader().getResourceAsStream("WEB-INF/config/" + fileName);
             prop.load(stream);
             properties = prop;
         } catch (IOException e) {

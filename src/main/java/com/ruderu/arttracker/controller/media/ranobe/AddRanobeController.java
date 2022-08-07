@@ -6,7 +6,7 @@ import com.ruderu.arttracker.dbCase.ranobe.RanobeRoleCrud;
 import com.ruderu.arttracker.dbCase.ranobe.RanobeVolumeCrud;
 import com.ruderu.arttracker.entity.ranobe.Ranobe;
 import com.ruderu.arttracker.entity.ranobe.RanobeVolume;
-import com.ruderu.arttracker.rest.api.ShikimoriApi;
+import com.ruderu.arttracker.rest.api.shiki.ShikimoriApi;
 import com.ruderu.arttracker.rest.model.shiki.RanobeModel;
 import com.ruderu.arttracker.util.DateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class AddRanobeController {
             Model model
     ) {
         if(ranobeId != null) {
-            RanobeModel ranobeModel = ShikimoriApi.findRanobeById(ranobeId);
+            RanobeModel ranobeModel = ShikimoriApi.ranobeApi().getById(ranobeId);
             Ranobe ranobe = new Ranobe(ranobeModel.getName(), ranobeModel.getRussian(), ranobeModel.getVolumes(), ranobeModel.getChapters(), DateFormat.HTMLshort.parse(ranobeModel.getAired_on()), (long) ranobeModel.getId());
             Ranobe sqlRanobe = ranobeCrud.findByOriginalTitle(ranobe.getOriginalTitle());
             if(sqlRanobe != null) ranobe = sqlRanobe;
@@ -59,7 +59,7 @@ public class AddRanobeController {
             @RequestParam("titleVolume") String titleVolume,
             RedirectAttributes redirectAttributes
     ) {
-        RanobeModel ranobeModel = ShikimoriApi.findRanobeById(Math.toIntExact(ranobe.getShikiId()));
+        RanobeModel ranobeModel = ShikimoriApi.ranobeApi().getById(Math.toIntExact(ranobe.getShikiId()));
 
         ranobeVolume.setTitle(titleVolume);
         ranobeVolume.setId(null);

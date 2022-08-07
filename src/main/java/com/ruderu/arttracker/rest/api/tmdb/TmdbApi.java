@@ -1,4 +1,4 @@
-package com.ruderu.arttracker.rest.api;
+package com.ruderu.arttracker.rest.api.tmdb;
 
 
 import com.ruderu.arttracker.rest.model.tmdb.MovieModel;
@@ -24,7 +24,9 @@ public class TmdbApi {
         List<ResultModel> list = new ArrayList<>(Arrays.asList(searchModel.getResults()));
         for(int i = 2; i <= searchModel.getTotalPages(); i++ ) {
             SearchModel searchModel2 = restTemplate.getForObject(URL +"/search/movie?"+ KEY +"&query="+ query + "&language=ru-RU&page=" + i, SearchModel.class);
-            list.addAll(Arrays.asList(searchModel2.getResults()));
+            if (searchModel2 != null) {
+                list.addAll(Arrays.asList(searchModel2.getResults()));
+            }
         }
         for (ResultModel s: list) {
             System.out.println(s);

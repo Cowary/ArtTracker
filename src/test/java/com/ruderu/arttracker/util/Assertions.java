@@ -14,6 +14,13 @@ public class Assertions {
         return this;
     }
 
+    public Assertions isTrue(String assertionName, boolean condition) {
+        Assert.isTrue(
+                condition,
+                "Проверка не пройдена: " + assertionName);
+        return this;
+    }
+
     public <V> Assertions equals(String assertionName, V expectedValue, V actualValue) {
         Assert.isTrue(
                 Objects.equals(expectedValue, actualValue),

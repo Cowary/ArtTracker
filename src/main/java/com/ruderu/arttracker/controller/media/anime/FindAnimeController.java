@@ -1,7 +1,7 @@
 package com.ruderu.arttracker.controller.media.anime;
 
 import com.ruderu.arttracker.entity.anime.Anime;
-import com.ruderu.arttracker.rest.api.ShikimoriApi;
+import com.ruderu.arttracker.rest.api.shiki.ShikimoriApi;
 import com.ruderu.arttracker.rest.model.shiki.AnimeModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +26,7 @@ public class FindAnimeController {
             @ModelAttribute("anime") Anime anime,
             Model model
     ) {
-        List<AnimeModel> list = ShikimoriApi.searchByName(anime.getOriginalTitle());
+        List<AnimeModel> list = ShikimoriApi.animeApi().searchByName(anime.getOriginalTitle());
         model.addAttribute("list", list);
 
         return "media/anime/findAnime";

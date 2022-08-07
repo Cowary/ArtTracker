@@ -1,6 +1,6 @@
 package com.ruderu.arttracker.controller.media.tv;
 
-import com.ruderu.arttracker.rest.api.KinApi;
+import com.ruderu.arttracker.rest.api.kin.KinApi;
 import com.ruderu.arttracker.rest.model.kin.KinResultModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +26,7 @@ public class FindTvController {
             @RequestParam String keyword,
             Model model
     ) {
-        List<KinResultModel> list = KinApi.searchByKeyword(keyword, "TV_SERIES");
+        List<KinResultModel> list = KinApi.serialApi().searchByKeyword(keyword);
         model.addAttribute("list", list);
 
         return "media/tv/find";
