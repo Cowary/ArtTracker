@@ -4,7 +4,7 @@ import com.ruderu.arttracker.dbCase.movie.MovieCrud;
 import com.ruderu.arttracker.dbCase.movie.MovieIntegrationCrud;
 import com.ruderu.arttracker.dbCase.movie.MovieProductionCrud;
 import com.ruderu.arttracker.entity.movie.Movie;
-import com.ruderu.arttracker.rest.api.KinApi;
+import com.ruderu.arttracker.rest.api.kin.KinApi;
 import com.ruderu.arttracker.rest.model.kin.KinFilmModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +31,7 @@ public class AddMovieController {
             Model model
     ) {
         if(filmId != null) {
-            KinFilmModel kinFilmModel = KinApi.searchById(filmId);
+            KinFilmModel kinFilmModel = KinApi.filmApi().getById(filmId);
             Movie movie = new Movie(kinFilmModel.getNameOriginal(), kinFilmModel.getNameRu(), kinFilmModel.getYear(), kinFilmModel.getFilmLength());
             model.addAttribute("movie", movie);
             String url = kinFilmModel.getPosterUrl();

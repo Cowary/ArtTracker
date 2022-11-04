@@ -6,7 +6,7 @@ import com.ruderu.arttracker.dbCase.ranobe.RanobeRoleCrud;
 import com.ruderu.arttracker.dbCase.ranobe.RanobeVolumeCrud;
 import com.ruderu.arttracker.entity.ranobe.Ranobe;
 import com.ruderu.arttracker.entity.ranobe.RanobeVolume;
-import com.ruderu.arttracker.rest.api.ShikimoriApi;
+import com.ruderu.arttracker.rest.api.shiki.ShikimoriApi;
 import com.ruderu.arttracker.rest.model.shiki.RanobeModel;
 import com.ruderu.arttracker.util.DateFormat;
 import org.springframework.beans.factory.annotation.Autowired;

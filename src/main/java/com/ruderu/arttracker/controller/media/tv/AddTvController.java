@@ -5,7 +5,7 @@ import com.ruderu.arttracker.dbCase.tv.TvIntegrationCrud;
 import com.ruderu.arttracker.dbCase.tv.TvSeasonsCrud;
 import com.ruderu.arttracker.entity.tv.Tv;
 import com.ruderu.arttracker.entity.tv.TvSeason;
-import com.ruderu.arttracker.rest.api.KinApi;
+import com.ruderu.arttracker.rest.api.kin.KinApi;
 import com.ruderu.arttracker.rest.model.kin.KinFilmModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,8 +32,8 @@ public class AddTvController {
             Model model
     ) {
         if(filmId != null) {
-            KinFilmModel kinFilmModel = KinApi.searchById(filmId);
-            int seasonsTotal = KinApi.totalSeasons(filmId);
+            KinFilmModel kinFilmModel = KinApi.serialApi().getById(filmId);
+            int seasonsTotal = KinApi.serialApi().totalSeasons(filmId);
             Tv tv = new Tv(kinFilmModel.getNameOriginal(), kinFilmModel.getNameRu(), kinFilmModel.getYear(), seasonsTotal);
             Tv tvSql = tvCrud.findByOriginalTitle(tv.getOriginalTitle());
             if(tvSql != null) tv = tvSql;

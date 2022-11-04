@@ -1,7 +1,7 @@
 package com.ruderu.arttracker.controller.media.ranobe;
 
 import com.ruderu.arttracker.entity.ranobe.Ranobe;
-import com.ruderu.arttracker.rest.api.ShikimoriApi;
+import com.ruderu.arttracker.rest.api.shiki.ShikimoriApi;
 import com.ruderu.arttracker.rest.model.shiki.RanobeModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +26,7 @@ public class FindRanobeController {
             @ModelAttribute("ranobe") Ranobe ranobe,
             Model model
     ) {
-        List<RanobeModel> list = ShikimoriApi.searchRanobeByName(ranobe.getOriginalTitle());
+        List<RanobeModel> list = ShikimoriApi.ranobeApi().searchByName(ranobe.getOriginalTitle());
         model.addAttribute("list", list);
 
         return "media/ranobe/findRanobe";

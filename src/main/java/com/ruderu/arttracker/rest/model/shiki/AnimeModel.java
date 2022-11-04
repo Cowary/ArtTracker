@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class AnimeModel {
+public class AnimeModel{
 
     private int id;
     private String name;

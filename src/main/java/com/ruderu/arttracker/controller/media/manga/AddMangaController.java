@@ -4,7 +4,7 @@ import com.ruderu.arttracker.dbCase.manga.MangaCrud;
 import com.ruderu.arttracker.dbCase.manga.MangaPublisherCrud;
 import com.ruderu.arttracker.dbCase.manga.MangaRoleCrud;
 import com.ruderu.arttracker.entity.manga.Manga;
-import com.ruderu.arttracker.rest.api.ShikimoriApi;
+import com.ruderu.arttracker.rest.api.shiki.ShikimoriApi;
 import com.ruderu.arttracker.rest.model.shiki.MangaModel;
 import com.ruderu.arttracker.util.DateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class AddMangaController {
             Model model
     ) {
         if(mangaId != null) {
-            MangaModel mangaModel = ShikimoriApi.findMangaById(mangaId);
+            MangaModel mangaModel = ShikimoriApi.mangaApi().getById(mangaId);
 
             Manga manga = new Manga(mangaModel.getName(), mangaModel.getRussian(), mangaModel.getVolumes(), mangaModel.getChapters(), DateFormat.HTMLshort.parse(mangaModel.getAired_on()), (long) mangaModel.getId());
             model.addAttribute("manga", manga);
@@ -54,7 +54,7 @@ public class AddMangaController {
         mangaCrud.save(manga);
 
         if(manga.getShikiId() != null) {
-            MangaModel mangaModel = ShikimoriApi.findMangaById(Math.toIntExact(manga.getShikiId()));
+            MangaModel mangaModel = ShikimoriApi.mangaApi().getById(Math.toIntExact(manga.getShikiId()));
             mangaPublisherCrud.create(manga.getId(), List.of(mangaModel.getPublishers()));
             mangaRoleCrud.create(manga.getId(), List.of(mangaModel.getRoleModels()));
         }

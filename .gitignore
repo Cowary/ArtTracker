@@ -3,6 +3,6 @@
 /ArtTracker.iml
 /src/main/webapp/resources/images/image.jpeg
 /src/main/resources/config/application.properties
-/src/main/resources/WEB-INF/config/api.properties
+/src/main/resources/WEB-INF/config
 /.jpb.
 /.jpb/persistence-units.xml
