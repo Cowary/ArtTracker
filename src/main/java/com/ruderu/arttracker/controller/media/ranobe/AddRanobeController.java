@@ -34,11 +34,11 @@ public class AddRanobeController {
 
     @GetMapping("title/ranobe/add")
     public String get(
-            @RequestParam(required = false) Integer shikiId,
+            @RequestParam(required = false) Integer ranobeId,
             Model model
     ) {
-        if(shikiId != null) {
-            RanobeModel ranobeModel = ShikimoriApi.findRanobeById(shikiId);
+        if(ranobeId != null) {
+            RanobeModel ranobeModel = ShikimoriApi.ranobeApi().getById(ranobeId);
             Ranobe ranobe = new Ranobe(ranobeModel.getName(), ranobeModel.getRussian(), ranobeModel.getVolumes(), ranobeModel.getChapters(), DateFormat.HTMLshort.parse(ranobeModel.getAired_on()), (long) ranobeModel.getId());
             Ranobe sqlRanobe = ranobeCrud.findByOriginalTitleAndUserId(ranobe.getOriginalTitle());
             if(sqlRanobe != null) ranobe = sqlRanobe;
@@ -61,7 +61,7 @@ public class AddRanobeController {
             @RequestParam("titleVolume") String titleVolume,
             RedirectAttributes redirectAttributes
     ) {
-        RanobeModel ranobeModel = ShikimoriApi.findRanobeById(Math.toIntExact(ranobe.getShikiId()));
+        RanobeModel ranobeModel = ShikimoriApi.ranobeApi().getById(Math.toIntExact(ranobe.getShikiId()));
 
         ranobeVolume.setTitle(titleVolume);
         ranobeVolume.setId(null);
