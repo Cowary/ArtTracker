@@ -3,8 +3,8 @@ package com.ruderu.arttracker.dbCase.manga;
 import com.ruderu.arttracker.dbCase.PublisherCrud;
 import com.ruderu.arttracker.entity.Publisher;
 import com.ruderu.arttracker.entity.manga.MangaPublisher;
+import com.ruderu.arttracker.integration.model.shiki.PublisherModel;
 import com.ruderu.arttracker.repo.manga.MangaPublisherRepo;
-import com.ruderu.arttracker.rest.model.shiki.PublisherModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

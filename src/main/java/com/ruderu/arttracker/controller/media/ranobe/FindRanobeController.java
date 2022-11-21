@@ -1,8 +1,8 @@
 package com.ruderu.arttracker.controller.media.ranobe;
 
 import com.ruderu.arttracker.entity.ranobe.Ranobe;
-import com.ruderu.arttracker.rest.api.shiki.ShikimoriApi;
-import com.ruderu.arttracker.rest.model.shiki.RanobeModel;
+import com.ruderu.arttracker.integration.api.shiki.ShikimoriApi;
+import com.ruderu.arttracker.integration.model.shiki.RanobeModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

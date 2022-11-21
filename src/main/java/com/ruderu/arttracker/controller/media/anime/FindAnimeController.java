@@ -1,8 +1,8 @@
 package com.ruderu.arttracker.controller.media.anime;
 
 import com.ruderu.arttracker.entity.anime.Anime;
-import com.ruderu.arttracker.rest.api.shiki.ShikimoriApi;
-import com.ruderu.arttracker.rest.model.shiki.AnimeModel;
+import com.ruderu.arttracker.integration.api.shiki.ShikimoriApi;
+import com.ruderu.arttracker.integration.model.shiki.AnimeModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

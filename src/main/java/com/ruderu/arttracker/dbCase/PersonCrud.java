@@ -1,8 +1,8 @@
 package com.ruderu.arttracker.dbCase;
 
 import com.ruderu.arttracker.entity.Person;
+import com.ruderu.arttracker.integration.model.shiki.PersonModel;
 import com.ruderu.arttracker.repo.PersonRepo;
-import com.ruderu.arttracker.rest.model.shiki.PersonModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,8 +1,8 @@
 package com.ruderu.arttracker.api.kin;
 
-import com.ruderu.arttracker.rest.api.kin.KinApi;
-import com.ruderu.arttracker.rest.model.kin.KinFilmModel;
-import com.ruderu.arttracker.rest.model.kin.KinResultModel;
+import com.ruderu.arttracker.integration.api.kin.KinApi;
+import com.ruderu.arttracker.integration.model.kin.KinFilmModel;
+import com.ruderu.arttracker.integration.model.kin.KinResultModel;
 import com.ruderu.arttracker.util.Assertions;
 import org.junit.jupiter.api.Test;
 

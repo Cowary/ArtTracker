@@ -1,9 +1,9 @@
 package com.ruderu.arttracker.api.shiki;
 
-import com.ruderu.arttracker.rest.api.shiki.ShikimoriApi;
-import com.ruderu.arttracker.rest.model.shiki.AnimeModel;
-import com.ruderu.arttracker.rest.model.shiki.MangaModel;
-import com.ruderu.arttracker.rest.model.shiki.RanobeModel;
+import com.ruderu.arttracker.integration.api.shiki.ShikimoriApi;
+import com.ruderu.arttracker.integration.model.shiki.AnimeModel;
+import com.ruderu.arttracker.integration.model.shiki.MangaModel;
+import com.ruderu.arttracker.integration.model.shiki.RanobeModel;
 import com.ruderu.arttracker.util.Assertions;
 import com.ruderu.arttracker.util.Wait;
 import org.junit.jupiter.api.BeforeEach;

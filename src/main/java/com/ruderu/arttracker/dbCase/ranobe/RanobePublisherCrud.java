@@ -3,8 +3,8 @@ package com.ruderu.arttracker.dbCase.ranobe;
 import com.ruderu.arttracker.dbCase.PublisherCrud;
 import com.ruderu.arttracker.entity.Publisher;
 import com.ruderu.arttracker.entity.ranobe.RanobePublisher;
+import com.ruderu.arttracker.integration.model.shiki.PublisherModel;
 import com.ruderu.arttracker.repo.ranobe.RanobePublisherRepo;
-import com.ruderu.arttracker.rest.model.shiki.PublisherModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
 package com.ruderu.arttracker.controller.media.tv;
 
-import com.ruderu.arttracker.rest.api.kin.KinApi;
-import com.ruderu.arttracker.rest.model.kin.KinResultModel;
+import com.ruderu.arttracker.integration.api.kin.KinApi;
+import com.ruderu.arttracker.integration.model.kin.KinResultModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
