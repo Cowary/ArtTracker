@@ -55,6 +55,7 @@ public class FilmApi {
 
         List<KinResultModel> resultModels = new ArrayList<>();
         int pageCount = Math.min(kinSearchModel.getPagesCount(), 5);
+        if (pageCount == 0) pageCount = 1;
         for (int i = 1; i <= pageCount; i++) {
             resultModels.addAll(searchByKeyword(keyword, i));
         }

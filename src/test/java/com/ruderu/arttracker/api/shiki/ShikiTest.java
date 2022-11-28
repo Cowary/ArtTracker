@@ -16,7 +16,7 @@ public class ShikiTest {
 
     @BeforeEach
     public void before() {
-        Wait.seconds(1);
+        Wait.millis(300);
     }
 
     @Test

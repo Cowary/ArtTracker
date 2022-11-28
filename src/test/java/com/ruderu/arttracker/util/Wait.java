@@ -6,7 +6,7 @@ public class Wait {
         millis(amount * 1000L);
     }
 
-    private static void millis(long amount) {
+    public static void millis(long amount) {
         try {
             Thread.sleep(amount);
         } catch (InterruptedException e) {
