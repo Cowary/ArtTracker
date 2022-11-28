@@ -14,8 +14,8 @@
     </div>
     <form method="post" >
         <label>
-            Название: <input name="title" size="50" {{#movie}} value="{{movie.title}}" {{/movie}}><br>
-            Оригинальное название: <input name="originalTitle" size="50" {{#movie}} value="{{movie.originalTitle}}" {{/movie}}><br>
+            Название: <input name="title" size="50" {{#movie.title}} value="{{movie.title}}" {{/movie.title}}><br>
+            Оригинальное название: <input name="originalTitle" size="50" {{#movie.originalTitle}} value="{{movie.originalTitle}}" {{/movie.originalTitle}}><br>
             Статус: <input name="status" list="statusList" size="10" {{#movie.status}} value="{{movie.status}}" {{/movie.status}} ><br>
             Оценка: <input name="score" type="number" min="0" max="5"  {{#movie.score}} value="{{movie.score}}" {{/movie.score}} ><br>
             Дата выхода: <input name="releaseYear" type="number" {{#movie}} value="{{movie.releaseYear}}" {{/movie}}><br>
