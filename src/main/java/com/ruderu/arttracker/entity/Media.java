@@ -1,5 +1,6 @@
 package com.ruderu.arttracker.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -20,6 +21,7 @@ public class Media {
     private Date endDate;
     private Long usrId;
 
+    @JsonIgnore
     Comparator<Media> comparator = new Comparator<Media>() {
         @Override
         public int compare(Media o1, Media o2) {
