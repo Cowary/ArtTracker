@@ -27,12 +27,13 @@ public class KinTest {
 
     @Test
     public void searchSerial() {
-        List<KinResultModel> kinResultModelList = KinApi.serialApi().searchByKeyword("Ms. Marvel");
+        List<KinResultModel> kinResultModelList = KinApi.serialApi().searchByKeyword("Локи");
+        System.out.println(kinResultModelList);
         new Assertions().isTrue("kinFilmModelList не пустой", kinResultModelList.size() > 0);
-        KinResultModel kinResultModel = kinResultModelList.get(1);
-        new Assertions().isTrue("Сериал Мисс Марвел найден",  kinResultModel.getNameRu().equals("Мисс Марвел"));
+        KinResultModel kinResultModel = kinResultModelList.get(0);
+        new Assertions().isTrue("Сериал Локи найден",  kinResultModel.getNameRu().equals("Локи"));
 
         int totalSeason = KinApi.serialApi().totalSeasons(kinResultModel.getFilmId());
-        new Assertions().equals("Количество сезонов совпадает", 1, totalSeason);
+        new Assertions().equals("Количество сезонов совпадает", 2, totalSeason);
     }
 }
