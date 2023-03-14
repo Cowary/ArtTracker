@@ -32,6 +32,7 @@ public class TvCrud {
 
     public void save(Tv tv) {
         tv.setLastUpd(DateUtil.now());
+        tv.setUsrId(userService.getIdCurrentUser());
         tvRepo.save(tv);
     }
 

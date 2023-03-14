@@ -29,7 +29,7 @@ public class KinTest {
     public void searchSerial() {
         List<KinResultModel> kinResultModelList = KinApi.serialApi().searchByKeyword("Ms. Marvel");
         new Assertions().isTrue("kinFilmModelList не пустой", kinResultModelList.size() > 0);
-        KinResultModel kinResultModel = kinResultModelList.get(0);
+        KinResultModel kinResultModel = kinResultModelList.get(1);
         new Assertions().isTrue("Сериал Мисс Марвел найден",  kinResultModel.getNameRu().equals("Мисс Марвел"));
 
         int totalSeason = KinApi.serialApi().totalSeasons(kinResultModel.getFilmId());
