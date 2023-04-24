@@ -45,7 +45,7 @@ public class AddRanobeController {
 
             model.addAttribute("ranobe", ranobe);
             if(ranobe.getId() != null) model.addAttribute("ranobeId", ranobe.getId());
-            String url = "https://dere.shikimori.one" + ranobeModel.getImage().getOriginal();
+            String url = "https://dere.shikimori.me" + ranobeModel.getImage().getOriginal();
             model.addAttribute("add", true);
             model.addAttribute("image",url);
         }

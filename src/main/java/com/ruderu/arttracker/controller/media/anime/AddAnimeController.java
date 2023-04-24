@@ -41,7 +41,7 @@ public class AddAnimeController {
             List<StudioModel> studioModelList = List.of(animeModel.getStudios());
             model.addAttribute("anime", anime);
             model.addAttribute("studioList", studioModelList);
-            String url = "https://dere.shikimori.one" + animeModel.getImage().getOriginal();
+            String url = "https://dere.shikimori.me" + animeModel.getImage().getOriginal();
             model.addAttribute("add", true);
             model.addAttribute("image", url);
         }

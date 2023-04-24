@@ -38,7 +38,7 @@ public class AddMangaController {
 
             Manga manga = new Manga(mangaModel.getName(), mangaModel.getRussian(), mangaModel.getVolumes(), mangaModel.getChapters(), DateFormat.HTMLshort.parse(mangaModel.getAired_on()), (long) mangaModel.getId());
             model.addAttribute("manga", manga);
-            String url = "https://dere.shikimori.one" + mangaModel.getImage().getOriginal();
+            String url = "https://dere.shikimori.me" + mangaModel.getImage().getOriginal();
             model.addAttribute("add", true);
             model.addAttribute("image",url);
         }
