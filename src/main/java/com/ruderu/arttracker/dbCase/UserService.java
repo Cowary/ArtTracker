@@ -4,16 +4,15 @@ import com.ruderu.arttracker.entity.Role;
 import com.ruderu.arttracker.entity.User;
 import com.ruderu.arttracker.repo.user.RoleRepo;
 import com.ruderu.arttracker.repo.user.UserRepo;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -26,8 +25,8 @@ public class UserService implements UserDetailsService {
     UserRepo userRepo;
     @Autowired
     RoleRepo roleRepo;
-    @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+//    @Autowired
+//    BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     @Override
@@ -58,14 +57,14 @@ public class UserService implements UserDetailsService {
         }
 
         user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepo.save(user);
         return true;
     }
 
     public void savePassword(String username, String password) {
         User userFromDB = userRepo.findByUsername(username);
-        userFromDB.setPassword(bCryptPasswordEncoder.encode(password));
+        //userFromDB.setPassword(bCryptPasswordEncoder.encode(password));
         userRepo.save(userFromDB);
     }
 

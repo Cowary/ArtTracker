@@ -1,11 +1,11 @@
 package com.ruderu.arttracker.entity;
 
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.util.Comparator;
 import java.util.Date;
 

@@ -2,12 +2,12 @@ package com.ruderu.arttracker.entity.ranobe;
 
 import com.ruderu.arttracker.entity.Media;
 import com.ruderu.arttracker.util.DateUtil;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
 import java.util.Date;
 
 @Getter

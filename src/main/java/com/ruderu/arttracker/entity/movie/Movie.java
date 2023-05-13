@@ -1,12 +1,12 @@
 package com.ruderu.arttracker.entity.movie;
 
 import com.ruderu.arttracker.entity.Media;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
 import java.util.Date;
 
 @Getter
